@@ -1,9 +1,15 @@
 # HADashboard-widgets
 Widgets for HADashboard / Appdaemon
 
-This is a graph widget for HADashboard that uses influxdb as data source.
+This is a graph widget for HADashboard that uses influxdb as data source and plot.ly as the graph engine.
 
 ![HADashboard-widgets](https://github.com/tjntomas/HADashboard-widgets/blob/master/img/influx_graph.png?raw=true)
+
+Features:
+* Add any number of traces to a graph
+* Zoom and scroll
+* hide/show individual traces
+* Automatically updates when new new values are written  to influx/when the entity is updated in Home Assistant
 
 To use it, you need to:
 1. Copy the basepgraph folder to your custom_widgets folder
