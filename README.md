@@ -52,7 +52,7 @@ cpu_temp_g:
       - "VPN"
       - "UBUNTU 0"
       - "UBUNTU 1"
-    time: 1h  # Specify time for the traces. can be anything that influxdb accepts, i.e. 20m, 2d, 4h, 1w etc.
+    time: 1h  # Specify time interval for the traces. can be anything that influxdb accepts, i.e. 20m, 2d, 4h, 1w etc.
     samples: 200  # Optional. Used to speed up drawing. If your widget is 200 pixels wide, use 200.
     title: "CPU-temperaturer"  # The title for the widget.
     fill: "tozeroy"
@@ -82,6 +82,7 @@ power_usage_per_day:
     time_zone: "Europe/Stockholm
     locale: "se"
     db_name: "home_assistant"
+    ds: 5m   # Used for downsampling long time intervals in the SQL query. Use anything that influxdb accepts, i.e. 5m, 1h, 2d etc.
 ````
 
 7. Add the widget to your dashboard.yaml file 
