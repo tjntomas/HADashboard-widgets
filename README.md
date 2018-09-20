@@ -16,7 +16,7 @@ Features:
 * Supply your own SLQ query to filter and group data
 
 To use it, you need to:
-1. Have influxdb db installed and configured in Home Assistant
+1. Have influxdb installed and configured in Home Assistant
 2. Copy the basepgraph folder to your custom_widgets folder
 3. Copy the graph.yaml file to your custom_widgets folder
 4. Copy influxdb-latest.js (found in the custom_css folder) to your custom_css folder or download from plot.ly
@@ -83,6 +83,7 @@ power_usage_per_day:
 Additional parameters:
     time_zone: "Europe/Stockholm" # This is the default.
     locale: "se"                  # This is the default.
+    db_name: "home_assistant"     # You only need to add this parameter is your database name is different from the default name.
     
 7. Add the widget to your dashboard.yaml file
 
