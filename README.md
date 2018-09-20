@@ -78,11 +78,11 @@ power_usage_per_day:
     sql: "select difference(last(value)) from kWh where entity_id = 'sparsnas_energy_consumption_over_time' and time > now() - 2w  group by time(1d)"
     type: "bar"
     decimals: 0
-
+#Addional parameters:
+    time_zone: "Europe/Stockholm
+    locale: "se"
+    db_name: "home_assistant"
 ````
-Addional parameters:
-    time_zone:
-    locale:
-    db_name:
+
 7. Add the widget to your dashboard.yaml file 
 
