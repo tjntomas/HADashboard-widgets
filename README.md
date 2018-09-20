@@ -32,7 +32,7 @@ graph_fill_colors: "1"   # Set the opacity for the fill colors.
 graph_bar_colors: "1"    # Set the opacity for the bar colors.
 graph_bar_multi: "1"     # Leave this as is.
 ````
-6. Define a widget:
+6. Define a widget:m
 ````yaml
 # Graph showing the CPU temperatures for 4 devices.
 cpu_temp_g:
