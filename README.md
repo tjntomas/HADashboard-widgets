@@ -62,7 +62,7 @@ cpu_temp_g:
     height: 324                # Specify the height of the widget in pixels. 
     
 # Graph to show the daily power consumption from a Sparsnäs device.
-# In this widget, we do specifoy the SQL query explicitly instead of just grabbing the trace from influxdb.
+# In this widget, we specify the SQL query explicitly instead of just grabbing the trace from influxdb.
 # In this way, we can use all features of the SQL query language that influxdb supports.
 power_usage_per_day:
     widget_type: graph
