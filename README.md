@@ -85,5 +85,5 @@ Additional parameters:
     locale: "se"                  # This is the default.
     db_name: "home_assistant"     
     
-7. Add the widget to your dashboard.yaml file
+7. Add the widget to your dashboard.yaml file 
 
