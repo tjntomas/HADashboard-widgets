@@ -56,8 +56,8 @@ cpu_temp_g:
     samples: 200  # Optional. Used to speed up drawing. If your widget is 200 pixels wide, use 200.
     title: "CPU-temperaturer"  # The title for the widget.
     fill: "tozeroy"
-    max: 75                    # Set the max y-axis. Leave blank to fit the traces automatically.
-    min: 30                    # Set the min y-axis. Leave blank to fit the traces automatically.
+    max: 75                    # Set the max y-axis. Remove to fit the traces automatically.
+    min: 30                    # Set the min y-axis. Remove to fit the traces automatically.
     colorIndex: 0              # Set a color index between 0 and 7.
     height: 324                # Specify the height of the widget in pixels. 
     
