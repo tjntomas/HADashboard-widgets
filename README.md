@@ -12,12 +12,14 @@ Features:
 * Automatically updates when new new values are written  to influx/when the entity is updated in Home Assistant
 * Can span over any number of columns
 * The height can be set for each widget
+* Supply your own SLQ query to filter and group data
 
 To use it, you need to:
-1. Copy the basepgraph folder to your custom_widgets folder
-2. Copy the graph.yaml file to your custom_widgets folder
-3. Copy influxdb-latest.js (found in the custom_css folder) to your custom_css folder or download from plot.ly
-4. Add the following to your variables.yaml file in your custom_css folder for the skin you are using:
+1. Have influxdb db installed and configured in Home Assistant
+2. Copy the basepgraph folder to your custom_widgets folder
+3. Copy the graph.yaml file to your custom_widgets folder
+4. Copy influxdb-latest.js (found in the custom_css folder) to your custom_css folder or download from plot.ly
+5. Add the following to your variables.yaml file in your custom_css folder for the skin you are using:
 ````yaml
 graph_style: "border-radius: 0px; "background-color: rgba(30,30,30,0.45 );"  # Change to whichever color/opacity you like.
 graph_legend_text_color: "#888888"
@@ -29,7 +31,7 @@ graph_fill_colors: "1"   # Set the opacity for the fill colors.
 graph_bar_colors: "1"    # Set the opacity for the bar colors.
 graph_bar_multi: "1"     # Leave this as is.
 ````
-5. Define a widget:
+6. Define a widget:
 ````yaml
 # Graph showing the CPU temperatures for 4 devices.
 cpu_temp_g:
@@ -81,5 +83,5 @@ Additional parameters:
     time_zone: "Europe/Stockholm" # This is the default.
     locale: "se"                  # This is the default.
     
-6. Add the widget to your dashboard.yaml file
+7. Add the widget to your dashboard.yaml file
 
