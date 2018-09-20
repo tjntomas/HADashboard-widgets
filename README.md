@@ -55,7 +55,7 @@ cpu_temp_g:
       - "UBUNTU 1"
     time: 1h  # Specify time interval for the traces. can be anything that influxdb accepts, i.e. 20m, 2d, 4h, 1w etc.
     samples: 200  # Optional. Used to speed up drawing. If your widget is 200 pixels wide, use 200.
-    title: "CPU-temperaturer"  # The title for the widget.
+    title: "CPU temperatures"  # The title for the widget.
     fill: "tozeroy"
     max: 75                    # Set the max y-axis. Remove to fit the traces automatically.
     min: 30                    # Set the min y-axis. Remove to fit the traces automatically.
@@ -71,7 +71,7 @@ power_usage_per_day:
       - sensor.sparsnas_energy_consumption_over_time
     time: 24h
     samples: 200
-    title: "Energiförbrukning per dag (kWh)"
+    title: "Daily energy consumption"
     colorIndex: 7
     min: 0
     fill: "tozeroy"  # You can find more fill options at plot.ly 
