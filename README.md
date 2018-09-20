@@ -9,7 +9,19 @@ To use it, you need to:
 1. Copy the basepgraph folder to your custom_widgets folder
 2. Copy the graph.yaml file to your custom_widgets folder
 3. Copy influxdb-latest.js (found in the custom_css folder) to your custom_css folder
-4. Define a widget:
+4. Add the following to your variables.yaml file in your custom_css folder for the skin you are using:
+````yaml
+graph_style: "border-radius: 0px; $background_style_graph"
+graph_legend_text_color: "#888888"
+graph_grid_color: "#888"
+graph_influxdb_path: http:<URL_TO_YOUR_INFLUXDB_SERVER>:8086 # Example: 192.168.1.20:8086  or https://www.my_domain.com:8086
+graph_widget_style: "border-bottom-left-radius: 10px;border-bottom-right-radius: §;border-top-left-radius: 10px;border-top-right-radius: 10px;"
+graph_trace_colors: "1"  # Set the opacity for the trace colors.
+graph_fill_colors: "1"   # Set the opacity for the fill colors.
+graph_bar_colors: "1"    # Set the opacity for the bar colors.
+graph_bar_multi: "1"     # Leave this as is.
+````
+5. Define a widget:
 ````yaml
 # Graph showing the CPU temperatures for 4 devices.
 cpu_temp_g:
@@ -48,8 +60,8 @@ att_g:
     title: "Energiförbrukning per dag (kWh)"
     colorIndex: 7
     min: 0
-    fill: "tozeroy"
-    shape: "hv"
+    fill: "tozeroy"  # You can find more fill options at plot.ly 
+    shape: "hv"      # You can find more shape options at plot.ly 
     sql: "select difference(last(value)) from kWh where entity_id = 'sparsnas_energy_consumption_over_time' and time > now() - 2w  group by time(1d)"
     type: "bar"
     decimals: 0
