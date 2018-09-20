@@ -4,6 +4,7 @@ Widgets for HADashboard / Appdaemon
 This is a graph widget for HADashboard that uses influxdb as data source and plot.ly as the graph engine.
 
 ![HADashboard-widgets](https://github.com/tjntomas/HADashboard-widgets/blob/master/img/influx_graph.png?raw=true)
+The image shows six different widgets with one or more time series for each widget.
 
 Features:
 * Add any number of traces to a graph
