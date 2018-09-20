@@ -68,6 +68,7 @@ power_usage_per_day:
     type: "bar"
     decimals: 0
 
-
-
 ````
+Additional parameters:
+    time_zone: "Europe/Stockholm" # This is the default.
+    locale: "se"                  # This is the default.
