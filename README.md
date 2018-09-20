@@ -16,7 +16,22 @@ Features:
 * Supply your own SQL query to filter and group data
 
 To use it, you need to:
-1. Have influxdb installed and configured in Home Assistant
+1. Have influxdb installed and configured in Home Assistant, see instructions here:  https://www.home-assistant.io/components/influxdb/
+Example configuration for influxdb in configuration.yaml:
+````yaml
+influxdb:
+  host: 127.0.0.1
+  include: 
+    entities:
+    - sensor.neo_coolcam_power_plug_12a_voltage
+    - sensor.pi3_cpu_temp
+    - sensor.pi3_cpu_usage
+    - sensor.cpu_temp_pi2
+    - sensor.cpu_usage_pi2
+    - sensor.cputemp
+ ````
+ By specifiying only to log the entities that you actually use, the influxdb size can be kept to a minimum.
+ 
 2. Copy the basegraph folder to your custom_widgets folder
 3. Copy the graph.yaml file to your custom_widgets folder
 4. Copy influxdb-latest.js and plotly-latest.min.js /from the custom_css folder)  to your custom_css folder
