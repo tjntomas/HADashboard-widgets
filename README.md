@@ -13,7 +13,7 @@ Features:
 * Automatically updates when new values are written  to influx/when the entity is updated in Home Assistant
 * Can span over any number of columns
 * The height can be set for each widget
-* Supply your own SLQ query to filter and group data
+* Supply your own SQL query to filter and group data
 
 To use it, you need to:
 1. Have influxdb installed and configured in Home Assistant
