@@ -37,7 +37,7 @@ graph_bar_multi: "1"     # Leave this as is.
 # Graph showing the CPU temperatures for 4 devices.
 cpu_temp_g:
     widget_type: graph
-    entities:   # You can add any number of entites to the list.
+    entities:   # You can add any number of entities to the list.
       - sensor.pi3_cpu_temp
       - sensor.cpu_temp_pi2
       - sensor.ubuntu_core_0_temp
