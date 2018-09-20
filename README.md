@@ -19,7 +19,7 @@ To use it, you need to:
 1. Have influxdb installed and configured in Home Assistant
 2. Copy the basepgraph folder to your custom_widgets folder
 3. Copy the graph.yaml file to your custom_widgets folder
-4. Copy influxdb-latest.js (found in the custom_css folder) to your custom_css folder or download from plot.ly
+4. Copy influxdb-latest.js and plotly-latest.min.js /from the custom_css folder)  to your custom_css folder
 5. Add the following to your variables.yaml file in your custom_css folder for the skin you are using:
 ````yaml
 graph_style: "border-radius: 0px; "background-color: rgba(30,30,30,0.45 );"  # Change to whichever color/opacity you like.
