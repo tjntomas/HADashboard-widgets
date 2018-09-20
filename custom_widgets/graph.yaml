@@ -1,0 +1,19 @@
+widget_type: basegraph
+entity: {{entity}}
+fields: []
+enable: 0
+static_css:
+  widget_style: $graph_widget_style
+  graph_style: $graph_style
+css: 
+  background_style: $graph_style
+  legend_text_color: $graph_legend_text_color
+  grid_color: $graph_grid_color
+  influxdb_url: $graph_influxdb_path
+  influxdb_url_local: $graph_influxdb_path_local
+  trace_colors: $graph_trace_colors
+  fill_colors: $graph_fill_colors
+  bar_colors: $graph_bar_colors
+  multi: $graph_bar_multi
+icons: []
+static_icons: []
