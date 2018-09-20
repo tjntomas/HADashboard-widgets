@@ -26,32 +26,34 @@ graph_bar_multi: "1"     # Leave this as is.
 # Graph showing the CPU temperatures for 4 devices.
 cpu_temp_g:
     widget_type: graph
-    entities:   # You can add any munbe of entites to the list.
+    entities:   # You can add any number of entites to the list.
       - sensor.pi3_cpu_temp
       - sensor.cpu_temp_pi2
       - sensor.ubuntu_core_0_temp
       - sensor.ubuntu_core_1_temp
-    influxdb_units: # You need to add the unit_of_measurement from the enity_ids here.
+    influxdb_units: # You need to add the unit_of_measurement for the entity_id's here. 
       - "°C"
       - "°C"
       - "°C"
       - "°C"
-    titles:   # Specify the title for each trace.
+    titles:   # Specify the title for each trace. 
       - "RPI 3"
       - "VPN"
       - "UBUNTU 0"
       - "UBUNTU 1"
-    time: 1h  # Specify time for the traces. can be anythign that influxdb accepts, i.e. 2d, 4h, 1w etc.
-    samples: 200
+    time: 1h  # Specify time for the traces. can be anything that influxdb accepts, i.e. 20m, 2d, 4h, 1w etc.
+    samples: 200  # Optional. Used to speed up drawing. If your widget is 200 pixels wide, use 200.
     title: "CPU-temperaturer"  # The title for the widget.
     fill: "tozeroy"
     max: 75                    # Set the max y-axis. Leave blank to fit the traces automatically.
     min: 30                    # Set the min y-axis. Leave blank to fit the traces automatically.
     colorIndex: 0              # Set a color index between 0 and 7.
-    height: 324                # Speficy the height of the widget. Should be set to amultiple of the widget height.
+    height: 324                # Specify the height of the widget in pixels. 
     
-# Graph to show the daily power consumption from Sparsnäs 
-att_g:
+# Graph to show the daily power consumption from a Sparsnäs device.
+# In this widget, we do specifoy the SQL query explicitly instead of just grabbing the trace from influxdb.
+# In this way, we can use all features of the SQL query language that influxdb supports.
+power_usage_per_day:
     widget_type: graph
     entities:
       - sensor.sparsnas_energy_consumption_over_time
