@@ -10,11 +10,13 @@ Features:
 * Zoom and scroll
 * hide/show individual traces
 * Automatically updates when new new values are written  to influx/when the entity is updated in Home Assistant
+* Can span over any number of columns
+* The height can be set for each widget
 
 To use it, you need to:
 1. Copy the basepgraph folder to your custom_widgets folder
 2. Copy the graph.yaml file to your custom_widgets folder
-3. Copy influxdb-latest.js (found in the custom_css folder) to your custom_css folder
+3. Copy influxdb-latest.js (found in the custom_css folder) to your custom_css folder or download from plot.ly
 4. Add the following to your variables.yaml file in your custom_css folder for the skin you are using:
 ````yaml
 graph_style: "border-radius: 0px; "background-color: rgba(30,30,30,0.45 );"  # Change to whichever color/opacity you like.
@@ -78,3 +80,6 @@ power_usage_per_day:
 Additional parameters:
     time_zone: "Europe/Stockholm" # This is the default.
     locale: "se"                  # This is the default.
+    
+6. Add the widget to your dashboard.yaml file
+
