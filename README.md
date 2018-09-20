@@ -10,7 +10,7 @@ Features:
 * Add any number of traces to a graph
 * Zoom and scroll
 * hide/show individual traces
-* Automatically updates when new new values are written  to influx/when the entity is updated in Home Assistant
+* Automatically updates when new values are written  to influx/when the entity is updated in Home Assistant
 * Can span over any number of columns
 * The height can be set for each widget
 * Supply your own SLQ query to filter and group data
