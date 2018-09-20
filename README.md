@@ -83,7 +83,7 @@ power_usage_per_day:
 Additional parameters:
     time_zone: "Europe/Stockholm" # This is the default.
     locale: "se"                  # This is the default.
-    db_name: "home_assistant"    
+    db_name: "home_assistant"     
     
 7. Add the widget to your dashboard.yaml file
 
