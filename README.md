@@ -133,7 +133,7 @@ mvp:
     title: "Temperatures"
     fill: "tozeroy"
     colorIndex: 0
-    ds: 1h  # Now, only one sample for every 5 minutes is read from influxdb.
+    ds: 30m  # Now, only one sample for every 30 minutes is read from influxdb.
     samples: 200
 ````
 
