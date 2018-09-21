@@ -54,7 +54,7 @@ graph_bar_multi: "1"     # Leave this as is.
 mvp:
     widget_type: graph
     entities:
-      - sensor.indoor_temperature  # The entity _id to be plotted.
+      - sensor.indoor_temperature  # The entity_id to be plotted.
     influxdb_units: 
       - "°C"   # The unit_of_measurement attribute for the entity.
     titles:
