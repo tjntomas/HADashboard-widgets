@@ -34,7 +34,7 @@ influxdb:
  
 2. Copy the basegraph folder to your custom_widgets folder
 3. Copy the graph.yaml file to your custom_widgets folder
-4. Copy influxdb-latest.js and plotly-latest.min.js /from the custom_css folder)  to your custom_css folder
+4. Copy influxdb-latest.js and plotly-latest.min.js (from the custom_css folder)  to your custom_css folder
 5. Add the following to your variables.yaml file in your custom_css folder for the skin you are using:
 ````yaml
 graph_style: "border-radius: 0px; "background-color: rgba(30,30,30,0.45 );"  # Change to whichever color/opacity you like.
@@ -117,7 +117,7 @@ power_usage_per_day:
 
 7. Add the widget to your dashboard.yaml file 
 
-Reading data long time series from influxdb can be time consuming, so to speed things up, there is an option to downsample the data read by adding "ds", short for downsample,  to the widget defintion. To speed up the drawing or to make the graph more or less course, "samples" can be added to the parameters. 
+Reading long time series from influxdb can be time consuming, so to speed things up, there is an option to downsample the data read by adding "ds", short for downsample,  to the widget defintion. To speed up the drawing or to make the graph more or less course, "samples" can be added to the parameters. 
 
 Here is an example using both ds and samples:
 ````yaml
