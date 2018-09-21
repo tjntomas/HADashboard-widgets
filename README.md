@@ -64,7 +64,7 @@ mvp:
     fill: "tozeroy" # options are  "none" | "tozeroy" | "tozerox" | "tonexty" | "tonextx" | "toself" 
     colorIndex: 0   # A number between 0 and 11. 12 colors for the traces are predefined and the colorIndex defines which is used for the first trace. If more than 10 traces/entities are specified, the colors are rotated. 
 
-# A more complex graph showing 4 CPU temperatures.
+# A more complex graph showing 4 CPU temperatures. This is the bottem left widget in the image above.
 cpu_temp_g:
     widget_type: graph
     entities:   # You can add any number of entities to the list.
@@ -91,7 +91,7 @@ cpu_temp_g:
     colorIndex: 0              # Set a color index between 0 and 7.
     height: 324                # Specify the height of the widget in pixels. 
     
-# Graph to show the daily power consumption from a Sparsnäs device.
+# Graph to show the daily power consumption from a Sparsnäs device. This is the middle right widget in the image above.
 # In this widget, we specify the SQL query explicitly instead of just grabbing the trace from influxdb.
 # In this way, we can use all features of the SQL query language that influxdb supports.
 power_usage_per_day:
