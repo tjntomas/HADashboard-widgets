@@ -134,7 +134,9 @@ mvp:
     fill: "tozeroy"
     colorIndex: 0
     ds: 30m  # Now, only one sample for every 30 minutes is read from influxdb.
-    samples: 200 # Only 200 samples are plotted. If 1000 samples are read from influxdb, only every fifth sample is used.
+    samples: 200 # Only 200 samples are plotted. 
+    # If 1000 samples are read from influxdb, only every fifth sample is used.
+    # If only 150 samples are read from influxdb, all 150 samples are plotted.
 ````
 
 # Writing custom SQL queries
