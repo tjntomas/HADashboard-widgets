@@ -140,12 +140,12 @@ mvp:
 # Writing custom SQL queries
 If you are familiar with the SQL language, you can write your own query. To do this, start influx by typing "influx" in a shell session.
 Then select the home assistant database by typing "use home_assistant" and press enter.
-Now you can write an SQL query. Try starting with "select * from "°C";  and press enter.   #The semicolon at the end is required.
+Now you can write an SQL query. Try starting with: select * from "°C";  and press enter. The semicolon at the end is required.
 The result should be the history for all your temperature device.
 
 When you are happy with your query, just add the query to your widget definition:
 ````yaml
-sql: select * from "°C" where entity-id='sensor.my_temperature_sensor> and value > 20 and time > now() - 2w
+sql: select * from "°C" where entity-id='sensor.my_temperature_sensor' and value > 20 and time > now() - 1d
 ````
 
 When you supply a custom SQL query, the entity_id is used by the widget only to listen for state change and update your widget when new data is available for your query.
