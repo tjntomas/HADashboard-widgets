@@ -108,11 +108,11 @@ power_usage_per_day:
     sql: "select difference(last(value)) from kWh where entity_id = 'sparsnas_energy_consumption_over_time' and time > now() - 2w  group by time(1d)"
     type: "bar"
     decimals: 0
-#Addional parameters:
+# Additional parameters:
     time_zone: "Europe/Stockholm
     locale: "se"
     db_name: "home_assistant"
-    ds: 5m   # Used for downsampling long time intervals in the SQL query. Use anything that influxdb accepts, i.e. 5m, 1h, 2d etc.
+    ds: 5m   # Used for downsampling long time series in the SQL query. Use anything that influxdb accepts, i.e. 5m, 1h, 2d etc.
 ````
 
 7. Add the widget to your dashboard.yaml file 
@@ -134,7 +134,7 @@ mvp:
     fill: "tozeroy"
     colorIndex: 0
     ds: 30m  # Now, only one sample for every 30 minutes is read from influxdb.
-    samples: 200
+    samples: 200 # Only 200 samples are plotted. If 1000 samples are read from influxdb, only every fifth sample is used.
 ````
 
 # Writing custom SQL queries
