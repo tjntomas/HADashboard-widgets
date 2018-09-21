@@ -50,7 +50,21 @@ graph_bar_multi: "1"     # Leave this as is.
 ````
 6. Define a widget:
 ````yaml
-# Graph showing the CPU temperatures for 4 devices.
+# Example of the most simple widget definition showing a single entity:
+mvp:
+    widget_type: graph
+    entities:
+      - sensor.indoor_temperature
+    influxdb_units: 
+      - "°C"
+    titles:
+      - "Indoor temperature"
+    time: 24h
+    title: "CPU-temperaturer"
+    fill: "tozeroy"
+    colorIndex: 0
+
+# A more complex graph showing 4 CPU temperatures.
 cpu_temp_g:
     widget_type: graph
     entities:   # You can add any number of entities to the list.
@@ -102,4 +116,26 @@ power_usage_per_day:
 ````
 
 7. Add the widget to your dashboard.yaml file 
+
+Reading data long time series from influxdb can be time consuming, so to speed things up, there is an option to downsample the data read by adding "ds", short for downsample,  to the widget defintion. To speed up the drawing or to make the graph more or less course, "samples" can be added to the parameters. 
+
+Here is an example using both ds and samples:
+````yaml
+mvp:
+    widget_type: graph
+    entities:
+      - sensor.indoor_temperature
+    influxdb_units: 
+      - "°C"
+    titles:
+      - "Indoor temperature"
+    time: 24h
+    title: "CPU-temperaturer"
+    fill: "tozeroy"
+    colorIndex: 0
+    ds: 1h  # Now, only one one sample for every 5 minutes is read from influxdb.
+    samples: 200
+````
+
+
 
