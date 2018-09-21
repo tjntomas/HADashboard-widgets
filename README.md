@@ -54,15 +54,15 @@ graph_bar_multi: "1"     # Leave this as is.
 mvp:
     widget_type: graph
     entities:
-      - sensor.indoor_temperature
+      - sensor.indoor_temperature  # The entity _id to be plotted.
     influxdb_units: 
-      - "°C"
+      - "°C"   # The unit_of_measurement attribute for the entity.
     titles:
-      - "Indoor temperature"
-    time: 24h
-    title: "CPU-temperaturer"
-    fill: "tozeroy"
-    colorIndex: 0
+      - "Indoor temperature" # Title of the trace.
+    time: 24h   # Time interval to plot. You can use "m" for minutes, "h" for hours, "d" for days and "w" for weeks.
+    title: "Temperatures"  # Widget title
+    fill: "tozeroy" # options are  "none" | "tozeroy" | "tozerox" | "tonexty" | "tonextx" | "toself" 
+    colorIndex: 0   # A number between 0 an 10. 10 colors for the traces are predefined and the colorIndex defines which is used for the first trace. If more than 10 traces/entities are specified, the colors are rotated. 
 
 # A more complex graph showing 4 CPU temperatures.
 cpu_temp_g:
@@ -117,7 +117,7 @@ power_usage_per_day:
 
 7. Add the widget to your dashboard.yaml file 
 
-Reading long time series from influxdb can be time consuming, so to speed things up, there is an option to downsample the data read by adding "ds", short for downsample,  to the widget defintion. To speed up the drawing or to make the graph more or less course, "samples" can be added to the parameters. 
+Reading long time series from influxdb can be time consuming so to speed things up, there is an option to downsample the data read by adding "ds", short for downsample,  to the widget definition. To speed up the drawing or to make the graph more or less course, "samples" can also be added to the widget definition. 
 
 Here is an example using both ds and samples:
 ````yaml
@@ -130,7 +130,7 @@ mvp:
     titles:
       - "Indoor temperature"
     time: 24h
-    title: "CPU-temperaturer"
+    title: "Temperatures"
     fill: "tozeroy"
     colorIndex: 0
     ds: 1h  # Now, only one one sample for every 5 minutes is read from influxdb.
