@@ -30,7 +30,7 @@ influxdb:
     - sensor.cpu_usage_pi2
     - sensor.cputemp
  ````
- By specifiying only to log the entities that you actually use, the influxdb size can be kept to a minimum.
+ By specifiying only to log the entities that you actually use, the influxdb size can be kept to a minimum. Once everything is set up, it will take some time before you have enough data in influxdb to make a graph.
  
 2. Copy the basegraph folder to your custom_widgets folder
 3. Copy the graph.yaml file to your custom_widgets folder
