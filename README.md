@@ -151,7 +151,7 @@ sql: select * from "°C" where entity-id='sensor.my_temperature_sensor' and valu
 When you supply a custom SQL query, the entity_id is used by the widget only to listen for state change and update your widget when new data is available for your query.
 
 # Interacting with the graph
-The graph library used in the widget is plotly, www.plot.ly, and there are a number of ways to interact with the graph. Zooming in to an area in the plot by marking an area in the same way as you would do to crop an image or zooming into a time interval, expanding the x and y axis, scrolling through time etc.Please visit www.plot.ly to find out more.
+The graph library used in the widget is plotly, www.plot.ly, and there are a number of ways to interact with the graph. Zooming in to an area in the plot by marking an area in the same way as you would do to crop an image or zooming into a time interval, expanding the x and y axis, scrolling through time etc. Please visit www.plot.ly to find out more.
 
 
 
