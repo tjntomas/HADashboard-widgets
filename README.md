@@ -64,7 +64,7 @@ mvp:
     fill: "tozeroy" # options are  "none" | "tozeroy" | "tozerox" | "tonexty" | "tonextx" | "toself" 
     colorIndex: 0   # A number between 0 and 11. 12 colors for the traces are predefined and the colorIndex defines which is used for the first trace. If more than 10 traces/entities are specified, the colors are rotated. 
 
-# A more complex graph showing 4 CPU temperatures. This is the bottem left widget in the image above.
+# A more complex graph showing 4 CPU temperatures. This is the bottom left widget in the image above.
 cpu_temp_g:
     widget_type: graph
     entities:   # You can add any number of entities to the list.
