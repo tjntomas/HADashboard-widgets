@@ -2,12 +2,13 @@ function basegraph(widget_id, url, skin, parameters)
 {
 	self = this
 	self.widget_id = widget_id
-    	self.parameters = parameters
-       
-    	var callbacks = []
+    self.parameters = parameters
+
+	var callbacks = []
      
 	self.OnStateAvailable = OnStateAvailable
 	self.OnStateUpdate = OnStateUpdate
+
 	var l = Object.keys(self.parameters.entities).length
 	var monitored_entities = 
 		[
@@ -73,27 +74,28 @@ function basegraph(widget_id, url, skin, parameters)
 	
 	function MultiPlot(self,DataSeries, measurement)
 	{  
-		GRAPH_CANVAS = element(self, 'canvasclass')
+		var GRAPH_CANVAS = element(self, 'canvasclass')
 		GRAPH_CANVAS.outerHTML = self.CANVAS_HTML_BODY_START + self.css.background_style + self.CANVAS_HTML_BODY_END
-		GRAPH_CANVAS = element(self, 'canvasclass')
-		
+		GRAPH_CANVAS = element(self, 'canvasclass') // Yes, this duplicate line is needed since the line 
+													// above destroys the element by modifying outerHTML.
+
 		var d_width = document.getElementById(self.widget_id).offsetWidth
 		var min = self.parameters.min
-		max = self.parameters.max
+		var max = self.parameters.max
 		self.parameters.plot = GRAPH_CANVAS
-		canvas_height = Settings(self, 'height', self.CANVAS_HEIGHT)
+		var canvas_height = Settings(self, 'height', self.CANVAS_HEIGHT)
 
 		// Adjust the legend y position if more than one legend should be displayed
 		if(DataSeries.length >2)
 		{
-			legend_y = -0.2
+			var legend_y = -0.2
 		}
 		else
 		{
-			legend_y = -0.1
+			var legend_y = -0.1
 		}
-		x_grid_color = self.css.grid_color
-		y_grid_color = self.css.grid_color
+		var x_grid_color = self.css.grid_color
+		var y_grid_color = self.css.grid_color
 
 		// If the graph type is "bar", we hide the x-axis by changing its color to the background color
 		if(Settings(self, 'type', "scatter") == "bar")
@@ -101,7 +103,7 @@ function basegraph(widget_id, url, skin, parameters)
 			x_grid_color = self.X_GRID_COLOR
 			y_grid_color = self.X_GRID_COLOR
 		}
-		x_axis = {
+		var x_axis = {
 					showgrid: false,
 					zeroline: true,
 					showline: true,
@@ -119,7 +121,7 @@ function basegraph(widget_id, url, skin, parameters)
 					  }
 		  		 }
 		    
-		y_axis = {
+		var y_axis = {
 					title: measurement,
 					titlefont: {
 			
@@ -145,7 +147,7 @@ function basegraph(widget_id, url, skin, parameters)
 		  		 }
 
 
-		display = {
+		var display = {
 					margin: { t:32,l: 35, r: 21 , b: 32 },
 					titlefont: {"size": 14,"color": self.TITLE_COLOR, "font-weight":500},
 					title: self.parameters.title,
@@ -247,9 +249,9 @@ function basegraph(widget_id, url, skin, parameters)
 
 	function InfluxDB_Data(self,time_filter, entity_id,units)
 	{
-		TIME_DATA = '0'
-		VALUE_DATA = '1'
-		http = document.referrer.slice(7,10)
+		var TIME_DATA = '0'
+		var VALUE_DATA = '1'
+		var http = document.referrer.slice(7,10)
 		// If the client request origins from the local network, use a local url to influxdb.
 		// The local url is defined in the skin in lack of a better place.
 		if (http == "192")
@@ -369,7 +371,7 @@ function basegraph(widget_id, url, skin, parameters)
 			}
 
 			units = encodeURI(units)
-			// Send SQL query to influxdb.
+			// Read data from influxdb.
 			var x_y_data =  InfluxDB_Data(self,time_filter, self.parameters.entities[current_entity_index], units)
 			DataSeriesArray[current_entity_index * 2] = x_y_data.vX
 			DataSeriesArray[current_entity_index * 2 + 1] = x_y_data.vY
@@ -380,7 +382,7 @@ function basegraph(widget_id, url, skin, parameters)
 		switch (decodeURI(units))
 		{
 			case "°C":
-				y_axis_title="Grader Celsius"
+				y_axis_title = "Grader Celsius"
 				break;
 
 			case "W":
