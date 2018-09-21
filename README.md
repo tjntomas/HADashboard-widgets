@@ -62,7 +62,7 @@ mvp:
     time: 24h   # Time interval to plot. You can use "m" for minutes, "h" for hours, "d" for days and "w" for weeks.
     title: "Temperatures"  # Widget title
     fill: "tozeroy" # options are  "none" | "tozeroy" | "tozerox" | "tonexty" | "tonextx" | "toself" 
-    colorIndex: 0   # A number between 0 an 10. 10 colors for the traces are predefined and the colorIndex defines which is used for the first trace. If more than 10 traces/entities are specified, the colors are rotated. 
+    colorIndex: 0   # A number between 0 and 11. 12 colors for the traces are predefined and the colorIndex defines which is used for the first trace. If more than 10 traces/entities are specified, the colors are rotated. 
 
 # A more complex graph showing 4 CPU temperatures.
 cpu_temp_g:
