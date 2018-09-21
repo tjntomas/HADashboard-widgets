@@ -2,9 +2,9 @@ function basegraph(widget_id, url, skin, parameters)
 {
 	self = this
 	self.widget_id = widget_id
-    self.parameters = parameters
+	self.parameters = parameters
 
-	var callbacks = []
+		var callbacks = []
      
 	self.OnStateAvailable = OnStateAvailable
 	self.OnStateUpdate = OnStateUpdate
