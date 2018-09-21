@@ -42,7 +42,7 @@ graph_legend_text_color: "#888888"
 graph_grid_color: "#888"
 graph_influxdb_path: http://<URL_TO_YOUR_INFLUXDB_SERVER>:8086 # Example: 192.168.1.20:8086  or http://www.mydomain.com:8086
 graph_influxdb_path_local: "http://<_LOCAL_URL_TO_YOUR_INFLUXDB_SERVER>:8086"
-graph_widget_style: "border-bottom-left-radius: 10px;border-bottom-right-radius: §;border-top-left-radius: 10px;border-top-right-radius: 10px;"
+graph_widget_style: "border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;border-top-left-radius: 10px;border-top-right-radius: 10px;"
 graph_trace_colors: "1"  # Set the opacity for the trace colors.
 graph_fill_colors: "1"   # Set the opacity for the fill colors.
 graph_bar_colors: "1"    # Set the opacity for the bar colors.
