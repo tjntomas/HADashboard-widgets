@@ -85,11 +85,11 @@ cpu_temp_g:
     time: 1h  # Specify time interval for the traces. can be anything that influxdb accepts, i.e. 20m, 2d, 4h, 1w etc.
     samples: 200  # Optional. Used to speed up drawing. If your widget is 200 pixels wide, use 200.
     title: "CPU temperatures"  # The title for the widget.
-    fill: "tozeroy"
-    max: 75                    # Set the max y-axis. Remove to fit the traces automatically.
-    min: 30                    # Set the min y-axis. Remove to fit the traces automatically.
-    colorIndex: 0              # Set a color index between 0 and 7.
-    height: 324                # Specify the height of the widget in pixels. 
+    fill: "tozeroy"   # options are  "none" | "tozeroy" | "tozerox" | "tonexty" | "tonextx" | "toself" 
+    max: 75                    # Optional. Set the max y-axis. Remove to fit the traces automatically.
+    min: 30                    # Optional. Set the min y-axis. Remove to fit the traces automatically.
+    colorIndex: 0              # A number between 0 and 11.
+    height: 324                # Optional. Specify the height of the widget in pixels. Default is 215 pixels. 
     
 # Graph to show the daily power consumption from a Sparsnäs device. This is the middle right widget in the image above.
 # In this widget, we specify the SQL query explicitly instead of just grabbing the trace from influxdb.
@@ -103,7 +103,7 @@ power_usage_per_day:
     title: "Daily energy consumption"
     colorIndex: 7
     min: 0
-    fill: "tozeroy"  # You can find more fill options at plot.ly 
+    fill: "tozeroy"  # options are  "none" | "tozeroy" | "tozerox" | "tonexty" | "tonextx" | "toself" 
     shape: "hv"      # You can find more shape options at plot.ly 
     sql: "select difference(last(value)) from kWh where entity_id = 'sparsnas_energy_consumption_over_time' and time > now() - 2w  group by time(1d)"
     type: "bar"
