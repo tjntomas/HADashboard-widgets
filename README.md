@@ -1,4 +1,4 @@
-# HADashboard-widgets
+# Influxdb Graph widget for HADashboard
 Widgets for HADashboard / Appdaemon
 
 This is a graph widget for HADashboard that uses influxdb as data source and plot.ly as the graph engine.
