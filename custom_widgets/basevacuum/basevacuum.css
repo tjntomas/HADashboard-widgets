@@ -1,0 +1,123 @@
+.widget-basevacuum-{{id}} {
+	position: relative;
+}
+
+.widget-basevacuum-{{id}} .title {
+	position: absolute;
+	
+	top: 7px;
+	width: 120px;
+	right: 7px;
+	font-size: 14px;
+	font-weight: 500;
+	color: rgba(40,40,30,1)
+}
+.widget-basevacuum-{{id}} .button{
+	position: absolute;
+	top: 7px;
+	left: 159px;
+	background: none transparent;
+	width: 52px;
+	height: 52px;
+	border-radius: 26px;
+	z-index: 10;
+	opacity: 0.3;
+}
+.widget-basevacuum-{{id}} .frame{
+	position: absolute;
+	text-align: center;
+	color: rgb(151, 96, 13);
+	top: 53px;
+	width: 100%;
+	left: -74px;
+	font-size: 12px;
+	font-weight: 500;
+	font-family: 'Helvetica Neue','Helvetica','Open Sans','Arial';
+}
+
+.widget-basevacuum-{{id}} .robo_img{
+	position: relative;
+	width: 65%;
+	top: -55px;
+	align-content: center;
+	left: 20px;
+	opacity: 0.9;
+	z-index: 1;
+	pointer-events: none;
+}
+.widget-basevacuum-{{id}} .robo_dock{
+	position: absolute;
+	width: 70px;
+	left: 230px;
+	top: 80px;
+	opacity: 0.9;
+	z-index: 1;
+}
+.widget-basevacuum-{{id}} .robo_fan_1{
+	position: absolute;
+	width: 20px;
+	left: 200px;
+	top: 175px;
+	opacity: 0.9;
+	z-index: 1;
+}
+.widget-basevacuum-{{id}} .robo_fan_2{
+	position: absolute;
+	width: 25px;
+	left: 227px;
+	top: 172.5px;
+	opacity: 0.9;
+	z-index: 1;
+	
+}
+.widget-basevacuum-{{id}} .robo_fan_3{
+	position: absolute;
+	width: 30px;
+	left: 257px;
+	top: 170px;
+	opacity: 0.9;
+	z-index: 1;
+}
+.widget-basevacuum-{{id}} .robo_fan_4{
+	position: absolute;
+	width: 35px;
+	left: 290px;
+	top: 167.5px;
+	opacity: 0.9;
+	z-index: 1;
+}
+.widget-basevacuum-{{id}} .battery{
+	position: absolute;
+	top: 45px;
+	left: 110px;
+	z-index: 10;
+}
+
+.widget-basevacuum-{{id}} .m2{
+	position: absolute;
+	top: 80px;
+	left: 110px;
+	z-index: 10;
+}
+
+.widget-basevacuum-{{id}} .count{
+	position: absolute;
+	top: 45px;
+	left: 225px;
+	z-index: 10;
+}
+
+.widget-basevacuum-{{id}} .time{
+	position: absolute;
+	top: 80px;
+	left: 200px;
+	z-index: 10;
+}
+.widget-basevacuum-{{id}} .status{
+	position: absolute;
+	top: 110px;
+	width: 100%;
+	left: 20px;
+	z-index: 10;
+	pointer-events: none;
+}
