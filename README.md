@@ -4,9 +4,9 @@
 ![HADashboard-widgets](https://github.com/tjntomas/HADashboard-widgets/blob/master/img/vacuum_widget.png?raw=true)
 
 Features:
-- Click in the midle of the vacuum cleaner to start/pause
-- Click of the dock to return the vacuum cleaner to the dock
-- Click on one o the fan icons to set the fan speed.
+- Click in the middle of the vacuum cleaner to start/pause
+- Click on the dock image to return the vacuum cleaner to the dock
+- Click on one of the fan icons to set the fan speed
 - Some basic info from the entity's attributes are displayed
 
 To use this widget you need to:
