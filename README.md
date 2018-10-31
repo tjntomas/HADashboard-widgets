@@ -1,4 +1,4 @@
-# Here are some cutom widget that I have made for HADashboard
+# Here are some custom widgets that I have made for HADashboard
 # 1. A Vacuum widget for Xiaomi Roborokc S50 (Version 2). Migh work for other vacumm cleaners also.
 
 (https://github.com/tjntomas/HADashboard-widgets/blob/master/img/vacuum_widget.png?raw=true)
