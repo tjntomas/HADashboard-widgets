@@ -1,0 +1,9 @@
+widget_type: basevacuum
+entity: {{entity}}
+fields:
+  title: {{title}}
+css: []
+static_icons: []
+static_css: 
+  title_style: "color: rgba(20,20,20,0.7)"
+  widget_style: "background: rgba(200,200,200,0.2)"
