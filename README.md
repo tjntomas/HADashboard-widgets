@@ -5,8 +5,9 @@
 
 Features:
 - Click in the midle of the vacuum cleaner to start/pause
-- Click of the dock to return the vacumm cleaner to the dock
+- Click of the dock to return the vacuum cleaner to the dock
 - Click on one o the fan icons to set the fan speed.
+- Some basic info from the entity's attributes are displayed
 
 To use this widget you need to:
 - copy the folder /custom_widgets/basevacuum to your /conf/custom_widgets folder
