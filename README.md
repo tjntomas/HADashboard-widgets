@@ -1,4 +1,33 @@
-# Influxdb Graph widget for HADashboard
+# Here are some cutom widget that I have made for HADashboard
+# 1. A Vacuum widget for Xiaomi Roborokc S50 (Version 2). Migh work for other vacumm cleaners also.
+
+(https://github.com/tjntomas/HADashboard-widgets/blob/master/img/vacuum_widget.png?raw=true)
+
+Features:
+- Click in the midle of the vacuum cleaner to start/pause
+- Click of the dock to return the vacumm cleaner to the dock
+- Click on one o the fan icons to set the fan speed.
+
+To use this widget you need to:
+- copy the folder /custom_widgets/basevacuum to your /conf/custom_widgets folder
+- copy the /custom_widgets/vacuum.yaml to your /conf/custom_widgets folder
+- Create an folder named img in your /conf/custom_css folder
+- Copy the content of the custom_css/img to your /conf/custom_css/img folder
+
+In your dashboard file add:
+````yaml
+vacuum:
+  widget_type: vacuum
+  entity: vacuum.your_vaccum_cleaner
+  title: My vacuum cleaner
+
+layout:
+- vacuum(3x2)
+````
+
+That's basically it.
+
+# 2. An Influxdb Graph widget for HADashboard
 Widgets for HADashboard / Appdaemon
 
 This is a graph widget for HADashboard that uses influxdb as data source and plot.ly as the graph engine.
