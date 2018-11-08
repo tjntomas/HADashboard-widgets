@@ -14,34 +14,34 @@
 }
 .widget-basevacuum-{{id}} .button{
 	position: absolute;
-	top: 7px;
-	left: 159px;
+	top: 18px;
+	left: 164px;
 	background: none transparent;
-	width: 52px;
-	height: 52px;
-	border-radius: 26px;
+	width: 42px;
+	height: 42px;
+	border-radius: 21px;
 	z-index: 10;
 	opacity: 0.3;
 }
 .widget-basevacuum-{{id}} .frame{
 	position: absolute;
 	text-align: center;
-	color: rgb(151, 96, 13);
+	color: rgb(42, 48, 42);
 	top: 53px;
 	width: 100%;
 	left: -74px;
-	font-size: 12px;
+	font-size: 10px;
 	font-weight: 500;
 	font-family: 'Helvetica Neue','Helvetica','Open Sans','Arial';
 }
 
 .widget-basevacuum-{{id}} .robo_img{
 	position: relative;
-	width: 65%;
-	top: -55px;
+	width: 55%;
+	top: -35px;
 	align-content: center;
 	left: 20px;
-	opacity: 0.9;
+	opacity: 1;
 	z-index: 1;
 	pointer-events: none;
 }
@@ -49,23 +49,23 @@
 	position: absolute;
 	width: 70px;
 	left: 230px;
-	top: 80px;
+	top: 70px;
 	opacity: 0.9;
 	z-index: 1;
 }
 .widget-basevacuum-{{id}} .robo_fan_1{
 	position: absolute;
 	width: 20px;
-	left: 200px;
-	top: 175px;
+	left: 195px;
+	top: 165px;
 	opacity: 0.9;
 	z-index: 1;
 }
 .widget-basevacuum-{{id}} .robo_fan_2{
 	position: absolute;
 	width: 25px;
-	left: 227px;
-	top: 172.5px;
+	left: 222px;
+	top: 162.5px;
 	opacity: 0.9;
 	z-index: 1;
 	
@@ -73,49 +73,49 @@
 .widget-basevacuum-{{id}} .robo_fan_3{
 	position: absolute;
 	width: 30px;
-	left: 257px;
-	top: 170px;
+	left: 252px;
+	top: 160px;
 	opacity: 0.9;
 	z-index: 1;
 }
 .widget-basevacuum-{{id}} .robo_fan_4{
 	position: absolute;
 	width: 35px;
-	left: 290px;
-	top: 167.5px;
+	left: 285px;
+	top: 157.5px;
 	opacity: 0.9;
 	z-index: 1;
 }
 .widget-basevacuum-{{id}} .battery{
 	position: absolute;
 	top: 45px;
-	left: 110px;
+	left: 115px;
 	z-index: 10;
 }
 
 .widget-basevacuum-{{id}} .m2{
 	position: absolute;
-	top: 80px;
-	left: 110px;
+	top: 70px;
+	left: 120px;
 	z-index: 10;
 }
 
 .widget-basevacuum-{{id}} .count{
 	position: absolute;
 	top: 45px;
-	left: 225px;
+	left: 220px;
 	z-index: 10;
 }
 
 .widget-basevacuum-{{id}} .time{
 	position: absolute;
-	top: 80px;
-	left: 200px;
+	top: 70px;
+	left: 205px;
 	z-index: 10;
 }
 .widget-basevacuum-{{id}} .status{
 	position: absolute;
-	top: 110px;
+	top: 100px;
 	width: 100%;
 	left: 20px;
 	z-index: 10;

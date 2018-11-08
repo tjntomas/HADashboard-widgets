@@ -3,20 +3,20 @@ function basevacuum(widget_id, url, skin, parameters)
     self = this
     self.widget_id = widget_id
     self.parameters = parameters
-    self.Fan_1_Click = Fan_1_Click
-    self.Fan_2_Click = Fan_2_Click
-    self.Fan_3_Click = Fan_3_Click
-    self.Fan_4_Click = Fan_4_Click
-    self.Dock_Click = Dock_Click
-    self.Button_Click = Button_Click
+    self.FanOneClick = FanOneClick
+    self.FanTwoClick = FanTwoClick
+    self.FanThreeClick = FanThreeClick
+    self.FanFourClick = FanFourClick
+    self.DockClick = DockClick
+    self.ButtonClick = ButtonClick
     var callbacks =
     [
-        {"selector": '#' + widget_id + ' #robo_fan_1', "action": "click", "callback": self.Fan_1_Click},
-        {"selector": '#' + widget_id + ' #robo_fan_2', "action": "click", "callback": self.Fan_2_Click},
-        {"selector": '#' + widget_id + ' #robo_fan_3', "action": "click", "callback": self.Fan_3_Click},
-        {"selector": '#' + widget_id + ' #robo_fan_4', "action": "click", "callback": self.Fan_4_Click},
-        {"selector": '#' + widget_id + ' #robo_dock', "action": "click", "callback": self.Dock_Click},
-        {"selector": '#' + widget_id + ' #button', "action": "click", "callback": self.Button_Click}
+        {"selector": '#' + widget_id + ' #robo_fan_1', "action": "click", "callback": self.FanOneClick},
+        {"selector": '#' + widget_id + ' #robo_fan_2', "action": "click", "callback": self.FanTwoClick},
+        {"selector": '#' + widget_id + ' #robo_fan_3', "action": "click", "callback": self.FanThreeClick},
+        {"selector": '#' + widget_id + ' #robo_fan_4', "action": "click", "callback": self.FanFourClick},
+        {"selector": '#' + widget_id + ' #robo_dock', "action": "click", "callback": self.DockClick},
+        {"selector": '#' + widget_id + ' #button', "action": "click", "callback": self.ButtonClick}
     ]
     self.OnStateAvailable = OnStateAvailable
     self.OnStateUpdate = OnStateUpdate
@@ -33,9 +33,8 @@ function basevacuum(widget_id, url, skin, parameters)
     self.status = ""
     self.direction = 1
     self.step = 0.5
-    //rotate(self)
 
-    function Button_Click(self){
+    function ButtonClick(self){
         if (self.status === "Charging" || self.status === "Idle" || self.status === "Paused" ){
             start_cleaning(self)
             element(self, "button").style.background = "green"
@@ -45,7 +44,7 @@ function basevacuum(widget_id, url, skin, parameters)
             element(self, "button").style.background = "orange"
         }
     }
-    function Dock_Click(self){
+    function DockClick(self){
         if (element(self,"robo_dock").style.filter != "invert(100%)"){
             element(self,"robo_dock").style.filter ="invert(100%)"
             element(self, "button").style.background = "orange"
@@ -55,22 +54,22 @@ function basevacuum(widget_id, url, skin, parameters)
             element(self,"robo_dock").style.filter =""
         }
     }
-    function Fan_1_Click(self){
+    function FanOneClick(self){
         set_fan_speed(self,1)
         reset_fans(self)
         element(self,"robo_fan_1").style.filter ="invert(100%)"
     }
-    function Fan_2_Click(self){
+    function FanTwoClick(self){
         set_fan_speed(self,2)
         reset_fans(self)
         element(self,"robo_fan_2").style.filter ="invert(100%)"
     }
-    function Fan_3_Click(self){
+    function FanThreeClick(self){
         set_fan_speed(self,3)
         reset_fans(self)
         element(self,"robo_fan_3").style.filter ="invert(100%)"
     }
-    function Fan_4_Click(self){
+    function FanFourClick(self){
         set_fan_speed(self,4)
         reset_fans(self)
         element(self,"robo_fan_4").style.filter ="invert(100%)"
@@ -121,7 +120,7 @@ function basevacuum(widget_id, url, skin, parameters)
         self.status = state.attributes.status
         self.status_color = element(self, "status").style.color
         for (attribute in state.attributes){
-            //console.log(attribute,state.attributes[attribute])
+            console.log(attribute,state.attributes[attribute])
         }
         
         set_view(self,state)
@@ -182,6 +181,6 @@ function basevacuum(widget_id, url, skin, parameters)
         element(self,"status").innerHTML = status
         element(self,"time").innerHTML = state.attributes.cleaning_time + " min <sup>(" + state.attributes.total_cleaning_time + ")</sup>"
         element(self,"m2").innerHTML = state.attributes.cleaned_area + " m<sup>2 (" + state.attributes.total_cleaned_area + ")</sup>"
-        element(self,"count").innerHTML = state.attributes.cleaning_count + " ggr"
+        element(self,"count").innerHTML = state.attributes.cleaning_count + " times"
 	}
 }
