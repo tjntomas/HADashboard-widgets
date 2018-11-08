@@ -28,6 +28,12 @@ layout:
 - vacuum(3x2)
 ````
 
+You also need to add a few mappings to the skins that you use:
+````yaml
+vacuum_widget_style: $background_style
+vacuum_title_style: $style_title
+````
+
 That's basically it.
 
 # 2. An Influxdb Graph widget for HADashboard
