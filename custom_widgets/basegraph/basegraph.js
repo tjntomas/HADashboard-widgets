@@ -15,7 +15,7 @@ function basegraph(widget_id, url, skin, parameters)
 			{"entity": parameters.entities[0], "initial": self.OnStateAvailable, "update": self.OnStateUpdate}
 		]
 	
-	// Some default values
+		// Some default values
 	self.NUMBER_OF_DECIMALS = 2
 	self.PAPER_BACKGROUND_COLOR = 'rgba(200,200,200,0)'
 	self.X_GRID_COLOR = "rgba(255,255,255,0)"
@@ -40,7 +40,8 @@ function basegraph(widget_id, url, skin, parameters)
 	self.TRACE_COLORS = css(self,"trace_colors", self.TRACE_COLORS)
 	self.FILL_COLORS = css(self,"fill_colors", self.FILL_COLORS)
 	self.BAR_COLORS = css(self,"bar_colors", self.BAR_COLORS)
-
+	
+	
 	self.PLOT_BG_COLOR = 'rgba(40,40,40,0)'
 	self.TRACE_NAME_COLOR = '#888888'
 	self.CANVAS_HTML_BODY_START = '<div id="GRAPH_CANVAS" class="canvasclass" data-bind="attr:{style: graph_style}" width="100%" height="100%" style="'
@@ -62,8 +63,8 @@ function basegraph(widget_id, url, skin, parameters)
 
 	function OnStateUpdate(self, state)
 	{
-		// Log that new data has been received.
-		console.log("New value for " + self.parameters.entities[0] + ": " + state.state)
+		// Logger that new data has been received.
+		Logger(self,"New value for " + self.parameters.entities[0] + ": " + state.state)
 		draw(self, state)
 	}
 
@@ -181,16 +182,14 @@ function basegraph(widget_id, url, skin, parameters)
 				var d_title =self.parameters.titles[i]
 				colorIndex =  i + Settings(self,"colorIndex",0)
 			}
-			else
-			{
+			else{
 				colorIndex = Settings(self,'colorIndex',7)
 			}
 
 			d_shape = Settings(self,'shape','spline')
 			d_fill = Settings(self,'fill','')
 
-			if ( Settings(self,'type', "scatter") == "bar" )
-			{
+			if ( Settings(self,'type', "scatter") == "bar" ){
 				traces[i] = {
 					type: Settings(self,'type',"scatter"),
 					text:  DataSeries[i * 2 + 1],
@@ -222,8 +221,7 @@ function basegraph(widget_id, url, skin, parameters)
 				}
 				i = i + 1
 			}
-			else
-			{
+			else{
 				traces[i] = {
 					type: Settings(self,'type',"scatter"),
 					x: DataSeries[i * 2],
@@ -242,9 +240,7 @@ function basegraph(widget_id, url, skin, parameters)
 		try {
 			Plotly.plot( GRAPH_CANVAS, traces,display, {displayModeBar: false})
 		}
-		catch(err) {
-			
-		}
+		catch(err) {}
 	}
 
 	function InfluxDB_Data(self,time_filter, entity_id,units)
@@ -297,12 +293,14 @@ function basegraph(widget_id, url, skin, parameters)
 				var url = base_url + sql_query 
 			}
 			// THIS SHOULD BE CHANGED TO AN ASYNCHRONOUS REQUEST WITH A CALLBACK TO PROCESS THE DATA.
+			Logger(self,"URL: " + url)
 			var xhr = new XMLHttpRequest()
 			xhr.open("GET", url, false)
 			xhr.send()
 			
 			// We only want the "values" part of the response.
 			var array = JSON.parse(xhr.response)
+			Logger(self,array)
 			var values = array['results'][0]['series'][0]['values']
 		}
 		// Now we have the samples in values as [timestamp, value].
@@ -434,5 +432,13 @@ function basegraph(widget_id, url, skin, parameters)
 	function element(self, class_name)
     {
         return document.getElementById(self.widget_id).getElementsByClassName(class_name)[0] 
-    }
+	}
+	
+
+	function Logger(self,message){
+	
+		if ("log" in self.parameters){
+			console.log(message)
+		}
+	}
 }
