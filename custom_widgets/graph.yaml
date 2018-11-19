@@ -15,5 +15,7 @@ css:
   fill_colors: $graph_fill_colors
   bar_colors: $graph_bar_colors
   multi: $graph_bar_multi
+  user: $graph_user
+  password: $graph_password
 icons: []
 static_icons: []
