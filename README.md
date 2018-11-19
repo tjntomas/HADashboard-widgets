@@ -84,8 +84,8 @@ graph_trace_colors: "1"  # Set the opacity for the trace colors.
 graph_fill_colors: "1"   # Set the opacity for the fill colors.
 graph_bar_colors: "1"    # Set the opacity for the bar colors.
 graph_bar_multi: "1"     # Leave this as is
-graph_user: INFLUXDB_USERNAME # Only nessesary if authentication has been enabled
-graph_password: INFLUXDB_PASSWORD # Only nessesary if authentication has been enabled
+graph_user: INFLUXDB_USERNAME # Only necessary if authentication has been enabled
+graph_password: INFLUXDB_PASSWORD # Only necessary if authentication has been enabled
 ````
 6. Define a widget:
 ````yaml
