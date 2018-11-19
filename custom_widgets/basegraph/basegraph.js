@@ -261,6 +261,10 @@ function basegraph(widget_id, url, skin, parameters)
 
 			// THIS SHOULD BE CHANGED TO AN ASYNCHRONOUS REQUEST WITH A CALLBACK TO PROCESS THE DATA.
 			var r = new XMLHttpRequest()
+			if ("user" in self.css)
+			{
+				url =  url + `&u=${self.css.user}&p=${self.css.password}`
+			}
 			r.open("GET", url, false)
 			r.send()
 			var array = JSON.parse(r.response)
@@ -295,7 +299,11 @@ function basegraph(widget_id, url, skin, parameters)
 			// THIS SHOULD BE CHANGED TO AN ASYNCHRONOUS REQUEST WITH A CALLBACK TO PROCESS THE DATA.
 			Logger(self,"URL: " + url)
 			var xhr = new XMLHttpRequest()
-			xhr.open("GET", url, false)
+			if ("user" in self.css)
+			{
+				url =  url + `&u=${self.css.user}&p=${self.css.password}`
+			}
+			xhr.open("GET",url , false)
 			xhr.send()
 			
 			// We only want the "values" part of the response.
