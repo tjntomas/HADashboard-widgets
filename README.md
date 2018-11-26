@@ -160,8 +160,9 @@ power_usage_per_day:
     ds: 5m   # Used for downsampling long time series in the SQL query. Use anything that influxdb accepts, i.e. 5m, 1h, 2d etc.
 ````
 
-7. Add the widget to your dashboard.yaml file 
+7. Add the widget to your dashboard.yaml file. 
 
+# Speed issues
 Reading long time series from influxdb can be time consuming so to speed things up, there is an option to downsample the data read by adding "ds", short for downsample,  to the widget definition. To speed up the drawing or to make the graph more or less course, "samples" can also be added to the widget definition. 
 
 Here is an example using both ds and samples:
