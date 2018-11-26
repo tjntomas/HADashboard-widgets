@@ -40,7 +40,7 @@ That's basically it.
 
 This is a graph widget for HADashboard that uses influxdb as data source and plot.ly as the graph engine.
 
-![HADashboard-widgets](https://github.com/tjntomas/HADashboard-widgets/blob/master/img/influx_graph.png?raw=true)
+![HADashboard-widgets](https://github.com/tjntomas/HADashboard-widgets/blob/master/img/influx_graph2.png?raw=true)
 The image shows six different widgets with one or more time series for each widget.
 
 Features:
