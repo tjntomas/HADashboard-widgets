@@ -86,6 +86,10 @@ graph_bar_colors: "1"    # Set the opacity for the bar colors.
 graph_bar_multi: "1"     # Leave this as is
 graph_user: INFLUXDB_USERNAME # Only necessary if authentication has been enabled
 graph_password: INFLUXDB_PASSWORD # Only necessary if authentication has been enabled
+graph_degrees_celsius_text: "Degrees Celsius"  # Adjust to your own language
+graph_degrees_fahrenheit_text: "Degrees Fahrenheit"  # Adjust to your own language
+graph_percent_text: "Percent"  # Adjust to your own language
+value_in_legend: 1 # If this parameter is present, the current value for each trace is displayed in the legend section.
 ````
 6. Define a widget:
 ````yaml
