@@ -163,7 +163,7 @@ power_usage_per_day:
 7. Add the widget to your dashboard.yaml file. 
 
 # Speed issues
-Reading long time series from influxdb can be time consuming so to speed things up, there is an option to downsample the data read by adding "ds", short for downsample,  to the widget definition. To speed up the drawing or to make the graph more or less course, "samples" can also be added to the widget definition. 
+Reading long time series from influxdb can be time-consuming so to speed things up, there is an option to downsample the data read by adding "ds", short for downsample,  to the widget definition. To speed up the drawing or to make the graph more or less course, "samples" can also be added to the widget definition. 
 
 Here is an example using both ds and samples:
 ````yaml
@@ -197,7 +197,7 @@ or if your temperature sensors are in farenheit:
 select * from "°F";
 ````
 and press enter. The semicolon at the end is required.
-The result should be the history for all your temperature device.
+The result should be the history for all your temperature devices.
 
 When you are happy with your query, just add the query to your widget definition:
 ````sql
