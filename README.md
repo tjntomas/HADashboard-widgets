@@ -2,7 +2,7 @@
 
 
 
-# [1. An Influxdb Graph widget for HADashboard](https://github.com/tjntomas/HADashboard-widgets/tree/master/custom_widgets/basegraph)'
+# [1. An Influxdb Graph widget for HADashboard](https://github.com/tjntomas/HADashboard-widgets/tree/master/custom_widgets/basegraph)
 
 ![HADashboard-widgets](https://github.com/tjntomas/HADashboard-widgets/blob/master/img/influx_graph2.png?raw=true)
 
