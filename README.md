@@ -190,7 +190,8 @@ Then select the home assistant database by typing "use home_assistant" and press
 Now you can write an SQL query. Try starting with:
 ````sql
 select * from "°C";
-````or if your temperature sensors are in farenheit:  
+````
+or if your temperature sensors are in farenheit:  
 ````sql
 select * from "°F";
 ````
