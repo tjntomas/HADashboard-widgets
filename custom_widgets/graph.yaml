@@ -17,5 +17,9 @@ css:
   multi: $graph_bar_multi
   user: $graph_user
   password: $graph_password
+  degrees_celsius_text: $graph_degrees_celsius_text
+  degrees_fahrenheit_text: $graph_degrees_fahrenheit_text
+  percent_text: $graph_percent_text
+
 icons: []
 static_icons: []
