@@ -199,7 +199,7 @@ and press enter. The semicolon at the end is required.
 The result should be the history for all your temperature device.
 
 When you are happy with your query, just add the query to your widget definition:
-````yaml
+````sql
 sql: select * from "°C" where entity-id='sensor.my_temperature_sensor' and value > 20 and time > now() - 1d
 ````
 
