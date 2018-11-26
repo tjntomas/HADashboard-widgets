@@ -8,12 +8,17 @@ function basegraph(widget_id, url, skin, parameters)
      
 	self.OnStateAvailable = OnStateAvailable
 	self.OnStateUpdate = OnStateUpdate
+	self.states = {}
 
 	var l = Object.keys(self.parameters.entities).length
-	var monitored_entities = 
-		[
-			{"entity": parameters.entities[0], "initial": self.OnStateAvailable, "update": self.OnStateUpdate}
-		]
+	var monitored_entities =  []
+		//[
+//			{"entity": parameters.entities[0], "initial": self.OnStateAvailable, "update": self.OnStateUpdate}
+//		]
+
+	for (entity of self.parameters.entities){
+		monitored_entities.push({"entity": entity, "initial": self.OnStateAvailable, "update": self.OnStateUpdate})
+	}
 	
 		// Some default values
 	self.NUMBER_OF_DECIMALS = 2
@@ -179,7 +184,12 @@ function basegraph(widget_id, url, skin, parameters)
 		while ( i < (DataSeries.length/2) )
 		{
 			if ( "titles" in self.parameters ){
-				var d_title =self.parameters.titles[i]
+				if ("value_in_legend" in self.parameters){
+				var value = " " + parseFloat(DataSeries[i * 2 + 1].pop()).toFixed(1) + self.parameters.influxdb_units[i]
+				}else{
+					var value = ""}
+				var d_title =self.parameters.titles[i] + value
+				
 				colorIndex =  i + Settings(self,"colorIndex",0)
 			}
 			else{
@@ -388,7 +398,10 @@ function basegraph(widget_id, url, skin, parameters)
 		switch (decodeURI(units))
 		{
 			case "°C":
-				y_axis_title = "Grader Celsius"
+				y_axis_title = CSS_Settings(self, "degrees_celsius_text", "Degrees Celsius")
+				break;
+			case "°F":
+				y_axis_title = CSS_Settings(self,"degrees_fahrenheit_text","Degrees Fahrenheit")
 				break;
 
 			case "W":
@@ -396,7 +409,7 @@ function basegraph(widget_id, url, skin, parameters)
 				break;
 
 			case "%":
-				y_axis_title = "Procent"
+				y_axis_title = CSS_Settings(self, "percent_text", "Percent")
 				break;
 		}
 		// Plot the graphs.
@@ -408,6 +421,16 @@ function basegraph(widget_id, url, skin, parameters)
 	{
 		if(parameter in self.parameters){
 			return self.parameters[parameter]
+		}
+		else{
+			return default_value
+		}
+	}
+
+	function CSS_Settings(self,parameter,default_value)
+	{
+		if(parameter in self.parameters.css){
+			return self.parameters.css[parameter]
 		}
 		else{
 			return default_value
