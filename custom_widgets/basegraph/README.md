@@ -14,6 +14,8 @@ Features:
 * Can span over any number of columns
 * The height can be set for each widget
 * Supply your own SQL query to filter and group data
+* Adjust most of the colors for text, x-axis, y-axis and legends etc.
+* Hide/show the value for each trace next to the legend
 
 To use it, you need to:
 1. Have influxdb installed and configured in Home Assistant, see instructions here:  https://www.home-assistant.io/components/influxdb/
