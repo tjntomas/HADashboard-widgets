@@ -41,6 +41,10 @@ graph_style: "border-radius: 0px; "
 background-color: rgba(30,30,30,0.45 );"  # Change to whichever color/opacity you like.
 graph_legend_text_color: "#888888"
 graph_grid_color: "#888"
+graph_title_color: "#ff0000"
+graph_x_axis_text_color: "#ff00ff"
+graph_y_axis_legend_color: "#ffff00"
+graph_y_axis_text_color: "#00ffff"
 graph_influxdb_path: http://<URL_TO_YOUR_INFLUXDB_SERVER>:8086 # Example: 192.168.1.20:8086  or http://www.mydomain.com:8086
 graph_influxdb_path_local: "http://<_LOCAL_URL_TO_YOUR_INFLUXDB_SERVER>:8086"
 graph_widget_style: "border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;border-top-left-radius: 10px;border-top-right-radius: 10px;"
