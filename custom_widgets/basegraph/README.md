@@ -39,8 +39,7 @@ influxdb:
 4. Copy influxdb-latest.js and plotly-latest.min.js (from the custom_css folder)  to your custom_css folder
 5. Add the following to your variables.yaml file in your custom_css folder for the skin you are using:
 ````yaml
-graph_style: "border-radius: 0px; "
-background-color: rgba(30,30,30,0.45 );"  # Change to whichever color/opacity you like.
+graph_style: "border-radius: 0px; background-color: rgba(30,30,30,0.45 );"  # Change to whichever css you like.
 graph_legend_text_color: "#888888"
 graph_grid_color: "#888"
 graph_title_color: "#cccccc"
