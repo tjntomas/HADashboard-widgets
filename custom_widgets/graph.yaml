@@ -20,6 +20,12 @@ css:
   degrees_celsius_text: $graph_degrees_celsius_text
   degrees_fahrenheit_text: $graph_degrees_fahrenheit_text
   percent_text: $graph_percent_text
+  title_color: $graph_title_color
+  x_axis_text_color: $graph_x_axis_text_color
+  y_axis_legend_color: $graph_y_axis_legend_color
+  y_axis_text_color: $graph_y_axis_text_color
+
+
 
 icons: []
 static_icons: []
