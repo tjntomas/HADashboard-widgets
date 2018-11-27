@@ -52,8 +52,8 @@ graph_trace_colors: "1"  # Set the opacity for the trace colors.
 graph_fill_colors: "1"   # Set the opacity for the fill colors.
 graph_bar_colors: "1"    # Set the opacity for the bar colors.
 graph_bar_multi: "1"     # Leave this as is
-graph_user: INFLUXDB_USERNAME # Only necessary if authentication has been enabled
-graph_password: INFLUXDB_PASSWORD # Only necessary if authentication has been enabled
+graph_user: INFLUXDB_USERNAME # ONLY INCLUDE THIS LINE IF AUTHENTICATION IS ENABLED FOR INFLUXDB
+graph_password: INFLUXDB_PASSWORD # ONLY INCLUDE THIS LINE IF AUTHENTICATION IS ENABLED FOR INFLUXDB
 graph_degrees_celsius_text: "Degrees Celsius"  # Adjust to your own language
 graph_degrees_fahrenheit_text: "Degrees Fahrenheit"  # Adjust to your own language
 graph_percent_text: "Percent"  # Adjust to your own language
@@ -120,10 +120,9 @@ power_usage_per_day:
     sql: "select difference(last(value)) from kWh where entity_id = 'sparsnas_energy_consumption_over_time' and time > now() - 2w  group by time(1d)"
     type: "bar"
     decimals: 0
-# Additional parameters:
     time_zone: "Europe/Stockholm
-    locale: "se"
-    db_name: "home_assistant"
+    locale: "en"
+    db_name: "home_assistant" # This is the default db according to the HA docs.
     ds: 5m   # Used for downsampling long time series in the SQL query. Use anything that influxdb accepts, i.e. 5m, 1h, 2d etc.
 ````
 
