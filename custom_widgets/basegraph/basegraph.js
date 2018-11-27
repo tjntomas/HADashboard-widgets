@@ -11,10 +11,8 @@ function basegraph(widget_id, url, skin, parameters)
 	self.states = {}
 
 	var l = Object.keys(self.parameters.entities).length
+	
 	var monitored_entities =  []
-		//[
-//			{"entity": parameters.entities[0], "initial": self.OnStateAvailable, "update": self.OnStateUpdate}
-//		]
 
 	for (entity of self.parameters.entities){
 		monitored_entities.push({"entity": entity, "initial": self.OnStateAvailable, "update": self.OnStateUpdate})
@@ -25,15 +23,18 @@ function basegraph(widget_id, url, skin, parameters)
 	self.PAPER_BACKGROUND_COLOR = 'rgba(200,200,200,0)'
 	self.X_GRID_COLOR = "rgba(255,255,255,0)"
 	self.CANVAS_HEIGHT = 215
-	self.TITLE_COLOR = '#aaaaaa'
+	self.TITLE_COLOR = self.parameters.css.title_color
+	self.X_AXIS_TEXT_COLOR = self.parameters.css.x_axis_text_color
+	self.Y_AXIS_LEGEND_COLOR = self.parameters.css.y_axis_legend_color
+	self.Y_AXIS_TEXT_COLOR = self.parameters.css.y_axis_text_color
 	// Some default colors for the traces.
 	self.TRACE_COLORS = 
-						["rgba(50,50,220,0.7)", "rgba(220,70,220,0.7)",  "rgba(40,200,40,0.7)",  "rgba(220,20,20,0.7)",
+						["rgba(50,50,220,0.7)",  "rgba(220,70,220,0.7)", "rgba(40,200,40,0.7)",  "rgba(220,20,20,0.7)",
 						 "rgba(220,220,40,0.7)", "rgba(40,220,220,0.7)", "rgba(220,70,120,0.7)", "rgba(200,100,20,0.7)",
 						 "rgba(100,220,40,0.7)", "rgba(100,20,220,0.7)", "rgba(120,70,120,0.7)", "rgba(100,100,200,0.7)"
 						 ]
 
-	self.FILL_COLORS = ["rgba(50,50,220,0.4)",  "rgba(220,70,220,0.4)", "rgba(40,120,40,0.6)",  "rgba(220,20,20,0.4)",
+	self.FILL_COLORS = [ "rgba(50,50,220,0.4)",  "rgba(220,70,220,0.4)", "rgba(40,120,40,0.6)",  "rgba(220,20,20,0.4)",
 						 "rgba(220,220,40,0.4)", "rgba(40,220,220,0.4)", "rgba(220,70,120,0.4)", "rgba(200,100,20,0.4)",
 						 "rgba(100,220,40,0.4)", "rgba(100,20,220,0.4)", "rgba(120,70,120,0.4)", "rgba(100,100,200,0.4)"
 						 ]
@@ -66,15 +67,13 @@ function basegraph(widget_id, url, skin, parameters)
 								
     WidgetBase.call(self, widget_id, url, skin, parameters, monitored_entities, callbacks)  
 
-	function OnStateUpdate(self, state)
-	{
-		// Logger that new data has been received.
+	function OnStateUpdate(self, state){
+		// Log that new data has been received.
 		Logger(self,"New value for " + self.parameters.entities[0] + ": " + state.state)
 		draw(self, state)
 	}
 
-	function OnStateAvailable(self, state)
-	{
+	function OnStateAvailable(self, state){
 		draw(self, state)
 	}
 	
@@ -123,7 +122,7 @@ function basegraph(widget_id, url, skin, parameters)
 					tickfont: {
 			
 						size: 10,
-						color: self.TITLE_COLOR
+						color: self.X_AXIS_TEXT_COLOR
 					  }
 		  		 }
 		    
@@ -132,7 +131,7 @@ function basegraph(widget_id, url, skin, parameters)
 					titlefont: {
 			
 						size: 12,
-						color: self.TITLE_COLOR
+						color: self.Y_AXIS_LEGEND_COLOR
 					  },
 					range: [min,max],
 					showgrid: true,
@@ -148,7 +147,7 @@ function basegraph(widget_id, url, skin, parameters)
 					tickfont: {
 			
 						size: 10,
-						color: self.TITLE_COLOR
+						color: self.Y_AXIS_TEXT_COLOR
 					  },
 		  		 }
 
@@ -253,8 +252,7 @@ function basegraph(widget_id, url, skin, parameters)
 		catch(err) {}
 	}
 
-	function InfluxDB_Data(self,time_filter, entity_id,units)
-	{
+	function InfluxDB_Data(self,time_filter, entity_id,units){
 		var TIME_DATA = '0'
 		var VALUE_DATA = '1'
 		var http = document.referrer.slice(7,10)
@@ -292,7 +290,7 @@ function basegraph(widget_id, url, skin, parameters)
 			// field names are without the "domain." part of the entity_id.
 			var entity = entity_id.substring(entity_id.indexOf(".") + 1)
 			
-			// if "ds" is present in parameters, we should downsample the data in the query to speed up the query.
+			// if "ds" is present in parameters, we should downsample the data in the query to speed things up.
 			if ("ds" in self.parameters)
 			{
 				var base_url = self.css.influxdb_url + self.INFLUX_QUERY_PATTERN
@@ -459,13 +457,12 @@ function basegraph(widget_id, url, skin, parameters)
 		}
 	}
 
-	// Helper function to return element id from class name
+	// Helper function to return an element from class name
 	function element(self, class_name)
     {
         return document.getElementById(self.widget_id).getElementsByClassName(class_name)[0] 
 	}
 	
-
 	function Logger(self,message){
 	
 		if ("log" in self.parameters){
