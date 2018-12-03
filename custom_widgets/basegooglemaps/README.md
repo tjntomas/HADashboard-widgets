@@ -40,5 +40,20 @@ That's it!
 
 I will be adding more options to customize the map later. If you want to change the appearance now, you need to edit the mapOptions section of the basegooglemaps.js file and the basegooglemaps.css file.
 
+# A little bit of help regarding the folder structure
+this what your folder structure inside you appdaemon conf folder should look like:
+````yaml
+conf
+  custom_widgets  # You need to create this folder if it doesn't exist.
+     googlemaps.yaml
+     basegooglemaps
+       basegooglemaps.js
+       basegooglemap.html
+       basegooglemaps.css
+ custom_css
+   this_is_where_your_custom_skins_folders_should_be
+````
+
+
 
 
