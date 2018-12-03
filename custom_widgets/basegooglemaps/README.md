@@ -30,7 +30,13 @@ layout:
   - google_map(12x8)
 ````
 
+in the skin you ar using, add:
+````yaml
+googlemaps_widget_style:  "border-radius: 10px; $background_style"
+````
 That's it!
+
+I will be adding more options to customize the map later. If you want to change the appearance now, you need to edit the mapOptions section of the basegooglemaps.js file.
 
 
 
