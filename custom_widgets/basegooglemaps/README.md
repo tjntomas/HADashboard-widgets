@@ -32,7 +32,7 @@ layout:
   - google_map(10x7)  # Or whatever size you want for your map.
 ````
 
-in the skin you ar using, add:
+in the skin you are using, add:
 ````yaml
 googlemaps_widget_style:  "border-radius: 10px; $background_style"
 ````
