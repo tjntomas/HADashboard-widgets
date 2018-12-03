@@ -13,8 +13,8 @@ Features:
 * If your device tracker moves, the map will update the location
 
 To use the widget, you need to:
-1. Copy the basegooglemaps folder to your custom_widget folder
-2. Copy the googlemaps.yaml file to your custom_css folder
+1. Copy the basegooglemaps folder to your custom_widgets folder
+2. Copy the googlemaps.yaml file to your custom_widgets folder
 3. Get a Google Maps API key from here (https://developers.google.com/maps/documentation/javascript/get-api-key). You need to register with credit card to get a Google API key but the free usuage limits are huge.
 4. Define a widget:
 ````yaml
