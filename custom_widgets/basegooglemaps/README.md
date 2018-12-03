@@ -15,7 +15,7 @@ Features:
 To use the widget, you need to:
 1. Copy the basegooglemaps folder to your custom_widget folder
 2. Copy the googlemaps.yaml file to your custom_css folder
-3. Get a Google Maps API key from here (https://developers.google.com/maps/documentation/javascript/get-api-key)
+3. Get a Google Maps API key from here (https://developers.google.com/maps/documentation/javascript/get-api-key). You need to register with credit card to get a Google API key but the free usuage limits are huge.
 4. Define a widget:
 ````yaml
 google_map:
@@ -24,7 +24,7 @@ google_map:
   - device_tracker.your_device_tracker_entity_id
   - device_tracker.your_other_device_tracker_entity_id
   base_url: your_url_to_home_assistant:and_your_port   #  http://192.168.1.20:8123
-  pw: YOUR_HOME_ASSISTANT_API_KEY
+  pw: YOUR_HOME_ASSISTANT_API_KEY  # This is used to grab all the defined zones from Home Assistant's REST API.
   api_key: YOUR_GOOGLE_MAPS_API_KEY
   zoom: 16  # Initial zoom level.
 
