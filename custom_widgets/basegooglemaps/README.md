@@ -48,7 +48,7 @@ conf
      googlemaps.yaml
      basegooglemaps
        basegooglemaps.js
-       basegooglemap.html
+       basegooglemaps.html
        basegooglemaps.css
  custom_css
    this_is_where_your_custom_skins_folders_should_be
