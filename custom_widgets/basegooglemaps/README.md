@@ -54,7 +54,7 @@ conf
    this_is_where_your_custom_skins_folders_should_be
 ````
 
-# Style examples
+# Style examples from [Snazzy Maps](snazzymaps.com)
 
 ![HADashboard-widgets](https://github.com/tjntomas/HADashboard-widgets/blob/master/img/dark_map_style.png?raw=true)
 
