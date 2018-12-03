@@ -54,6 +54,13 @@ conf
    this_is_where_your_custom_skins_folders_should_be
 ````
 
+# Style examples
+
+![HADashboard-widgets](https://github.com/tjntomas/HADashboard-widgets/blob/master/img/dark_map_style.png?raw=true)
+
+![HADashboard-widgets](https://github.com/tjntomas/HADashboard-widgets/blob/master/img/topaco_map_style.png?raw=true)
+
+
 
 
 
