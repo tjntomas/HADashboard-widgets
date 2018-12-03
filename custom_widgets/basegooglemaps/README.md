@@ -19,8 +19,8 @@ To use the widget, you need to:
 google_map:
   widget_type: googlemaps
   entities:
-  - device_tracker.you_tracker_entity_id
-  - device_tracker.your_other_tracker_entity_id
+  - device_tracker.your_device_tracker_entity_id
+  - device_tracker.your_other_device_tracker_entity_id
   base_url: your_url_to_home_assistant:and_your_port   #  http://192.168.1.20:8123
   pw: YOUR_HOME_ASSISTANT_API_KEY
   api_key: YOUR_GOOGLE_MAPS_API_KEY
