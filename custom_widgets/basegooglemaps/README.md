@@ -29,7 +29,7 @@ google_map:
   zoom: 16  # Initial zoom level.
 
 layout:
-  - google_map(12x8)
+  - google_map(10x7)
 ````
 
 in the skin you ar using, add:
