@@ -1,14 +1,7 @@
 widget_type: basegooglemaps
-fields:
-  title: {{title}}
-  frame_src: ""
-  img_src: ""
-  frame_style: '{{frame_style}}'
-  bg_style: '{{bg_style}}'
+fields: []
 icons: []
 static_css:
-  title_style: $frame_title_style
-  widget_style: $frame_widget_style
-
+  widget_style: $googlemaps_widget_style
 css: []
 static_icons: []
