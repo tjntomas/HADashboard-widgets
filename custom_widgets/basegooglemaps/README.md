@@ -8,7 +8,7 @@ This is a Google Maps widget for HADashboard.
 Features:
 * Displays the location of one or more tracker entities
 * Grabs all defined zones from Home Assistant and draws them with the corresponding radius on the map
-* Make "Tracker Buttons" for each provided device tracker entity that can be selected s the "active" tracker
+* Make "Tracker Buttons" for each provided device tracker entity that can be selected as the "active" tracker
 * Display distance from home and name of nearest zone for the active tracker
 * If an entity picture is defined for a device tracker, the image is used, if not, the standard google maps icon is used.
 * Zoom and scroll just like any google maps
