@@ -129,7 +129,7 @@ power_usage_per_day:
 
 7. Add the widget to your dashboard.yaml file. 
 
-# Speed issues
+## Speed issues
 Reading long time series from influxdb can be time-consuming so to speed things up, there is an option to downsample the data read by adding "ds", short for downsample,  to the widget definition. To speed up the drawing or to make the graph more or less course, "samples" can also be added to the widget definition. 
 
 Here is an example using both ds and samples:
@@ -152,7 +152,7 @@ mvp:
     # If only 150 samples are read from influxdb, all 150 samples are plotted.
 ````
 
-# Writing custom SQL queries
+## Writing custom SQL queries
 If you are familiar with the SQL language, you can write your own query. To do this, start influx by typing "influx" in a shell session.
 Then select the home assistant database by typing "use home_assistant" and press enter.
 Now you can write an SQL query. Try starting with:
@@ -173,5 +173,5 @@ sql: select * from "°C" where entity-id='sensor.my_temperature_sensor' and valu
 
 When you supply a custom SQL query, the entity_id is used by the widget only to listen for state change and update your widget when new data is available for your query.
 
-# Interacting with the graph
+## Interacting with the graph
 The graph library used in the widget is plotly, www.plot.ly, and there are a number of ways to interact with the graph. Zooming in to an area in the plot by marking an area in the same way as you would do to crop an image or zooming into a time interval, expanding the x and y axis, scrolling through time etc. Please visit www.plot.ly to find out more.
