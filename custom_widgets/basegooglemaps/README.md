@@ -18,7 +18,7 @@ To use the widget, you need to:
 1. Copy the basegooglemaps folder to your custom_widgets folder
 2. Copy the googlemaps.yaml file to your custom_widgets folder
 3. Copy the custom_css/googlemaps folder to your custom_css folder
-4. Get a Google Maps API key from here (https://developers.google.com/maps/documentation/javascript/get-api-key). You need to register with a credit card to get a Google API key but the free usuage limits are huge and I have never exceeded the free usage limits even though I "hammer" the API quite a bit.
+4. Get a Google Maps API key from here (https://developers.google.com/maps/documentation/javascript/get-api-key). You need to register with a credit card to get a Google API key but the free usuage limits are huge and I have never exceeded the free usage limits even though I "hammer" the API quite a lot.
 5. Define a widget:
 ````yaml
 google_map:
