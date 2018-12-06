@@ -2,7 +2,7 @@
 
 ![HADashboard-widgets](https://github.com/tjntomas/HADashboard-widgets/blob/master/img/vacuum_widget.png?raw=true)
 
-Features:
+###Features:
 - Click in the middle of the vacuum cleaner to start/pause
 - Click on the dock image to return the vacuum cleaner to the dock
 - Click on one of the fan icons to set the fan speed
