@@ -678,7 +678,7 @@ function AddTracker(img){
     var item = document.createElement("img")
     item.src= img
     self.trackers.push(self.entity_state[tracker].entity_id)
-    item.setAttribute("height", "60px")
+
     item.setAttribute("class", "image")
     title = document.createElement("div")
     title.setAttribute("class", "title")
