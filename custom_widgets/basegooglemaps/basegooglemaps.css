@@ -9,11 +9,6 @@
 a[href^="http://maps.google.com/maps"]{display:none !important}
 a[href^="https://maps.google.com/maps"]{display:none !important}
 
-.gm-style-cc { display:none; }
-/*.gmnoprint a { display:none; }
-.gmnoprint span { display:none; }
-.gmnoprint div { display:none; }*/
-
 .gm-control-active  {
     background: rgba(10,10,10,0.4)!important;
     color: green!important;
