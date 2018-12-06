@@ -420,47 +420,6 @@ function Styles(self){
                     "color": "#242f3e"
                 }
             ]
-        },       {
-            "featureType": "landscape",
-            "elementType": "geometry",
-            "stylers": [
-                {
-                    "color": "#000000",
-                    'visibility':'off'
-                },
-                {
-                    "lightness": 20
-                }
-            ]
-        },
-        {
-            "featureType": "landscape",
-            "elementType": "geometry.fill",
-            "stylers": [
-                {
-                    
-                    'visibility':'off'
-                }
-            ]
-        },
-        {
-            "featureType": "landscape",
-            "elementType": "geometry.stroke",
-            "stylers": [
-                {
-                    "color": "#4d6059"
-                }
-            ]
-        },
-        {
-            "featureType": "landscape.natural",
-            "elementType": "geometry.fill",
-            "stylers": [
-                {
-                    
-                    'visibility':'off'
-                }
-            ]
         },
         {
             "featureType": "all",
@@ -530,7 +489,7 @@ function Styles(self){
             "elementType": "geometry",
             "stylers": [
                 {
-                    "color": "#884422"
+                    "color": "#38414e"
                 }
             ]
         },
@@ -539,7 +498,7 @@ function Styles(self){
             "elementType": "geometry.stroke",
             "stylers": [
                 {
-                    "color": "#ff2a37"
+                    "color": "#212a37"
                 }
             ]
         },
@@ -548,7 +507,7 @@ function Styles(self){
             "elementType": "labels.text.fill",
             "stylers": [
                 {
-                    "color": "#aa6622"
+                    "color": "#9ca5b3"
                 }
             ]
         },
@@ -575,7 +534,7 @@ function Styles(self){
             "elementType": "labels.text.fill",
             "stylers": [
                 {
-                    "color": "#ffd19c"
+                    "color": "#f3d19c"
                 }
             ]
         },
@@ -602,7 +561,7 @@ function Styles(self){
             "elementType": "geometry",
             "stylers": [
                 {
-                    "color": "#fc1e34"
+                    "color": "#0c1e34"
                 }
             ]
         },
