@@ -30,7 +30,7 @@ google_map:
   pw: YOUR_HOME_ASSISTANT_API_KEY  # This is used to grab all the defined zones from Home Assistant's REST API.
   api_key: YOUR_GOOGLE_MAPS_API_KEY
   zoom: 16  # Initial zoom level.
-  latitude: xx.105331
+  latitude: xx.105331  # Your home coordinates are used to calculate the distance from home.
   longitude: xx.045402
 
 layout:
