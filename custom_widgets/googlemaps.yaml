@@ -2,6 +2,8 @@ widget_type: basegooglemaps
 fields: []
 icons: []
 static_css:
-  widget_style: $googlemaps_widget_style
+  widget_style: $googlemaps_widget_styled
+  top_style: $googlemaps_top_style
+
 css: []
 static_icons: []
