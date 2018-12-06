@@ -62,7 +62,7 @@ conf
 ````
 
 # Styling
-The style for the maps are located in the custom_css folder in the file style.js.
+The style for the maps are located in the custom_css folder in the file styles.js.
 You can copy a style from snazzymaps.com by clicking on map and then clicking on "expand code" at the bottom left of the map page and then copy the resulting JAVASCRIPT STYLE ARRAY, including the outer [] brackets. If you want to add a style from snazzymaps or create your own style, in the Styles function in the sytles.js file, add:
 ````
 self.styles['name_of_your_style'] = PASTE_THE_JAVASCRIPT_STYLE_ARRAY_HERE
