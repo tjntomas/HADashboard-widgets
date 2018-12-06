@@ -14,7 +14,7 @@ This is a Google Maps widget for HADashboard.
 * Zoom and scroll just like any google maps
 * If your device tracker moves, the map will update the location
 
-## To use the widget, you need to:
+### To use the widget, you need to:
 1. Copy the basegooglemaps folder to your custom_widgets folder
 2. Copy the googlemaps.yaml file to your custom_widgets folder
 3. Copy the custom_css/googlemaps folder to your custom_css folder
@@ -140,4 +140,10 @@ Then edit your widget file and change the line
 I will add the options to store styles in a more convenient way in separarate yaml files later.
 
 ## Development
+### Time travel
 I have written a time travel feature that makes the map travel through time. I am currently adding some interpolations to smooth over gaps in the tracker data. Once testing is completed, this feature will be added. If you feel like testing it, send me a message and I will create a test branch.
+
+### Easy configuration
+I am considering adding a feature to read all device trackers from Home Assistant, thus, no need to manually add the trackers to the widget definition.
+### Customization
+I will expose most of the styling features so that styling can be done through the skins.
