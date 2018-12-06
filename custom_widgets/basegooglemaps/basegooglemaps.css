@@ -1,12 +1,3 @@
-/*
-a[href^="http://maps.google.com/maps"]{display:none !important}
-a[href^="https://maps.google.com/maps"]{display:none !important}
-
-.gm-style-cc { display:none; }
-.gmnoprint a { display:none; }
-.gmnoprint span { display:none; }
-.gmnoprint div { display:none; }
-*/
 
 
 .widget-basegooglemaps-{{id}} .map_canvas{
