@@ -139,3 +139,5 @@ Then edit your widget file and change the line
   
 I will add the options to store styles in a more convenient way in separarate yaml files later.
 
+# Development
+I have written a time travel feature that makes the map travel through time. I am currently adding some interpolations to smooth over gaps in the tracker data. Once testing is completed, this feature will be added. If you feel like testing it, send me a message and I will create a test branch.
