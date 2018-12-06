@@ -68,7 +68,49 @@ You can copy a style from snazzymaps.com by clicking on a map that you like and 
 ````
 self.styles['name_of_your_style'] = PASTE_THE_JAVASCRIPT_STYLE_ARRAY_HERE
 ````
-and save the file. Then edit your widget file and change the line
+and save the file. 
+
+it should look somehing like tihs, but longer:
+````javascript
+self.styles['topaco'] = [
+        {
+            "featureType": "all",
+            "elementType": "geometry",
+            "stylers": [
+                {
+                    "color": "#242f3e"
+                }
+            ]
+        },
+        {
+            "featureType": "all",
+            "elementType": "labels.text.fill",
+            "stylers": [
+                {
+                    "color": "#746855"
+                }
+            ]
+        },
+        {
+            "featureType": "all",
+            "elementType": "labels.text.stroke",
+            "stylers": [
+                {
+                    "color": "#242f3e"
+                }
+            ]
+        },
+        {
+            "featureType": "administrative.locality",
+            "elementType": "labels.text.fill",
+            "stylers": [
+                {
+                    "color": "#d59563"
+                }
+            ]
+        },
+````
+Then edit your widget file and change the line
 ````yaml
   template: NAME_OF_YOUR_STYLE
   ````
