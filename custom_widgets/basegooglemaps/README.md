@@ -61,8 +61,29 @@ conf
      styles.js
      tracker.png
 ````
+  
+ # Controls
+ All the normal Google Maps controls are available, including Street View.
+ 
+ ![HADashboard-widgets](https://github.com/tjntomas/HADashboard-widgets/blob/master/img/googlestreetview.png?raw=true?raw=true)
 
-# Styling
+
+
+# Style examples from [Snazzy Maps](http://snazzymaps.com)
+
+![HADashboard-widgets](https://github.com/tjntomas/HADashboard-widgets/blob/master/img/dark_map_style.png?raw=true)
+To apply this style:
+````yaml
+  template: dark
+  ````
+
+![HADashboard-widgets](https://github.com/tjntomas/HADashboard-widgets/blob/master/img/topaco_map_style.png?raw=true)
+To apply this style:
+````yaml
+  template: topaco
+  ````
+  
+  # Styling
 The style for the maps are located in the custom_css folder in the file styles.js.
 You can copy a style from snazzymaps.com by clicking on a map that you like and then click on "expand code" at the bottom left of the map page and then copy the resulting JAVASCRIPT STYLE ARRAY, including the outer [] brackets. In the Styles function in the styles.js file, add:
 ````
@@ -116,29 +137,4 @@ Then edit your widget file and change the line
   ````
   
 I will add the options to store styles in a more convenient way in separarate yaml files later.
-  
- # Controls
- All the normal Google Maps controls are available, including Street View.
- 
- ![HADashboard-widgets](https://github.com/tjntomas/HADashboard-widgets/blob/master/img/googlestreetview.png?raw=true?raw=true)
-
-
-
-# Style examples from [Snazzy Maps](http://snazzymaps.com)
-
-![HADashboard-widgets](https://github.com/tjntomas/HADashboard-widgets/blob/master/img/dark_map_style.png?raw=true)
-To apply this style:
-````yaml
-  template: dark
-  ````
-
-![HADashboard-widgets](https://github.com/tjntomas/HADashboard-widgets/blob/master/img/topaco_map_style.png?raw=true)
-To apply this style:
-````yaml
-  template: topaco
-  ````
-
-
-
-
 
