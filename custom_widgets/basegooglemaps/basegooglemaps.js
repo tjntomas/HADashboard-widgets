@@ -11,7 +11,7 @@ function basegooglemaps(widget_id, url, skin, parameters)
     for (device_tracker in parameters.entities){
         monitored_entities.push({"entity":  parameters.entities[device_tracker], "initial": self.OnStateAvailable, "update": self.OnStateUpdate})
     }
-   
+    self.api_init = false
     self.api_loaded = false
     fh = element(self,"frame").clientHeight
     th = element(self,"top").clientHeight
@@ -68,7 +68,7 @@ function basegooglemaps(widget_id, url, skin, parameters)
             // Load Google Maps API Asyncronously.
             if (!self.api_loaded){
                 loadScript('http://maps.googleapis.com/maps/api/js?v=3&key=' + self.parameters.api_key + '&callback=initialize')
-                self.api_loaded = true
+               self.api_loaded = true
             }
         }
     }
@@ -129,6 +129,7 @@ function basegooglemaps(widget_id, url, skin, parameters)
 function initialize() {
     self = window.self
     Styles(self)
+   
 
     var INFO_FRAME = `<div class="info_frame">
                         <b class="distance_title">Distance from home</b><div id="distance" class="distance">55 meter</div>
@@ -137,18 +138,25 @@ function initialize() {
                       <b class="distance_title">Closest Zone</b><div id="closest" class="closest">Hemma</div>
                     </div>`
        
-    var mapOptions = {zoom: self.parameters.zoom, disableDefaultUI: true,backgroundColor: 'hsla(0, 0, 0, 0)',center: new google.maps.LatLng(
+    var mapOptions = {zoom: self.parameters.zoom, disableDefaultUI: false,backgroundColor: 'hsla(0, 0, 0, 0)',center: new google.maps.LatLng(
         self.lat , self.long),
-        styles: self.styles['default']};
+        styles: self.styles[self.parameters.template]};
+
 
     map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
     self.map =  map
     DrawZones()
+
+    if (self.api_init == true) {
+        return 0
+    }
+
     self.markers = {}
     marker_colors = ['orange', 'green', 'blue', 'yellow', 'red']
 
     index = 0
     self.trackers = []
+
 
    
 
@@ -174,7 +182,7 @@ function initialize() {
             else{
                 markerIcon = {
                     url: 'http://maps.google.com/mapfiles/ms/icons/' + marker_colors[index] + '.png',
-                    scaledSize: new google.maps.Size(70, 70)
+                    scaledSize: new google.maps.Size(40, 40)
                 } 
                 self.markers[self.entity_state[tracker].entity_id] = new google.maps.Marker({
                     position: new google.maps.LatLng(lat,long), map: map,
@@ -192,6 +200,8 @@ function initialize() {
             if (index > Object.keys(marker_colors).length - 1) { index = 0 }
         }
     }
+     
+
     info_frame = document.createElement("div") 
     self.element(self,"top").appendChild(info_frame)
     info_frame.outerHTML = INFO_FRAME
@@ -201,6 +211,13 @@ function initialize() {
     self.current_tracker = self.trackers[0]
     self.element(self, self.trackers[0]).style.color = "rgba(0,255,0,0.8)"
     self.OnStateUpdate(self, self.entity_state[self.trackers[0]] )
+    self.api_init = true
+    $('body').on("mouseup touchend",function(e){
+        if (e.target.className == "gm-iv-back-icon-background gm-iv-back-icon"  ){
+            initialize()
+        }
+        
+   })
        
 }
    
