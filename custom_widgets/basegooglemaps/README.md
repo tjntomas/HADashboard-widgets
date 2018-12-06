@@ -33,6 +33,7 @@ google_map:
   latitude: xx.105331  # Your home coordinates are used to calculate the distance from home.
   longitude: xx.045402
   template: default   # You can chose other styles or make your own, see the styling section below.
+                      # Some sample styles: topeco | dark | vintage | retro
 
 layout:
   - google_map(10x7)  # Or whatever size you want for your map.
