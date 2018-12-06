@@ -56,7 +56,10 @@ conf
        basegooglemaps.html
        basegooglemaps.css
  custom_css
-   this_is_where_your_custom_skins_folders_should_be
+   googlemaps
+     styles.js
+     tracker.png
+     
 ````
 
 # Style examples from [Snazzy Maps](http://snazzymaps.com)
