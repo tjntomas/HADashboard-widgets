@@ -31,7 +31,7 @@ function basegooglemaps(widget_id, url, skin, parameters)
             element(this, tracker).style.color = "rgba(0,0,0,0)"
         }
         self.current_tracker = target
-        element(this, target).style.color = "rgba(0,255,0,0.8)"
+        element(this, target).style.color = "rgba(200,200,200,0.8)"
         OnStateUpdate(self, self.entity_state[target])
     }
     }
@@ -111,8 +111,10 @@ function basegooglemaps(widget_id, url, skin, parameters)
                 z = z + 1
             }
             var min = Math.min.apply(null, distances).toFixed(10)
+             self.long = state.attributes.longitude
+            self.lat = state.attributes.latitude
             
-            element(self, "closest").innerHTML = zones[String(min)]['attributes']['friendly_name']
+            element(self, "closest").innerHTML = "<p>" + zones[String(min)]['attributes']['friendly_name'] + "</p>"
             element(self, "distance").innerHTML = value +  " " + suffix
         }
     }
@@ -152,13 +154,11 @@ function initialize() {
     }
 
     self.markers = {}
-    marker_colors = ['orange', 'green', 'blue', 'yellow', 'red']
+    marker_colors = ['gray', 'green', 'blue', 'orange', 'red']
 
     index = 0
     self.trackers = []
 
-
-   
 
     for (tracker in self.entity_state){
 
@@ -189,7 +189,7 @@ function initialize() {
                     icon: markerIcon,
                     label: {
                         text: self.entity_state[tracker].attributes.friendly_name,
-                        color: "#00ff00",
+                        color: "#ff9900",
                         fontSize: "14px",
                         fontWeight: "bold"
                     }})
@@ -204,9 +204,15 @@ function initialize() {
 
     info_frame = document.createElement("div") 
     self.element(self,"top").appendChild(info_frame)
+    divider = document.createElement("div")
+    divider.setAttribute("class", "divider")
+    self.element(self,"top").appendChild(divider)
     info_frame.outerHTML = INFO_FRAME
     closest_frame = document.createElement("div") 
     self.element(self,"top").appendChild(closest_frame)
+    divider = document.createElement("div")
+    divider.setAttribute("class", "divider")
+    self.element(self,"top").appendChild(divider)
     closest_frame.outerHTML = CLOSEST_FRAME
     self.current_tracker = self.trackers[0]
     self.element(self, self.trackers[0]).style.color = "rgba(0,255,0,0.8)"
