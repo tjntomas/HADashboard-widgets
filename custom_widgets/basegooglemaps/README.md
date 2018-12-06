@@ -73,12 +73,13 @@ and save the file. Then edit your widget file and change the line
   template: NAME_OF_YOUR_STYLE
   ````
   
- # Styling controls
+I will add the options to store styles in a more convenient way in separarate yaml files later.
+  
+ # Controls
  All the normal Google Maps controls are available, including Street View.
  
  ![HADashboard-widgets](https://github.com/tjntomas/HADashboard-widgets/blob/master/img/googlestreetview.png?raw=true?raw=true)
 
-I will add the options to store styles in a more convenient way in separarate yaml files later.
 
 
 # Style examples from [Snazzy Maps](http://snazzymaps.com)
