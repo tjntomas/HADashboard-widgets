@@ -40,7 +40,7 @@ function basegooglemaps(widget_id, url, skin, parameters)
         return degrees * (pi/180);
     }
     function distance_lat_long(lat1,lon1,lat2,lon2){
-        var R = 6371000
+        var R = 6371e3
         var φ1 = toRadians(lat1)
       
         var φ2 = toRadians(lat2)
@@ -85,15 +85,15 @@ function basegooglemaps(widget_id, url, skin, parameters)
             var center = new google.maps.LatLng(state.attributes.latitude, state.attributes.longitude)
             self.map.panTo(center)
             self.markers[state.entity_id].setPosition(new google.maps.LatLng(state.attributes.latitude, state.attributes.longitude) )
-            distance = distance_lat_long(self.parameters.latitude, 
-                self.parameters.longitude,state.attributes.latitude, state.attributes.longitude)
+            distance = distance_lat_long(parseFloat(self.parameters.latitude), 
+            parseFloat(self.parameters.longitude),parseFloat(state.attributes.latitude), parseFloat(state.attributes.longitude))
             value = parseFloat(distance.toFixed(0))
+            console.log(value)
             suffix = "m"
             if (value > 1000000){
                 suffix = "miles"
-                value = parseFloat(value/1000000).toFixed(1)
-            }
-            if (value > 1000){
+                value = parseFloat(value/10000).toFixed(1)
+            }else if (value > 1000){
                 suffix = "km"
                 value = parseFloat(value/1000).toFixed(1)
             }
