@@ -78,7 +78,8 @@ mvp:
     # which is used for the first trace. If more than 12 traces/entities are specified, the colors are rotated. 
 ````
 
-### A more complex graph showing 4 CPU temperatures. This is the bottom left widget in the image above.
+### A more complex graph showing 4 CPU temperatures
+This is the bottom left widget in the image above.
 ````yaml
 cpu_temp_g:
     widget_type: graph
@@ -107,7 +108,8 @@ cpu_temp_g:
     height: 324                # Optional. Specify the height of the widget in pixels. Default is 215 pixels. 
 ````
 
-### Graph to show the daily power consumption from a Sparsnäs device. This is the middle right widget in the image above.
+### Graph to show the daily power consumption from a Sparsnäs device
+This is the middle right widget in the image above.
 In this widget, we specify the SQL query explicitly instead of just grabbing the trace from influxdb.
 In this way, we can use all features of the SQL query language that influxdb supports.
 ````yaml
