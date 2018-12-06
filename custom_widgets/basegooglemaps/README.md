@@ -68,12 +68,12 @@ You can copy a style from snazzymaps.com by clicking on map and then clicking on
 ````
 self.styles['name_of_your_style'] = PASTE_THE_JAVASCRIPT_STYLE_ARRAY_HERE
 ````
-and save the file. The endit your widget file and change
+and save the file. Then edit your widget file and change the line
 ````yaml
   template: NAME_OF_YOUR_STYLE_IN_THE_STYLES.JS_FILE
   ````
 
-I will add the option to store styles in a more convenient way in separarate yaml files later.
+I will add the options to store styles in a more convenient way in separarate yaml files later.
 
 
 # Style examples from [Snazzy Maps](http://snazzymaps.com)
