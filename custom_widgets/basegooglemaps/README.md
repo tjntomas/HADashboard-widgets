@@ -70,7 +70,7 @@ self.styles['name_of_your_style'] = PASTE_THE_JAVASCRIPT_STYLE_ARRAY_HERE
 ````
 and save the file. 
 
-it should look somehing like tihs, but longer:
+it should look somehing like this, but longer:
 ````javascript
 self.styles['topaco'] = [
         {
