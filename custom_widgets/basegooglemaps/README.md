@@ -87,13 +87,13 @@ I will add the options to store styles in a more convenient way in separarate ya
 ![HADashboard-widgets](https://github.com/tjntomas/HADashboard-widgets/blob/master/img/dark_map_style.png?raw=true)
 To apply this style:
 ````yaml
-  template: topaco
+  template: dark
   ````
 
 ![HADashboard-widgets](https://github.com/tjntomas/HADashboard-widgets/blob/master/img/topaco_map_style.png?raw=true)
 To apply this style:
 ````yaml
-  template: dark
+  template: topaco
   ````
 
 
