@@ -132,6 +132,10 @@ power_usage_per_day:
     db_name: "home_assistant" # This is the default db according to the HA docs.
     ds: 5m   # Used for downsampling long time series in the SQL query. Use anything that influxdb accepts, i.e. 5m, 1h, 2d etc.
 ````
+If you have a Sparsnäs device and want to plot the weekly energy consumption, here is the sql to use:
+````sql
+select difference(last(value)),time from kWh where entity_id = 'sparsnas_energy_consumption_over_time' and time > '2018-01-01' group by time(1w,4d) fill(none)
+````
 
 7. Add the widget to your dashboard.yaml file. 
 
