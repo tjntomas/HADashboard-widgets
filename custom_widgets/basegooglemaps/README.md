@@ -32,6 +32,7 @@ google_map:
   zoom: 16  # Initial zoom level.
   latitude: xx.105331  # Your home coordinates are used to calculate the distance from home.
   longitude: xx.045402
+  template: default   # You can chose other styles or make your own, see the styling section below.
 
 layout:
   - google_map(10x7)  # Or whatever size you want for your map.
@@ -67,7 +68,10 @@ You can copy a style from snazzymaps.com by clicking on map and then clicking on
 ````
 self.styles['name_of_your_style'] = PASTE_THE_JAVASCRIPT_STYLE_ARRAY_HERE
 ````
-and save the file. 
+and save the file. The endit your widget file and change
+````yaml
+  template: NAME_OF_YOUR_STYLE_IN_THE_STYLES.JS_FILE
+  ````
 
 I will add the option to store styles in a more convenient way in separarate yaml files later.
 
