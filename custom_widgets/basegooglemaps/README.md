@@ -3,7 +3,7 @@
 
 This is a Google Maps widget for HADashboard.
 
-![HADashboard-widgets](https://github.com/tjntomas/HADashboard-widgets/blob/master/img/googlemapswidget.png?raw=true)
+![HADashboard-widgets](https://github.com/tjntomas/HADashboard-widgets/blob/master/img/googlemapwidget.png?raw=true)
 
 Features:
 * Displays the location of one or more tracker entities
@@ -15,8 +15,9 @@ Features:
 To use the widget, you need to:
 1. Copy the basegooglemaps folder to your custom_widgets folder
 2. Copy the googlemaps.yaml file to your custom_widgets folder
-3. Get a Google Maps API key from here (https://developers.google.com/maps/documentation/javascript/get-api-key). You need to register with a credit card to get a Google API key but the free usuage limits are huge.
-4. Define a widget:
+3. Copy the custom_css/googlemaps folder to your custom_css folder
+4. Get a Google Maps API key from here (https://developers.google.com/maps/documentation/javascript/get-api-key). You need to register with a credit card to get a Google API key but the free usuage limits are huge.
+5. Define a widget:
 ````yaml
 google_map:
   widget_type: googlemaps
@@ -27,6 +28,8 @@ google_map:
   pw: YOUR_HOME_ASSISTANT_API_KEY  # This is used to grab all the defined zones from Home Assistant's REST API.
   api_key: YOUR_GOOGLE_MAPS_API_KEY
   zoom: 16  # Initial zoom level.
+  latitude: xx.105331
+  longitude: xx.045402
 
 layout:
   - google_map(10x7)  # Or whatever size you want for your map.
