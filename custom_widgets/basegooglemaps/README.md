@@ -3,7 +3,7 @@
 
 This is a Google Maps widget for HADashboard.
 
-![HADashboard-widgets](https://github.com/tjntomas/HADashboard-widgets/blob/master/img/googlemapwidgets.png?raw=true)
+![HADashboard-widgets](https://github.com/tjntomas/HADashboard-widgets/blob/master/img/googlemapwidgets2.png?raw=true)
 
 Features:
 * Displays the location of one or more tracker entities
