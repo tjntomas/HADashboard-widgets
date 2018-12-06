@@ -1,15 +1,112 @@
+/*
+a[href^="http://maps.google.com/maps"]{display:none !important}
+a[href^="https://maps.google.com/maps"]{display:none !important}
+
+.gm-style-cc { display:none; }
+.gmnoprint a { display:none; }
+.gmnoprint span { display:none; }
+.gmnoprint div { display:none; }
+*/
+
+
 .widget-basegooglemaps-{{id}} .map_canvas{
     position: relative;
     display: block;
      width: 100%; 
-    height: 100%;
     border-radius: 10px;
-    background:none transparent;
+    top: 0px;
+    
+    background-color: rgba(30,30,30,0.45 );
+ }
+
+ .widget-basegooglemaps-{{id}} .frame {
+     height: 100%;
+ }
+ 
+
+ .widget-basegooglemaps-{{id}} .image {
+     position: relative;
+     top: 12px;
+     opacity: 0.7;
+     pointer-events: none;
+ }
+ .widget-basegooglemaps-{{id}} .title {
+     position: relative;
+     width: 100%;
+     top: 4px;
+     color: rgba(200,200,200,0.7);
+     pointer-events: none;
+ }
+
+[tick] {
+     position: relative;
+     text-align: right;
+     color: rgba(0,0,0,0);
+     margin-right: 10px;
+    bottom: 10px;
+     font-size: 30px;
+     pointer-events: none;
+ }
+
+[itm_frame] {
+     position: relative;
+     height: 100px;
+     width: 130px;
+     top: 5px;
+     background: rgba(40,40,20,0.5);
+
+     margin-right: 8px;
+     border-radius: 10px;
+     z-index: 100;
+ }
+
+ .widget-basegooglemaps-{{id}} .info_frame {
+    position: relative;
+    height: 100px;
+    width: 200px;
+    top: 5px; 
+    background: rgba(40,40,20,0.5);
+    margin-right: 8px;
+    border-radius: 10px;
+    color: rgba(200,200,200,0.7);
+ }
+
+ .widget-basegooglemaps-{{id}} .distance_title {
+    position: relative;
+    top: 5px; 
+    color: rgba(200,200,200,0.7);
+    font-weight: 400;
+ }
+ .widget-basegooglemaps-{{id}} .distance {
+    position: relative;
+    top: 20px; 
+    color: rgba(200,200,200,0.7);
+    font-size: 20px;
+ }
+
+ .widget-basegooglemaps-{{id}} .closest {
+    position: relative;
+    top: 20px; 
+    color: rgba(200,200,200,0.7);
+    font-size: 20px;
+ }
+ .widget-basegooglemaps-{{id}} .top{
+    position: relative;
+    display: block;
+    top: 0px;
+    left: 0px;
+    height: 111px;
+    width: 100%; 
+    border-radius: 10px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: -webkit-flex;
+    display: flex;
+    flex-wrap: wrap;
  }
  
 .widget-basegooglemaps-{{id}} .body {
-    width: 100%;
-    height: 100%;
+
     border: none;
 	background:none transparent;
 }

@@ -7,13 +7,58 @@ function basegooglemaps(widget_id, url, skin, parameters)
     self.OnStateAvailable = OnStateAvailable
     self.OnStateUpdate = OnStateUpdate
     var monitored_entities = []
+    self.element = element
     for (device_tracker in parameters.entities){
         monitored_entities.push({"entity":  parameters.entities[device_tracker], "initial": self.OnStateAvailable, "update": self.OnStateUpdate})
     }
    
     self.api_loaded = false
-    WidgetBase.call(self, widget_id, url, skin, parameters, monitored_entities, callbacks)  
+    fh = element(self,"frame").clientHeight
+    th = element(self,"top").clientHeight
+    element(self, "map_canvas").style.height =  (fh - th ) + "px"
+    self.top = element(self,"top")
+    for ( event of ["touchstart", "click"] ) {
+        element(self, "top").addEventListener(event, handle_clicks.bind(self), false)
+    }
+
+    WidgetBase.call(self, widget_id, url, skin, parameters, monitored_entities, callbacks) 
+
+
+    function handle_clicks(event){
+        target = String((event.target || event.srcElement).id)
+        if(target.indexOf("tracker.") == 7){
+        for ( tracker of this.trackers){
+            element(this, tracker).style.color = "rgba(0,0,0,0)"
+        }
+        self.current_tracker = target
+        element(this, target).style.color = "rgba(0,255,0,0.8)"
+        OnStateUpdate(self, self.entity_state[target])
+    }
+    }
+    function toRadians(degrees){
+        var pi = Math.PI;
+        return degrees * (pi/180);
+    }
+    function distance_lat_long(lat1,lon1,lat2,lon2){
+        var R = 6371000
+        var φ1 = toRadians(lat1)
+      
+        var φ2 = toRadians(lat2)
+
+        var Δφ = toRadians(lat2-lat1)
+
+        var Δλ = toRadians(lon2-lon1)
+
+        var a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
+                Math.cos(φ1) * Math.cos(φ2) *
+                Math.sin(Δλ/2) * Math.sin(Δλ/2)
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a))
     
+        var d = R * c
+
+        return d
+    }
+
     function OnStateAvailable(self, state){    
         // Grab the coordinates for later use.
         if ("latitude" in state.attributes){
@@ -22,28 +67,54 @@ function basegooglemaps(widget_id, url, skin, parameters)
             window.self = self
             // Load Google Maps API Asyncronously.
             if (!self.api_loaded){
-                loadScript('http://maps.googleapis.com/maps/api/js?v=3&key=' + self.parameters.api_key + '&callback=initialize',
-                function(){log('done')})
+                loadScript('http://maps.googleapis.com/maps/api/js?v=3&key=' + self.parameters.api_key + '&callback=initialize')
                 self.api_loaded = true
             }
         }
     }
     
-    function loadScript(src,callback){
+    function loadScript(src){
         var script = document.createElement("script")
         script.type = "text/javascript"
-        if(callback)script.onload=callback
         document.getElementsByTagName("head")[0].appendChild(script)
         script.src = src
     }
 
     function OnStateUpdate(self, state){
-      var center = new google.maps.LatLng(state.attributes.latitude, state.attributes.longitude)
-      self.map.panTo(center)
-      self.markers[state.entity_id].setPosition(new google.maps.LatLng(state.attributes.latitude, state.attributes.longitude) )
-    }
-
-    function log(str){
+        if (self.current_tracker  == state.entity_id){
+            var center = new google.maps.LatLng(state.attributes.latitude, state.attributes.longitude)
+            self.map.panTo(center)
+            self.markers[state.entity_id].setPosition(new google.maps.LatLng(state.attributes.latitude, state.attributes.longitude) )
+            distance = distance_lat_long(self.parameters.latitude, 
+                self.parameters.longitude,state.attributes.latitude, state.attributes.longitude)
+            value = parseFloat(distance.toFixed(0))
+            suffix = "m"
+            if (value > 1000000){
+                suffix = "miles"
+                value = parseFloat(value/1000000).toFixed(1)
+            }
+            if (value > 1000){
+                suffix = "km"
+                value = parseFloat(value/1000).toFixed(1)
+            }
+            distances = []
+            var z = 0
+            zones = {}
+            for (zone in self.zone_coords){
+        
+                z_lat = parseFloat(self.zone_coords[zone][0])
+                z_long = parseFloat(self.zone_coords[zone][1])
+                var dist = distance_lat_long(z_lat, z_long, parseFloat(state.attributes.latitude), parseFloat(state.attributes.longitude))
+            
+                distances.push(dist)
+                zones[String(distances[z].toFixed(10))] = self.zone_coords[zone][2]
+                z = z + 1
+            }
+            var min = Math.min.apply(null, distances).toFixed(10)
+            
+            element(self, "closest").innerHTML = zones[String(min)]['attributes']['friendly_name']
+            element(self, "distance").innerHTML = value +  " " + suffix
+        }
     }
 
     function sleep(ms){
@@ -51,143 +122,85 @@ function basegooglemaps(widget_id, url, skin, parameters)
     }
 
     function element(self,el){
-        return document.getElementById(document.widget_id).getElementsByClassName(el)[0]
+        return document.getElementById(self.widget_id).getElementsByClassName(el)[0]
     }
 }
 
 function initialize() {
-  
-    var localroadcolor = '#775533'
-    var transitcolor = "#654333"
-    var roadcolor = '#775500'
-    var placetextcolor = '#dddddd'
-    var label_color = "#999999"
-    var water_color ="#444499"
-    var park_color = "#113311"
-    var fillColors = 	["rgba(20,20,240,1)", "rgba(220,70,220,1)",  "rgba(220,20,20,1)",
-                       "rgba(220,220,40,1)","rgba(40,220,220,1)", "rgba(220,70,120,1)", "rgba(220,100,20,1)",
-                       "rgba(250,160,40,1)","rgba(60,150,90,1)", "rgba(220,200,20,1)", "rgba(100,100,220,1)", "rgba(40,220,40,1)"]
-    
-  var mapOptions = {zoom: window.self.parameters.zoom,disableDefaultUI: true,backgroundColor: 'hsla(0, 0, 0, 0)',center: new google.maps.LatLng(
-    window.self.lat , window.self.long ),
-        styles: [{'featureType':'all','elementType':'all','stylers':[{'visibility':'on'}]},
-        {'featureType':'all','elementType':'labels.text.fill','stylers':[{'saturation':46},{'color':'#dddccc'},{'lightness':3}]},
-        {'featureType':'all','elementType':'labels.text.stroke','stylers':[{'visibility':'on'},{'color':'#444444'},{'lightness':2}]},
-        {'featureType':'all','elementType':'labels.icon','stylers':[{'visibility':'on'}]},
-        {'featureType':'administrative','elementType':'all','stylers':[{'visibility':'off'}]},
-        {'featureType':'administrative','elementType':'geometry.fill','stylers':[{'color':placetextcolor},{'lightness':20}]},
-        {'featureType':'administrative','elementType':'geometry.stroke','stylers':[{'visibility':'on'},{'color':'#ff0000'},{'lightness':17},{'weight':0.2}]},
-        {'featureType':'landscape','elementType':'all','stylers':[{'visibility':'off'}]},
-        {'featureType':'landscape','elementType':'geometry','stylers':[{'color':'#0000ff'},{'lightness':20}]},
-        {'featureType':'poi','elementType':'all','stylers':[{'visibility':'on'}]},
-        {'featureType':'poi','elementType':'geometry','stylers':[{'color': park_color},{'lightness':4}]},
-        {'featureType':'road.highway','elementType':'geometry.fill','stylers':[{'color':'#664411'},{'lightness':17}]},
-        {'featureType':'road.highway','elementType':'geometry.stroke','stylers':[{'color':label_color},{'lightness':29},{'weight':0.2},{'visibility':'on'}]},
-        {'featureType':'road.highway','elementType':'labels.text.fill','stylers':[{'color':label_color}]},
-        {'featureType':'road.highway','elementType':'labels.text.stroke','stylers':[{'visibility':'off'}]},
-        {'featureType':'road.highway.controlled_access','elementType':'geometry.fill','stylers':[{'visibility':'on'},{'color':roadcolor}]},
-        {'featureType':'road.highway.controlled_access','elementType':'geometry.stroke','stylers':[{'visibility':'on'}]},
-        {'featureType':'road.arterial','elementType':'geometry','stylers':[{'color':roadcolor},{'lightness':18}]},
-        {'featureType':'road.arterial','elementType':'geometry.fill','stylers':[{'color':roadcolor}]},
-        {'featureType':'road.arterial','elementType':'geometry.stroke','stylers':[{'color':roadcolor}]},
-        {'featureType':'road.arterial','elementType':'labels.text','stylers':[{'color':roadcolor}]},
-        {'featureType':'road.arterial','elementType':'labels.text.fill','stylers':[{'visibility':'on'},{'color':label_color}]},
-        {'featureType':'road.arterial','elementType':'labels.text.stroke','stylers':[{'visibility':'on'}]},
-        {'featureType':'road.local','elementType':'geometry','stylers':[{'color':localroadcolor},{'lightness':16}]},
-        {'featureType':'road.local','elementType':'geometry.fill','stylers':[{'color':localroadcolor}]},
-        {'featureType':'road.local','elementType':'geometry.stroke','stylers':[{'visibility':'off'}]},
-        {'featureType':'road.local','elementType':'labels.text','stylers':[{'color':localroadcolor}]},
-        {'featureType':'road.local','elementType':'labels.text.fill','stylers':[{'visibility':'on'},{'color':label_color}]},
-        {'featureType':'transit','elementType':'all','stylers':[{'visibility':'on'}]},
-        {'featureType':'water','elementType':'all','stylers':[{'visibility':'on'}]},
-        {'featureType':'water','elementType':'geometry','stylers':[{'color':water_color},{'lightness':6}]},
-        {'featureType':'transit','elementType':'geometry','stylers':[{'lightness':19},{'color': transitcolor},{'weight':'3.00'},{'visibility':'on'}]},
-        {'featureType':'transit','elementType':'labels','stylers':[{'visibility':'on'}]},
-        {'featureType':'transit.station','elementType':'all','stylers':[{'visibility':'on'}]}
-        ]};
+    self = window.self
+    Styles(self)
+
+    var INFO_FRAME = `<div class="info_frame">
+                        <b class="distance_title">Distance from home</b><div id="distance" class="distance">55 meter</div>
+                      </div>`
+    var CLOSEST_FRAME = `<div class="info_frame">
+                      <b class="distance_title">Closest Zone</b><div id="closest" class="closest">Hemma</div>
+                    </div>`
+       
+    var mapOptions = {zoom: self.parameters.zoom, disableDefaultUI: true,backgroundColor: 'hsla(0, 0, 0, 0)',center: new google.maps.LatLng(
+        self.lat , self.long),
+        styles: self.styles['default']};
 
     map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
-    window.self.map =  map
-    window.self.markers = {}
+    self.map =  map
+    DrawZones()
+    self.markers = {}
     marker_colors = ['orange', 'green', 'blue', 'yellow', 'red']
+
     index = 0
-    for (tracker in window.self.entity_state){
+    self.trackers = []
 
-        if ( "latitude" in window.self.entity_state[tracker].attributes)
+   
+
+    for (tracker in self.entity_state){
+
+        if ( "latitude" in self.entity_state[tracker].attributes)
         {
-            console.log(window.self.entity_state[tracker])
-
-            if ("entity_picture" in window.self.entity_state[tracker].attributes)
-            {
+            lat = self.entity_state[tracker].attributes.latitude
+            long = self.entity_state[tracker].attributes.longitude
+           
+            if ("entity_picture" in self.entity_state[tracker].attributes){
                 var markerIcon = {
-                    url: window.self.parameters.base_url + window.self.entity_state[tracker].attributes.entity_picture,
+                    url: self.parameters.base_url + self.entity_state[tracker].attributes.entity_picture,
                     scaledSize: new google.maps.Size(40, 40)
                 }
-                lat = window.self.entity_state[tracker].attributes.latitude
-                long = window.self.entity_state[tracker].attributes.longitude
-                window.self.markers[window.self.entity_state[tracker].entity_id]  = new google.maps.Marker({
+
+                self.markers[self.entity_state[tracker].entity_id]  = new google.maps.Marker({
                     position: new google.maps.LatLng(lat,long), map: map,
                     icon: markerIcon})
+
+                AddTracker(self.parameters.base_url + self.entity_state[tracker].attributes.entity_picture)  
             }
-            else
-            {
+            else{
                 markerIcon = {
                     url: 'http://maps.google.com/mapfiles/ms/icons/' + marker_colors[index] + '.png',
-                    scaledSize: new google.maps.Size(40, 40)
+                    scaledSize: new google.maps.Size(70, 70)
                 } 
-                lat = window.self.entity_state[tracker].attributes.latitude
-                long = window.self.entity_state[tracker].attributes.longitude
-                window.self.markers[window.self.entity_state[tracker].entity_id] = new google.maps.Marker({
+                self.markers[self.entity_state[tracker].entity_id] = new google.maps.Marker({
                     position: new google.maps.LatLng(lat,long), map: map,
                     icon: markerIcon,
                     label: {
-                        text: window.self.entity_state[tracker].attributes.friendly_name,
-                        color: "#aaaaaa",
-                        fontSize: "10px",
+                        text: self.entity_state[tracker].attributes.friendly_name,
+                        color: "#00ff00",
+                        fontSize: "14px",
                         fontWeight: "bold"
                     }})
+                AddTracker('/custom_css/googlemaps/tracker.png')
             }
         
             index = index + 1
-            if (index > 4) { index  = 0 }
+            if (index > Object.keys(marker_colors).length - 1) { index = 0 }
         }
     }
-
-    url=  window.self.parameters.base_url + "/api/states" 
-    var xhr = new XMLHttpRequest()
-    xhr.open("GET", url, false)
-    xhr.setRequestHeader("X-HA-access", window.self.parameters.pw)
-    xhr.setRequestHeader("Content-Type", "application/json")
-    xhr.send()
-    entities = JSON.parse(xhr.response)
-    ci = 0
-    sw = 0
-    colorIndex = 0
-    n = 0
-    cords = []
-    fill_opacity = 0.4
-    for(key in entities){
-        if(entities[key]["entity_id"].slice(0,5) == "zone." )
-        {
-            longitude = entities[key]["attributes"]["longitude"]
-            latitude = entities[key]["attributes"]["latitude"]
-            cords[n] = [ latitude,longitude]
-            radius = entities[key]["attributes"]["radius"]
-            colorIndex = colorIndex + 1
-            if(colorIndex > 9){colorIndex = 0}
-            ci = colorIndex
-            var zoneCircle = new google.maps.Circle({
-                strokeColor: "rgba(220,0,0,0.7)",
-                strokeOpacity: 0.6,
-                strokeWeight: 0,
-                fillColor: fillColors[ci],
-                fillOpacity: fill_opacity,
-                map: map,
-                center: {lat:  latitude , lng:  longitude },
-                radius: radius
-            })
-            n = n + 1
-        }
-    }
+    info_frame = document.createElement("div") 
+    self.element(self,"top").appendChild(info_frame)
+    info_frame.outerHTML = INFO_FRAME
+    closest_frame = document.createElement("div") 
+    self.element(self,"top").appendChild(closest_frame)
+    closest_frame.outerHTML = CLOSEST_FRAME
+    self.current_tracker = self.trackers[0]
+    self.element(self, self.trackers[0]).style.color = "rgba(0,255,0,0.8)"
+    self.OnStateUpdate(self, self.entity_state[self.trackers[0]] )
+       
 }
    
