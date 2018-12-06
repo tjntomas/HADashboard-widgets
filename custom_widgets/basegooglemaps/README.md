@@ -5,7 +5,7 @@ This is a Google Maps widget for HADashboard.
 
 ![HADashboard-widgets](https://github.com/tjntomas/HADashboard-widgets/blob/master/img/googlemapwidgets2.png?raw=true)
 
-Features:
+## Features:
 * Displays the location of one or more tracker entities
 * Grabs all defined zones from Home Assistant and draws them with the corresponding radius on the map
 * Make "Tracker Icons" for each provided device tracker entity that can be selected as the "active" tracker
@@ -14,7 +14,7 @@ Features:
 * Zoom and scroll just like any google maps
 * If your device tracker moves, the map will update the location
 
-To use the widget, you need to:
+## To use the widget, you need to:
 1. Copy the basegooglemaps folder to your custom_widgets folder
 2. Copy the googlemaps.yaml file to your custom_widgets folder
 3. Copy the custom_css/googlemaps folder to your custom_css folder
@@ -47,7 +47,7 @@ That's it!
 
 I will be adding more options to customize the map later. If you want to change the appearance now, you need to edit the mapOptions section of the basegooglemaps.js file and the basegooglemaps.css file.
 
-# A little bit of help regarding the folder structure
+## A little bit of help regarding the folder structure
 this what your folder structure inside you appdaemon conf folder should look like:
 ````yaml
 conf
@@ -63,14 +63,14 @@ conf
      tracker.png
 ````
   
- # Controls
+ ## Controls
  All the normal Google Maps controls are available, including Street View.
  
  ![HADashboard-widgets](https://github.com/tjntomas/HADashboard-widgets/blob/master/img/googlestreetview.png?raw=true?raw=true)
 
 
 
-# Style examples from [Snazzy Maps](http://snazzymaps.com)
+## Style examples from [Snazzy Maps](http://snazzymaps.com)
 
 ![HADashboard-widgets](https://github.com/tjntomas/HADashboard-widgets/blob/master/img/dark_map_style.png?raw=true)
 To apply this style:
@@ -84,7 +84,7 @@ To apply this style:
   template: topaco
   ````
   
-  # Styling
+## Styling
 The style for the maps are located in the custom_css folder in the file styles.js.
 You can copy a style from snazzymaps.com by clicking on a map that you like and then click on "expand code" at the bottom left of the map page and then copy the resulting JAVASCRIPT STYLE ARRAY, including the outer [] brackets. In the Styles function in the styles.js file, add:
 ````
@@ -139,5 +139,5 @@ Then edit your widget file and change the line
   
 I will add the options to store styles in a more convenient way in separarate yaml files later.
 
-# Development
+## Development
 I have written a time travel feature that makes the map travel through time. I am currently adding some interpolations to smooth over gaps in the tracker data. Once testing is completed, this feature will be added. If you feel like testing it, send me a message and I will create a test branch.
