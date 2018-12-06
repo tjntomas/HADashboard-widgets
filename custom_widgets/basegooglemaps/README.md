@@ -108,7 +108,7 @@ self.styles['topaco'] = [
                     "color": "#d59563"
                 }
             ]
-        },
+        }]
 ````
 Then edit your widget file and change the line
 ````yaml
