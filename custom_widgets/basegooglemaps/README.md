@@ -1,8 +1,6 @@
 
 # A Google Maps widget for HADashboard
 
-This is a Google Maps widget for HADashboard.
-
 ![HADashboard-widgets](https://github.com/tjntomas/HADashboard-widgets/blob/master/img/googlemapwidgets2.png?raw=true)
 
 ## Features
