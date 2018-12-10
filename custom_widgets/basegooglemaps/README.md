@@ -11,6 +11,7 @@
 * If an entity picture is defined for a device tracker, the image is used, if not, the standard google maps icon is used.
 * Zoom and scroll just like any google maps
 * If your device tracker moves, the map will update the location
+* The "Time Travel" button will make the map travel thought the last 24 hours for the selected tracker.
 
 ### To use the widget, you need to:
 1. Copy the basegooglemaps folder to your custom_widgets folder
