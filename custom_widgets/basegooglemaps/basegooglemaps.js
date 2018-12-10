@@ -11,12 +11,10 @@ function basegooglemaps(widget_id, url, skin, parameters)
     self.api_loaded = false
     self.travelling = false
  
-    self.HISTORY_API_URL = "/api/history/period/"
-    self.END_TIME_URL = "?end_time="
-    self.ENTITY_FILTER_URL = "&filter_entity_id="
-    self.TOKEN = self.parameters.token
     self.BASE_URL =  self.parameters.base_url.split("//")[1]
-  
+    self.HISTORY_API_URL = "/api/history/period"
+    self.END_TIME_URL = "?end_time="
+    self.ENTITY_FILTER_URL = "?filter_entity_id="
     set_dimension(self)
     setup_events(self)
 
@@ -250,53 +248,17 @@ function basegooglemaps(widget_id, url, skin, parameters)
     }
 
     async function get_history(self, entity, start_time,end_time, done){
-        self.WEBSOCKET_URL = "ws://" + self.BASE_URL + "/api/websocket"
-        request = self.HISTORY_API_URL + start_time +  self.END_TIME_URL + end_time + self.ENTITY_FILTER_URL + entity
-        self.auth_ok = false
-         self.ws = new WebSocket(self.WEBSOCKET_URL)
-         self.ws.addEventListener('open', function (event) {
-         })
-         self.ws.onmessage = function(event) {
-             var msg = JSON.parse(event.data)
-             if (!self.auth_ok ){
-                 switch (msg['type']){ 
-    
-                 case "auth_required":
-                     self.ws.send(JSON.stringify({"type": "auth","access_token": self.TOKEN}))
-                     break
-    
-                 case "auth_ok":
-                     self.auth_ok = true
-                     self.ws.send(JSON.stringify({"id": "123", "type": "auth/sign_path", "path": request,  "expires": 20}))
-                     break
-                 }
-             }
-             else{
-                 if (msg['id'] == 123){
-                     if (msg['success'] == true){
-                        path = msg['result']['path']    
-                        var url = self.parameters.base_url +   request// path.replace("?authSig", "&authSig")
-                        var xhr = new XMLHttpRequest() 
-                        xhr.open("GET", url, false)
-                        xhr.setRequestHeader("Content-Type", "application/json")
-                        xhr.setRequestHeader("X-HA-access", self.parameters.pw)
-                        xhr.send()
-                        result = JSON.parse(xhr.response)
-                        done(self,result[0])
-                        self.ws.close()
-                     }
-                 }
-             }
-         }
-         self.ws.onclose = function() {
-             console.log('Connection to Home Assistant closed')
-             self.auth_ok = false
-         }
-         self.ws.onopen = function() {
-             console.log('Connected to Home Assistant')
-         }
-    }
-}
+        request = self.HISTORY_API_URL  + self.ENTITY_FILTER_URL + entity
+        var url = self.parameters.base_url + request
+        console.log(url)
+        var xhr = new XMLHttpRequest() 
+        xhr.open("GET", url, false)
+        xhr.setRequestHeader("Content-Type", "application/json")
+        xhr.setRequestHeader("X-HA-access", self.parameters.pw)
+        xhr.send()
+        result = JSON.parse(xhr.response)
+        done(self,result[0])
+    }}
 
 function initialize() {
     self = window.self
