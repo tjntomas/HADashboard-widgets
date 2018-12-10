@@ -69,7 +69,7 @@ img {
 [itm_frame] {
      position: relative;
      height: 98%;
-     width: 115px;
+     width: 125px;
      top: 3px;
      background: var(--button_background);
     /* margin-right: var(--grid_margin);*/
