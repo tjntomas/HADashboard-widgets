@@ -1,5 +1,5 @@
 
-# An Influxdb Graph widget for HADashboard
+# An Influxdb graph widget for HADashboard
 
 This is a graph widget for HADashboard that uses influxdb as data source and plot.ly as the graph engine.
 
