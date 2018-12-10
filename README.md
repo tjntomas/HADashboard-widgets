@@ -1,4 +1,4 @@
-## Here are some custom widgets that I have made for HADashboard
+## Custom widgets for HADashboard
 
 
 ### [1. A Google Maps widget for HADashboard](https://github.com/tjntomas/HADashboard-widgets/tree/master/custom_widgets/basegooglemaps)
