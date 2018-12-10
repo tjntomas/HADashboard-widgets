@@ -3,7 +3,7 @@
 
 ### [1. A Google Maps widget for HADashboard](https://github.com/tjntomas/HADashboard-widgets/tree/master/custom_widgets/basegooglemaps)
 
-![HADashboard-widgets](https://github.com/tjntomas/HADashboard-widgets/blob/master/img/googlemapwidgets2.png?raw=true)
+![HADashboard-widgets](https://github.com/tjntomas/HADashboard-widgets/blob/master/img/googlemapswidget3.png?raw=true)
 
 ### [2. An Influxdb Graph widget for HADashboard](https://github.com/tjntomas/HADashboard-widgets/tree/master/custom_widgets/basegraph)
 
