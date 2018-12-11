@@ -36,7 +36,7 @@ graph_degrees_celsius_text: "Degrees Celsius"  # Adjust to your own language
 graph_degrees_fahrenheit_text: "Degrees Fahrenheit"  # Adjust to your own language
 graph_percent_text: "Percent"  # Adjust to your own language
 hagraph_path: http://url_to_your_home_assistant_instance:8123  # Adjust the port if needed.
-hagraph_token: YUOR_LONG_LIVED_ACCESS_TOKEN
+hagraph_token: YOUR_LONG_LIVED_ACCESS_TOKEN
 ````
 5. Define a widget:
 ````yaml
