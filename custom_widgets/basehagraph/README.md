@@ -48,7 +48,7 @@ mvp:
     units:  °C"   # The unit_of_measurement for your sensors/entities
     titles:
       - "Indoor temperature" # Title of the trace.
-    time: 24h   # Time interval to plot. you can combine w,h, d, and m as 2w1d3h20m (This would be 2 weeks, 1 day, 3 hours and 20 minutes)
+    time: 24h   # Time interval to plot. you can combine w, d, h and m as 2w1d3h20m (This would be 2 weeks, 1 day, 3 hours and 20 minutes)
     title: "Temperatures"  # Widget title
     fill: "tozeroy" # options are  "none" | "tozeroy" | "tozerox" | "tonexty" | "tonextx" | "toself" 
     colorIndex: 0   # A number between 0 and 11. 12 colors for the traces are predefined and the colorIndex defines 
