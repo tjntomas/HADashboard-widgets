@@ -82,3 +82,10 @@ cpu_temp_g:
 
 ## Interacting with the graph
 The graph library used in the widget is plotly, www.plot.ly, and there are a number of ways to interact with the graph. Zooming in to an area in the plot by marking an area in the same way as you would do to crop an image or zooming into a time interval, expanding the x and y axis, scrolling through time etc. Please visit www.plot.ly to find out more.
+
+## Troubleshooting
+if you add:
+````yaml
+log: 1
+```` 
+To your widget definition, the widget will write some debug info to the javascript console. The widget reads data from home Assistant through "signed paths". To get a signed path, the widget first opens a websocket connection by authenticating with a long-lived access token, and then requests a signed path to make a REST API GET request to read the history. You will have a few 401 and  of XMLHttpRequest errors if the widget fails to authenticate. Just open an issue and post the errors you get and I will look into it.
