@@ -88,4 +88,4 @@ if you add:
 ````yaml
 log: 1
 ```` 
-to your widget definition, the widget will write some debug info to the javascript console. The widget reads data from home Assistant through "signed paths". To get a signed path, the widget first opens a websocket connection by authenticating with a long-lived access token, and then requests a signed path to make a REST API GET request to read the history. You will have a few 401/403/405 and  XMLHttpRequest errors if the widget fails to authenticate. Just open an issue and post the errors you get and I will look into it.
+to your widget definition, the widget will write some debug info to the javascript console. The widget reads data from Home Assistant through "signed paths". To get a signed path, the widget first opens a websocket connection by authenticating with a long-lived access token, and then requests a signed path to make a REST API GET request to read the history. You will have a few 401/403/405 and  XMLHttpRequest errors if the widget fails to authenticate. Just open an issue and post the errors you get and I will look into it.
