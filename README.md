@@ -7,7 +7,7 @@
 
 ### [A graph widget for HADashboard that uses plot.ly as the graph engine](https://github.com/tjntomas/HADashboard-widgets/tree/master/custom_widgets/basehagraph)
 
-![HADashboard-widgets](https://github.com/tjntomas/HADashboard-widgets/blob/master/img/hagraph_widget.png?raw=true)
+![HADashboard-widgets](https://github.com/tjntomas/HADashboard-widgets/blob/master/img/graph.png?raw=true)
 
 
 ### [An Influxdb Graph widget for HADashboard](https://github.com/tjntomas/HADashboard-widgets/tree/master/custom_widgets/basegraph)
