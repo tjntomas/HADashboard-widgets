@@ -1,0 +1,13 @@
+.widget-basehagraph-{{id}} {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+
+}
+
+.widget-basehagraph-{{id}} .canvasclass {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+}

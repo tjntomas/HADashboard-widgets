@@ -1,0 +1,27 @@
+widget_type: basehagraph
+entity: {{entity}}
+fields: []
+enable: 0
+static_css:
+  widget_style: $graph_widget_style
+  graph_style: $graph_style
+css: 
+  background_style: $graph_style
+  legend_text_color: $graph_legend_text_color
+  grid_color: $graph_grid_color
+  ha_url: $hagraph_path
+  trace_colors: $graph_trace_colors
+  fill_colors: $graph_fill_colors
+  bar_colors: $graph_bar_colors
+  multi: $graph_bar_multi
+  token: $hagraph_token
+  degrees_celsius_text: $graph_degrees_celsius_text
+  degrees_fahrenheit_text: $graph_degrees_fahrenheit_text
+  percent_text: $graph_percent_text
+  title_color: $graph_title_color
+  x_axis_text_color: $graph_x_axis_text_color
+  y_axis_legend_color: $graph_y_axis_legend_color
+  y_axis_text_color: $graph_y_axis_text_color
+
+icons: []
+static_icons: []
