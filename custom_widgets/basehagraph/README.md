@@ -2,7 +2,7 @@
 
 This is a graph widget for HADashboard that uses plot.ly as the graph engine.
 
-![HADashboard-widgets](https://github.com/tjntomas/HADashboard-widgets/blob/master/img/hagraph_widget.png?raw=true)
+![HADashboard-widgets](https://github.com/tjntomas/HADashboard-widgets/blob/master/img/graph.png?raw=true)
 
 Features:
 * Add any number of traces to a graph
