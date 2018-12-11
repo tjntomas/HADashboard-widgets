@@ -140,7 +140,8 @@ I will add the options to store styles in a more convenient way in separarate ya
 
 ## Development
 ### Time travel
-I have written a time travel feature that makes the map travel through time. I am currently adding some interpolations to smooth over gaps in the tracker data. Once testing is completed, this feature will be added. If you feel like testing it, send me a message and I will create a test branch.
+~~I have written a time travel feature that makes the map travel through time. I am currently adding some interpolations to smooth over gaps in the tracker data. Once testing is completed, this feature will be added. If you feel like testing it, send me a message and I will create a test branch.~~
+This is now implemented.
 
 ### Easy configuration
 I am considering adding a feature to read all device trackers from Home Assistant, thus, no need to manually add the trackers to the widget definition.
