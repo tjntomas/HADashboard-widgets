@@ -56,7 +56,6 @@ mvp:
 ````
 
 ### A more complex graph showing 4 CPU temperatures
-This is the bottom left widget in the image above.
 ````yaml
 cpu_temp_g:
     widget_type: graph
