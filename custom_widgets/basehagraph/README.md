@@ -1,4 +1,4 @@
-# Ag raph widget for HADashboard
+# A graph widget for HADashboard
 
 This is a graph widget for HADashboard that uses plot.ly as the graph engine.
 
