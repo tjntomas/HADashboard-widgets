@@ -50,6 +50,7 @@ mvp:
       - "Indoor temperature" # Title of the trace.
     time: 24h   # Time interval to plot. you can combine w, d, h and m as 2w1d3h20m (This would be 2 weeks, 1 day, 3 hours and 20 minutes)
     title: "Temperatures"  # Widget title
+    value_in_legend: 1
     fill: "tozeroy" # options are  "none" | "tozeroy" | "tozerox" | "tonexty" | "tonextx" | "toself" 
     colorIndex: 0   # A number between 0 and 11. 12 colors for the traces are predefined and the colorIndex defines 
     # which is used for the first trace. If more than 12 traces/entities are specified, the colors are rotated. 
@@ -72,6 +73,7 @@ cpu_temp_g:
       - "UBUNTU 1"
     time: 1h  # Specify time interval for the traces.
     title: "CPU temperatures"  # The title for the widget.
+    value_in_legend: 1
     fill: "tozeroy"   # options are  "none" | "tozeroy" | "tozerox" | "tonexty" | "tonextx" | "toself" 
     max: 75                    # Optional. Set the max y-axis. Remove to fit the traces automatically.
     min: 30                    # Optional. Set the min y-axis. Remove to fit the traces automatically.
