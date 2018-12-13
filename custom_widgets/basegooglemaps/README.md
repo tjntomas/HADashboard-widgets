@@ -26,10 +26,10 @@ google_map:
   - device_tracker.your_device_tracker_entity_id
   - device_tracker.your_other_device_tracker_entity_id
   base_url: your_url_to_home_assistant:and_your_port   #  http://192.168.1.20:8123
-  api_key: YOUR_GOOGLE_MAPS_API_KEY
-  token: YOUR_LONG_LIVED_ACCESS_TOKEN
+  api_key: YOUR_GOOGLE_MAPS_API_KEY    # Need to be obtained from the Google API console.
+  token: YOUR_LONG_LIVED_ACCESS_TOKEN  # Can be created through the Home Assistant UI.
   zoom: 16  # Initial zoom level.
-  time: 24h # The amount of time to go back in time during time travel. You ca use use w,d,h,m ie.  
+  time: 24h # The amount of time to go back in time during time travel. You can combine w,d,h,m ie.  
 #              2w1d3h20m, 2 weeks, 1 day, 3 hours and 30 minutes.
   latitude: xx.105331  # Your home coordinates are used to calculate the distance from home.
   longitude: xx.045402
