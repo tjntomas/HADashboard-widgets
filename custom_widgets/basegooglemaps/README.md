@@ -30,7 +30,7 @@ google_map:
   token: YOUR_LONG_LIVED_ACCESS_TOKEN  # Can be created through the Home Assistant UI.
   zoom: 16  # Initial zoom level.
   time: 24h # The amount of time to go back in time during time travel. You can combine w,d,h,m ie.  
-#              2w1d3h20m, 2 weeks, 1 day, 3 hours and 30 minutes.
+#              2w1d3h20m which would mean 2 weeks, 1 day, 3 hours and 20 minutes.
   latitude: xx.105331  # Your home coordinates are used to calculate the distance from home.
   longitude: xx.045402
   template: default   # You can chose other styles or make your own, see the styling section below.
