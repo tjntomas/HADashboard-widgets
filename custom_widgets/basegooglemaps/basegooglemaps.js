@@ -15,8 +15,10 @@ function basegooglemaps(widget_id, url, skin, parameters)
     self.HISTORY_API_URL = "/api/history/period"
     self.END_TIME_URL = "?end_time="
     self.ENTITY_FILTER_URL = "?filter_entity_id="
+    self.index = 1
     set_dimension(self)
     setup_events(self)
+    self.init = false
 
     var callbacks = []
     var monitored_entities = []
@@ -40,6 +42,9 @@ function basegooglemaps(widget_id, url, skin, parameters)
     }
 
     function OnStateUpdate(self, state){
+        if (!self.init){
+            return 0
+        }
         if (self.current_tracker  == state.entity_id){
             var center = new google.maps.LatLng(state.attributes.latitude, state.attributes.longitude)
             self.map.panTo(center)
@@ -47,7 +52,6 @@ function basegooglemaps(widget_id, url, skin, parameters)
             distance = distance_lat_long(parseFloat(self.parameters.latitude), 
             parseFloat(self.parameters.longitude),parseFloat(state.attributes.latitude), parseFloat(state.attributes.longitude))
             value = parseFloat(distance.toFixed(0))
-            console.log(value)
             suffix = "m"
             if (value > 1000000){
                 suffix = "miles"
@@ -71,7 +75,7 @@ function basegooglemaps(widget_id, url, skin, parameters)
             }
             var min = Math.min.apply(null, distances).toFixed(10)
              self.long = state.attributes.longitude
-            self.lat = state.attributes.latitude
+             self.lat = state.attributes.latitude
             
             element(self, "closest").innerHTML = "<p>" + zones[String(min)]['attributes']['friendly_name'] + "</p>"
             element(self, "distance").innerHTML = value +  " " + suffix
@@ -109,16 +113,35 @@ function basegooglemaps(widget_id, url, skin, parameters)
     }
 
     async function time_travel(self){
-        get_history(self, self.current_tracker, "2018-12-07T00:30:00", "2018-12-07T20:30:00", travel)   
+
+        var HISTORY_API_URL = "/api/history/period/"
+        var start_time = GetTimeDiff(self.parameters.time)
+
+        var request = HISTORY_API_URL + start_time 
+        
+        get_signed_path(self, request, travel)   
     }
 
-    async function travel(self, result){
+    async function travel(self, path){
+        self.current_tracker
+        var ENTITY_FILTER_URL = "&filter_entity_id="
+        BASE_URL = self.parameters.base_url.split("://") [1]
+        var filter =  ENTITY_FILTER_URL + self.current_tracker
+        var url = "http://" + BASE_URL + path + filter
+        var xhr = new XMLHttpRequest() 
+        xhr.open("GET", url, false)
+        xhr.send()
+        var res = JSON.parse(xhr.response)
+        result = res[0]
+        console.log(result)
+        if (res.length == 0){
+            return 0
+        }
         var org_zoom = self.map.getZoom()
         self.travel = "off"
         self.speed = 400
         self.step = 500
         var last_time = new Date()
-
         for (var cord of result){
             if ("latitude" in cord['attributes']){
                 var last_lat = cord['attributes']['latitude']
@@ -247,18 +270,77 @@ function basegooglemaps(widget_id, url, skin, parameters)
         return document.getElementById(self.widget_id).getElementsByClassName(el)[0]
     }
 
-    async function get_history(self, entity, start_time,end_time, done){
-        request = self.HISTORY_API_URL  + self.ENTITY_FILTER_URL + entity
-        var url = self.parameters.base_url + request
-        console.log(url)
-        var xhr = new XMLHttpRequest() 
-        xhr.open("GET", url, false)
-        xhr.setRequestHeader("Content-Type", "application/json")
-        xhr.setRequestHeader("X-HA-access", self.parameters.pw)
-        xhr.send()
-        result = JSON.parse(xhr.response)
-        done(self,result[0])
-    }}
+    async function get_signed_path(self, path, callback){
+		BASE_URL = self.parameters.base_url.split("://") [1]
+		self.TOKEN = self.parameters.token
+        var websocket_url = "ws://" + BASE_URL + "/api/websocket"
+        var request = path
+
+		var auth_ok = false
+        var ws = new WebSocket(websocket_url)
+	
+		 ws.onmessage = function(event) {
+             var msg = JSON.parse(event.data)
+			 if (!auth_ok ){
+				 switch (msg['type']){ 
+	
+				 case "auth_required":
+					 ws.send(JSON.stringify({"type": "auth","access_token": self.TOKEN}))
+					 break
+	
+				 case "auth_ok":
+					 auth_ok = true
+					 ws.send(JSON.stringify({"id": self.index, "type": "auth/sign_path", "path": request,  "expires": 20}))
+					 ++self.index
+					 break
+				 }
+			 }
+			 else{
+				if (msg['success'] == true){
+					var path = msg['result']['path']
+					
+					callback(self, path)
+				}
+			 }
+		 }
+		 ws.onclose = function() {
+			 console.log('Connection to Home Assistant closed')
+			 self.auth_ok = false
+		 }
+		 ws.onopen = function() {
+			 console.log('Connected to Home Assistant')
+		 }
+    }
+    	// Calculate the time offset.
+	function GetTimeDiff(time){
+		var today = new Date()
+		var sec = 60000
+		var hour = sec * 60
+		var day = hour * 24
+	
+		var w = time.split("w")
+		if (w.length > 1){
+			time = w[1]
+			today.setTime(today.getTime() - day * w[0] * 7)
+		}
+		var d = time.split("d")
+		if (d.length>1){
+			time = d[1]
+			today.setTime(today.getTime() - day * d[0])
+		}
+		var h = time.split("h")
+		if (h.length>1){
+			time = h[1]
+			today.setTime(today.getTime() - hour * h[0])
+		}
+		var m = time.split("m")
+		if (m.length>1){
+			time = m[1]
+			today.setTime(today.getTime() - sec * m[0])
+		}
+		return today.toLocaleDateString() + "T" + today.toLocaleTimeString()
+	}
+}
 
 function initialize() {
     self = window.self
@@ -269,7 +351,7 @@ function initialize() {
                         <b class="distance_title">Distance from home</b><div id="distance" class="distance">55 meter</div>
                       </div>`
     var CLOSEST_FRAME = `<div class="info_frame">
-                      <b class="distance_title">Closest Zone</b><div id="closest" class="closest">Hemma</div>
+                      <b class="distance_title">Closest Zone</b><div id="closest" class="closest"></div>
                     </div>`
        
     var mapOptions = {zoom: self.parameters.zoom, disableDefaultUI: false,backgroundColor: 'hsla(0, 0, 0, 0)',center: new google.maps.LatLng(
@@ -279,7 +361,7 @@ function initialize() {
 
     map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
     self.map =  map
-    DrawZones()
+    DrawZones(self)
 
     if (self.api_init == true) {
         return 0
