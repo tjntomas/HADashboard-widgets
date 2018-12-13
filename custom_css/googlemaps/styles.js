@@ -1159,18 +1159,22 @@ function Styles(self){
     ]
 }
 
-function DrawZones()
+function DrawZones(self)
 {
+    get_signed_path(self, "/api/states", Zones)
+}
+
+async function Zones(self, path){
     var fillColors = 	["rgba(20,20,240,1)", "rgba(220,70,220,1)",  "rgba(220,20,20,1)",
                          "rgba(220,220,40,1)","rgba(40,220,220,1)", "rgba(220,70,120,1)", 
                          "rgba(220,100,20,1)","rgba(250,160,40,1)","rgba(60,150,90,1)", 
                          "rgba(220,200,20,1)", "rgba(100,100,220,1)", "rgba(40,220,40,1)"]
 
-    var url = self.parameters.base_url + "/api/states" 
+    
+    var url = self.parameters.base_url + path
+     
     var xhr = new XMLHttpRequest()
     xhr.open("GET", url, false)
-    xhr.setRequestHeader("X-HA-access", self.parameters.pw)
-    xhr.setRequestHeader("Content-Type", "application/json")
     xhr.send()
     var entities = JSON.parse(xhr.response)
     var ci = 0
@@ -1204,6 +1208,7 @@ function DrawZones()
             n = n + 1
         }
     }
+    self.init = true
 }
 
 function AddTracker(img){
@@ -1231,6 +1236,77 @@ function AddTracker(img){
     divider = document.createElement("div")
     divider.setAttribute("class", "divider")
     self.top.appendChild(divider)
+}
+
+async function get_signed_path(self, path, callback){
+    BASE_URL = self.parameters.base_url.split("://") [1]
+    self.TOKEN = self.parameters.token
+    var websocket_url = "ws://" + BASE_URL + "/api/websocket"
+    var request = path
+
+    var auth_ok = false
+    var ws = new WebSocket(websocket_url)
+
+     ws.onmessage = function(event) {
+         var msg = JSON.parse(event.data)
+         if (!auth_ok ){
+             switch (msg['type']){ 
+
+             case "auth_required":
+                 ws.send(JSON.stringify({"type": "auth","access_token": self.TOKEN}))
+                 break
+
+             case "auth_ok":
+                 auth_ok = true
+                 ws.send(JSON.stringify({"id": self.index, "type": "auth/sign_path", "path": request,  "expires": 20}))
+                 ++self.index
+                 break
+             }
+         }
+         else{
+            if (msg['success'] == true){
+                var path = msg['result']['path']
+                
+                callback(self, path)
+            }
+         }
+     }
+     ws.onclose = function() {
+         console.log('Connection to Home Assistant closed')
+         self.auth_ok = false
+     }
+     ws.onopen = function() {
+         console.log('Connected to Home Assistant')
+     }
+}
+    // Calculate the time offset.
+function GetTimeDiff(time){
+    var today = new Date()
+    var sec = 60000
+    var hour = sec * 60
+    var day = hour * 24
+
+    var w = time.split("w")
+    if (w.length > 1){
+        time = w[1]
+        today.setTime(today.getTime() - day * w[0] * 7)
+    }
+    var d = time.split("d")
+    if (d.length>1){
+        time = d[1]
+        today.setTime(today.getTime() - day * d[0])
+    }
+    var h = time.split("h")
+    if (h.length>1){
+        time = h[1]
+        today.setTime(today.getTime() - hour * h[0])
+    }
+    var m = time.split("m")
+    if (m.length>1){
+        time = m[1]
+        today.setTime(today.getTime() - sec * m[0])
+    }
+    return today.toLocaleDateString() + "T" + today.toLocaleTimeString()
 }
 
 
