@@ -26,9 +26,11 @@ google_map:
   - device_tracker.your_device_tracker_entity_id
   - device_tracker.your_other_device_tracker_entity_id
   base_url: your_url_to_home_assistant:and_your_port   #  http://192.168.1.20:8123
-  pw: YOUR_HOME_ASSISTANT_API_KEY  # This is used to grab all the defined zones from Home Assistant's REST API.
   api_key: YOUR_GOOGLE_MAPS_API_KEY
+  token: YOUR_LONG_LIVED_ACCESS_TOKEN
   zoom: 16  # Initial zoom level.
+  time: 24h # The amount of time to go back in time during time travel. You ca use use w,d,h,m ie.  
+#              2w1d3h20m, 2 weeks, 1 day, 3 hours and 30 minutes.
   latitude: xx.105331  # Your home coordinates are used to calculate the distance from home.
   longitude: xx.045402
   template: default   # You can chose other styles or make your own, see the styling section below.
@@ -60,6 +62,7 @@ conf
    googlemaps
      styles.js
      tracker.png
+     travel.png
 ````
   
  ## Controls
