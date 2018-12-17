@@ -29,6 +29,9 @@ my_light:
     widget_type: swipe_light
     entity: light.tv_lights
     title: "TV LED-strip"
+    
+layout:
+  - my_light(2x1)
  ````
  
  That's it!
