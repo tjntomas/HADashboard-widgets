@@ -1,6 +1,5 @@
 ### A color picker / slider for HADashboard
-![HADashboard-widgets](https://github.com/tjntomas/HADashboard-widgets/blob/master/img/color_picker1.png?raw=true)
-
+<img src="https://github.com/tjntomas/HADashboard-widgets/blob/master/img/color_picker1.png?raw=true" width="300px">
 Features:
 
 * Pops up a color wheel when the small colored button on the top right of the widget is clicked
