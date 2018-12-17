@@ -4,6 +4,7 @@ Features:
 
 * Pops up a color wheel when the small colored button on the top right of the widget is clicked
 * Control the brightness with the slider
+* Click the icon to toggle the light on/off
 
 To use it you need to:
 1. Copy the folder baseswipe_light to your custom_widgets folder
