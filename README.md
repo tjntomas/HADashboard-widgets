@@ -20,7 +20,7 @@
 
 ### [A Vacuum widget for Xiaomi Roborock S50 (Version 2). Might work for other vacuum cleaners also.](https://github.com/tjntomas/HADashboard-widgets/tree/master/custom_widgets/basevacuum)
 
-![HADashboard-widgets](https://github.com/tjntomas/HADashboard-widgets/blob/master/img/vacuum_widget.png?raw=true)
+<img src="https://github.com/tjntomas/HADashboard-widgets/blob/master/img/vacuum_widget.png" width="300px">
 
 
 
