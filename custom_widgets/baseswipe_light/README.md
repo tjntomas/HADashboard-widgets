@@ -28,6 +28,8 @@ my_light:
     widget_type: swipe_light
     entity: light.tv_lights
     title: "TV LED-strip"
+    icon_on: mdi-lightbulb
+    icon_off: mdi-lightbulb  #Change to whatever icon you like
     
 layout:
   - my_light(2x1)
