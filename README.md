@@ -14,7 +14,7 @@
 
 ![HADashboard-widgets](https://github.com/tjntomas/HADashboard-widgets/blob/master/img/influx_graph2.png?raw=true)
 
-### [A color picker / slider for HADashboard](https://github.com/tjntomas/HADashboard-widgets/tree/master/custom_widgets/baseswipelight)
+### [A color picker / slider for HADashboard](https://github.com/tjntomas/HADashboard-widgets/tree/master/custom_widgets/baseswipe_light)
 ![HADashboard-widgets](https://github.com/tjntomas/HADashboard-widgets/blob/master/img/color_picker1.png?raw=true)
 
 
