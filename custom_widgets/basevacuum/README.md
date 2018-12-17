@@ -1,4 +1,5 @@
-## A Vacuum widget for Xiaomi Roborock S50 (Version 2). Might work for other vacuum cleaners also.
+## A Vacuum widget for Xiaomi Roborock S50 (Version 2). 
+Might work for other vacuum cleaners also.(Confirmed working for Xiaomi version 1 also)
 
 ![HADashboard-widgets](https://github.com/tjntomas/HADashboard-widgets/blob/master/img/vacuum_widget.png?raw=true)
 
