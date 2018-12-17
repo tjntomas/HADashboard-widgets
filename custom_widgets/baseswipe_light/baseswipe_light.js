@@ -12,6 +12,7 @@ function baseswipe_light(widget_id, url, skin, parameters)
     var callbacks =
         [
             {"selector": '#' + widget_id + ' #cp', "action": "click", "callback": self.OnButtonClick},
+            {"selector": '#' + widget_id + ' #click_area', "action": "touchstart", "callback": self.OnClick},
             {"selector": '#' + widget_id + ' #click_area', "action": "click", "callback": self.OnClick}
         ]
 
@@ -55,6 +56,7 @@ function baseswipe_light(widget_id, url, skin, parameters)
      
     
     function OnClick(self){
+        console.log("toggle")
         args = self.parameters.toggle
         self.call_service(self, args)
     }
@@ -275,7 +277,7 @@ function baseswipe_light(widget_id, url, skin, parameters)
     }
 
     async function color_wheel_touch(event){
-	event.preventDefault()
+        event.preventDefault()
         var self = this
         if (event.type == "touchend"){
             var args = self.parameters.post_service_active
@@ -307,7 +309,7 @@ function baseswipe_light(widget_id, url, skin, parameters)
     }
 
     async function slider_touch(event){
-	event.preventDefault()
+        event.preventDefault()
         var self = this
         if (event.type == "touchstart"){
             self.mouse_state = "down"
