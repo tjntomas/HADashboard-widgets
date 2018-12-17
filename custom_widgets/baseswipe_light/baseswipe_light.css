@@ -111,7 +111,7 @@
 	position: absolute;
 	top: -0px;
 	left: 0px;
-	z-index: 1000;
+	z-index: 1010;
 
 	}
 	.widget-baseswipe_light-{{id}} .frame {
@@ -134,7 +134,7 @@
 	position: absolute;
 	width: 24px;
 	height: 24px;
-	left: 178px;
+	right: 10px;
 	top: 12px;
 	background: rgba(0,0,0,0);
 	-webkit-border-radius: 13px;
@@ -152,7 +152,7 @@
 	z-index: 100;
 	font-size: 30px;
 	background: rgba(0,0,0,0);
-	left: 180px;
+	right: 10px;
 	top: 7px;
 	color: rgba(100,100,100,1);
 	width: 50px;
