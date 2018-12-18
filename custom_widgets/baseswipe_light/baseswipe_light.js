@@ -34,9 +34,13 @@ function baseswipe_light(widget_id, url, skin, parameters)
     WidgetBase.call(self, widget_id, url, skin, parameters, monitored_entities, callbacks)
     wd = document.getElementById(widget_id)
     rect = wd.getBoundingClientRect()
+    pk = element(self, "picker").getBoundingClientRect()
+    console.log(pk)
     self.widget_height = parseInt(rect.height)
     element(self, "frame").style.height = self.widget_height-2 + "px"
     element(self, "frame").style.width = self.widget_height-2 + "px"
+    console.log(rect.width,element(self, "frame").style.width)
+    element(self, "w3-modal").style.left = (rect.width -self.widget_height) / 2 + "px"
 
     for ( event of ["touchmove", "touchstart", "touchend"] ){
         element(self, "w3-modal").addEventListener(event, color_wheel_touch.bind(self), false)

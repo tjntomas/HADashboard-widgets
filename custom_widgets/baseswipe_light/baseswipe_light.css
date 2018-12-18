@@ -109,10 +109,10 @@
 
   .widget-baseswipe_light-{{id}} .picker {
 	position: absolute;
-	top: -0px;
-	left: 0px;
+	top: 0px;
 	z-index: 1010;
-
+	left: 50%;
+	right: 50%;
 	}
 	.widget-baseswipe_light-{{id}} .frame {
 		position: absolute;
@@ -164,8 +164,9 @@
 	  z-index: 100;
 	  position: absolute;
 	  top: 0px;
-		left: 50px;
-		display: none;
+	  align-content: center;
+	  display: none;
+	  background: red;
 
 	pointer-events: all;
 	}
