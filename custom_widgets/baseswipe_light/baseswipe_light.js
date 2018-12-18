@@ -34,12 +34,9 @@ function baseswipe_light(widget_id, url, skin, parameters)
     WidgetBase.call(self, widget_id, url, skin, parameters, monitored_entities, callbacks)
     wd = document.getElementById(widget_id)
     rect = wd.getBoundingClientRect()
-    pk = element(self, "picker").getBoundingClientRect()
-    console.log(pk)
     self.widget_height = parseInt(rect.height)
     element(self, "frame").style.height = self.widget_height-2 + "px"
     element(self, "frame").style.width = self.widget_height-2 + "px"
-    console.log(rect.width,element(self, "frame").style.width)
     element(self, "w3-modal").style.left = (rect.width -self.widget_height) / 2 + "px"
 
     for ( event of ["touchmove", "touchstart", "touchend"] ){
@@ -60,8 +57,13 @@ function baseswipe_light(widget_id, url, skin, parameters)
      
     
     function OnClick(self){
-        console.log("toggle")
-        args = self.parameters.toggle
+       if (self.state == "on"){
+        var args = self.parameters.post_service_inactive
+       }else
+       {
+        var args = self.parameters.post_service_active
+       }
+      
         self.call_service(self, args)
     }
 
@@ -282,6 +284,7 @@ function baseswipe_light(widget_id, url, skin, parameters)
 
     async function color_wheel_touch(event){
         event.preventDefault()
+       
         var self = this
         if (event.type == "touchend"){
             var args = self.parameters.post_service_active
@@ -299,6 +302,7 @@ function baseswipe_light(widget_id, url, skin, parameters)
 
     async function color_wheel_click(event){
         var self = this
+        event.preventDefault()
         if (event.type == "mouseup"){
             var args = self.parameters.post_service_active
             args["rgb_color"] = parseInt(self.rgb[0]) + "," + parseInt(self.rgb[1]) + "," + parseInt(self.rgb[2])
@@ -314,6 +318,10 @@ function baseswipe_light(widget_id, url, skin, parameters)
 
     async function slider_touch(event){
         event.preventDefault()
+        if (event.target.id === "click_area"){
+            return 
+        }
+       
         var self = this
         if (event.type == "touchstart"){
             self.mouse_state = "down"
