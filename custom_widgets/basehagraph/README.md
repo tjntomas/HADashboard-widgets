@@ -42,7 +42,7 @@ hagraph_token: YOUR_LONG_LIVED_ACCESS_TOKEN
 ````yaml
 # Example of the most simple widget definition showing a single entity:
 mvp:
-    widget_type: graph
+    widget_type: hagraph
     entities:
       - sensor.indoor_temperature  # The entity_id to be plotted.
     units:  °C"   # The unit_of_measurement for your sensors/entities
@@ -59,7 +59,7 @@ mvp:
 ### A more complex graph showing 4 CPU temperatures
 ````yaml
 cpu_temp_g:
-    widget_type: graph
+    widget_type: hagraph
     entities:   # You can add any number of entities to the list.
       - sensor.pi3_cpu_temp
       - sensor.cpu_temp_pi2
