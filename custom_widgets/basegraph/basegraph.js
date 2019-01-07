@@ -3,18 +3,15 @@ function basegraph(widget_id, url, skin, parameters)
 	self = this
 	self.widget_id = widget_id
 	self.parameters = parameters
-
-		var callbacks = []
-     
 	self.OnStateAvailable = OnStateAvailable
 	self.OnStateUpdate = OnStateUpdate
 	self.states = {}
-
 	var l = Object.keys(self.parameters.entities).length
-	
+	var callbacks = []
 	var monitored_entities =  []
 
-	for (entity of self.parameters.entities){
+	for (entity of self.parameters.entities)
+	{
 		monitored_entities.push({"entity": entity, "initial": self.OnStateAvailable, "update": self.OnStateUpdate})
 	}
 	
@@ -65,7 +62,7 @@ function basegraph(widget_id, url, skin, parameters)
 	self.INFLUX_WHERE_PATTERN = "%22%20WHERE%20entity_id%20=%20%27"
 	self.INFLUX_TIME_PATTERN = "%27%20AND%20time%20%3E%20now()%20-"
 								
-    WidgetBase.call(self, widget_id, url, skin, parameters, monitored_entities, callbacks)  
+	WidgetBase.call(self, widget_id, url, skin, parameters, monitored_entities, callbacks) 
 
 	function OnStateUpdate(self, state){
 		// Log that new data has been received.
@@ -107,11 +104,18 @@ function basegraph(widget_id, url, skin, parameters)
 		{
 			x_grid_color = self.X_GRID_COLOR
 			y_grid_color = self.X_GRID_COLOR
+			show_grid = false
+			show_line = false
+		}
+		else
+		{
+			show_grid = false
+			show_line = true
 		}
 		var x_axis = {
-					showgrid: false,
+					showgrid: show_grid,
 					zeroline: true,
-					showline: true,
+					showline: show_line,
 					mirror: 'ticks',
 					gridcolor: x_grid_color,
 					gridwidth: 1,
@@ -182,16 +186,21 @@ function basegraph(widget_id, url, skin, parameters)
 
 		while ( i < (DataSeries.length/2) )
 		{
-			if ( "titles" in self.parameters ){
-				if ("value_in_legend" in self.parameters){
+			if ( "titles" in self.parameters )
+			{
+				if ("value_in_legend" in self.parameters)
+				{
 				var value = " " + parseFloat(DataSeries[i * 2 + 1].pop()).toFixed(1) + self.parameters.influxdb_units[i]
-				}else{
+				}
+				else
+				{
 					var value = ""}
 				var d_title =self.parameters.titles[i] + value
 				
 				colorIndex =  i + Settings(self,"colorIndex",0)
 			}
-			else{
+			else
+			{
 				colorIndex = Settings(self,'colorIndex',7)
 			}
 
@@ -245,7 +254,7 @@ function basegraph(widget_id, url, skin, parameters)
 				i = i + 1
 			}
 		}
-	
+
 		try {
 			Plotly.plot( GRAPH_CANVAS, traces,display, {displayModeBar: false})
 		}
@@ -256,6 +265,7 @@ function basegraph(widget_id, url, skin, parameters)
 		var TIME_DATA = '0'
 		var VALUE_DATA = '1'
 		var http = document.referrer.slice(7,10)
+		self.parameters.samples = Settings(self, "samples", 1)
 		// If the client request origins from the local network, use a local url to influxdb.
 		// The local url is defined in the skin in lack of a better place.
 		if (http == "192")
