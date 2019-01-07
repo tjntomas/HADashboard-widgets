@@ -12,8 +12,8 @@ function baseswipe_light(widget_id, url, skin, parameters)
     var callbacks =
         [
             {"selector": '#' + widget_id + ' #cp', "action": "click", "callback": self.OnButtonClick},
-            {"selector": '#' + widget_id + ' #click_area', "action": "touchstart", "callback": self.OnClick},
-            {"selector": '#' + widget_id + ' #click_area', "action": "click", "callback": self.OnClick}
+            {"selector": '#' + widget_id + ' #icon', "action": "touchstart", "callback": self.OnClick},
+            {"selector": '#' + widget_id + ' #icon', "action": "click", "callback": self.OnClick}
         ]
 
     self.OnStateAvailable = OnStateAvailable
@@ -34,7 +34,7 @@ function baseswipe_light(widget_id, url, skin, parameters)
     WidgetBase.call(self, widget_id, url, skin, parameters, monitored_entities, callbacks)
     wd = document.getElementById(widget_id)
     rect = wd.getBoundingClientRect()
-    self.widget_height = parseInt(rect.height)
+    self.widget_height = Math.min(parseInt(rect.height), parseInt(rect.width))
     element(self, "frame").style.height = self.widget_height-2 + "px"
     element(self, "frame").style.width = self.widget_height-2 + "px"
     element(self, "w3-modal").style.left = (rect.width -self.widget_height) / 2 + "px"

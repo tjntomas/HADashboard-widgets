@@ -21,13 +21,15 @@
 
 
 .widget-baseswipe_light-{{id}} .click_area {
-	position: absolute;
+	position: relative;
+	top: 24px;
 	width: 80%;
-	top: -42px;
 	left: 0px;
-	height: 35px;
+	height: 70%;
 	z-index: 10;
 	pointer-events: all;
+	background: red;
+	display: none;
 }
 .widget-baseswipe_light-{{id}} .swipezone{
 	position: absolute;
@@ -123,9 +125,9 @@
 		width: 98px; 
 		height: 98px;
 	
-		-webkit-border-radius: 59px;
-		-moz-border-radius: 59px;
-		border-radius: 59px;
+		-webkit-border-radius: 50%;
+		-moz-border-radius: 50%;
+		border-radius: 50%;
 		border-style: solid;
 		border-color: grey;
 		border-width: 3px;
@@ -154,11 +156,11 @@
 	z-index: 100;
 	font-size: 30px;
 	background: rgba(0,0,0,0);
-	right: 10px;
+	right: 3px;
 	top: 7px;
 	color: rgba(100,100,100,1);
-	width: 50px;
-	height: 40px;
+	width: 35px;
+	height: 30px;
 
   }
 
