@@ -348,15 +348,17 @@ function basehagraph(widget_id, url, skin, parameters)
 		BASE_URL = self.parameters.css.ha_url.split("://") [1]
 		BASE_SCHEME = self.parameters.css.ha_url.split("://") [0]
 		console.log("Scheme", BASE_SCHEME)
-		if (BASE_SCHEME === "https"){
-			self.scheme = "https"
+		if (BASE_SCHEME == "https"){
+			self.http_scheme = "https"
+			self.ws_scheme = "wss://"
 		}
 		else
 		{
-			self.scheme = "http"
+			self.http_scheme = "http"
+			self.ws_scheme = "ws://"
 		}
 		self.TOKEN = self.parameters.css.token
-		var websocket_url = "ws://" + BASE_URL + "/api/websocket"
+		var websocket_url = self.ws_scheme + BASE_URL + "/api/websocket"
 		var request = HISTORY_API_URL + start_time 
 		var filter =  ENTITY_FILTER_URL + entity
 		var auth_ok = false
@@ -381,7 +383,7 @@ function basehagraph(widget_id, url, skin, parameters)
 			 else{
 				if (msg['success'] == true){
 					var path = msg['result']['path']
-					var url = self.scheme + "://" + BASE_URL + path + filter
+					var url = self.http_scheme  + "://" + BASE_URL + path + filter
 					var xhr = new XMLHttpRequest() 
 					xhr.open("GET", url, false)
 					xhr.send()
