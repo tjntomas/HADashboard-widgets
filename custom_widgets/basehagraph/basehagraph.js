@@ -346,6 +346,15 @@ function basehagraph(widget_id, url, skin, parameters)
 		var END_TIME_URL = "&end_time="
 		var ENTITY_FILTER_URL = "&filter_entity_id="
 		BASE_URL = self.parameters.css.ha_url.split("://") [1]
+		BASE_SCHEME = self.parameters.css.ha_url.split("://") [0]
+		console.log("Scheme", BASE_SCHEME)
+		if (BASE_SCHEME === "https"){
+			self.scheme = "https"
+		}
+		else
+		{
+			self.scheme = "http"
+		}
 		self.TOKEN = self.parameters.css.token
 		var websocket_url = "ws://" + BASE_URL + "/api/websocket"
 		var request = HISTORY_API_URL + start_time 
@@ -372,7 +381,7 @@ function basehagraph(widget_id, url, skin, parameters)
 			 else{
 				if (msg['success'] == true){
 					var path = msg['result']['path']
-					var url = "http://" + BASE_URL + path + filter
+					var url = self.scheme + "://" + BASE_URL + path + filter
 					var xhr = new XMLHttpRequest() 
 					xhr.open("GET", url, false)
 					xhr.send()
