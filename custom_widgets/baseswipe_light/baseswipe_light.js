@@ -290,7 +290,11 @@ function baseswipe_light(widget_id, url, skin, parameters)
         var now = new Date().getTime()
         var timesince = now - self.last_tap
 
-        if((event.type == "touchstart" && timesince < 600) && (timesince > 0)){
+        if((event.type == "touchstart" && timesince < 300) && (timesince > 0)){
+          
+            self.modal.style.display ="none"
+            self.el.style.display = "block"
+           
             var args = self.parameters.post_service_active
             args["rgb_color"] = "255,255,255"
             self.rgb[0] = 255
@@ -314,7 +318,7 @@ function baseswipe_light(widget_id, url, skin, parameters)
                 self.redraw(event.changedTouches[0])
             }
         }
-        self.last_tap = new Date().getTime();
+        self.last_tap = new Date().getTime()
       
     }
 
@@ -335,6 +339,7 @@ function baseswipe_light(widget_id, url, skin, parameters)
         }
 
         if (event.type == "dblclick"){
+            console.log("Dubbelnisse")
            
             var args = self.parameters.post_service_active
             args["rgb_color"] = "255,255,255"
