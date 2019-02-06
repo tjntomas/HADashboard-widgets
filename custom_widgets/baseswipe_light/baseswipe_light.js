@@ -6,13 +6,15 @@ function baseswipe_light(widget_id, url, skin, parameters)
 
     self.parameters = parameters
 
+    self.last_tap = 0
+
     self.OnButtonClick = OnButtonClick
     self.OnClick = OnClick
 
     var callbacks =
         [
             {"selector": '#' + widget_id + ' #cp', "action": "click", "callback": self.OnButtonClick},
-            {"selector": '#' + widget_id + ' #icon', "action": "touchstart", "callback": self.OnClick},
+            
             {"selector": '#' + widget_id + ' #icon', "action": "click", "callback": self.OnClick}
         ]
 
@@ -47,7 +49,7 @@ function baseswipe_light(widget_id, url, skin, parameters)
         element(self, "swipezone").addEventListener(event, slider_touch.bind(self), false)
      }
 
-     for ( event of ["mousemove", "mouseup", "mousedown"] ){
+     for ( event of ["dblclick", "mousemove", "mouseup", "mousedown"] ){
         element(self, "w3-modal").addEventListener(event, color_wheel_click.bind(self), false)
      }
 
@@ -284,23 +286,40 @@ function baseswipe_light(widget_id, url, skin, parameters)
 
     async function color_wheel_touch(event){
         event.preventDefault()
-       
         var self = this
-        if (event.type == "touchend"){
+        var now = new Date().getTime()
+        var timesince = now - self.last_tap
+
+        if((event.type == "touchstart" && timesince < 600) && (timesince > 0)){
             var args = self.parameters.post_service_active
-            args["rgb_color"] = parseInt(self.rgb[0]) + "," + parseInt(self.rgb[1]) + "," + parseInt(self.rgb[2])
+            args["rgb_color"] = "255,255,255"
+            self.rgb[0] = 255
+            self.rgb[1] = 255
+            self.rgb[2] = 255
+            
             self.last_rgb_color = self.rgb
             self.call_service(self, args)
             restart_timer(self)
+        } 
+        else {
+            if (event.type == "touchend"){
+                var args = self.parameters.post_service_active
+                args["rgb_color"] = parseInt(self.rgb[0]) + "," + parseInt(self.rgb[1]) + "," + parseInt(self.rgb[2])
+                self.last_rgb_color = self.rgb
+                self.call_service(self, args)
+                restart_timer(self)
+            }
+            else
+            {
+                self.redraw(event.changedTouches[0])
+            }
         }
-        else
-        {
-            self.redraw(event.changedTouches[0])
-        }
+        self.last_tap = new Date().getTime();
       
     }
 
     async function color_wheel_click(event){
+
         var self = this
         event.preventDefault()
         if (event.type == "mouseup"){
@@ -314,9 +333,23 @@ function baseswipe_light(widget_id, url, skin, parameters)
         if (event.type == "mousedown"){
             restart_timer(self)
         }
+
+        if (event.type == "dblclick"){
+           
+            var args = self.parameters.post_service_active
+            args["rgb_color"] = "255,255,255"
+            self.rgb[0] = 255
+            self.rgb[1] = 255
+            self.rgb[2] = 255
+            
+            self.last_rgb_color = self.rgb
+            self.call_service(self, args)
+            restart_timer(self)
+        }
     }
 
     async function slider_touch(event){
+       
         event.preventDefault()
         if (event.target.id === "click_area"){
             return 
@@ -326,6 +359,7 @@ function baseswipe_light(widget_id, url, skin, parameters)
         if (event.type == "touchstart"){
             self.mouse_state = "down"
         }
+
         if (event.type == "touchend"){
             self.mouse_state = "up"
             var args = self.parameters.post_service_active
@@ -344,6 +378,7 @@ function baseswipe_light(widget_id, url, skin, parameters)
     }
 
     async function slider_click(event){
+ 
         var self = this
         if (event.type == "mousedown"){
             self.mouse_state = "down"
