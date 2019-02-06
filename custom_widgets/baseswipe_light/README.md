@@ -5,7 +5,7 @@ Features:
 * Pops up a color wheel when the small colored button on the top right of the widget is clicked
 * Control the brightness with the slider
 * Click the icon to toggle the light on/off
-* Double click or double tap to set the color to white, e.g. rgb = 255,255,255
+* Double click or double tap on the color wheel to set the color to white, e.g. rgb = 255,255,255
 
 To use it you need to:
 1. Copy the folder baseswipe_light to your custom_widgets folder
