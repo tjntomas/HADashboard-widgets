@@ -7,6 +7,7 @@ Might work for other vacuum cleaners also.(Confirmed working for Xiaomi version 
 - Click in the middle of the vacuum cleaner to start/pause
 - Click on the dock image to return the vacuum cleaner to the dock
 - Click on one of the fan icons to set the fan speed
+- Click on the mop to set mop cleaning mode
 - Some basic info from the entity's attributes are displayed
 
 To use this widget you need to:
