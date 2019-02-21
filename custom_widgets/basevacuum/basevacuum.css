@@ -15,8 +15,8 @@
 .widget-basevacuum-{{id}} .button{
 	position: absolute;
 	background: none transparent;
-	left: 41%;
-	bottom: 49%;
+	left: 40%;
+	bottom: 47%;
 	width: 46px;
 	height: 46px;
 	border-radius: 23px;
@@ -33,6 +33,7 @@
 	left: 0px;
 	font-size: 10px;
 	font-weight: 500;
+
 	font-family: 'Helvetica Neue','Helvetica','Open Sans','Arial';
 }
 
@@ -48,10 +49,19 @@
 }
 .widget-basevacuum-{{id}} .robo_dock{
 	position: absolute;
-	width: 70px;
-	right: 25%;
-	top: 20%;
-	opacity: 0.9;
+	width: 50px;
+	right: 5px;
+	bottom: 90px; 
+	opacity: 1;
+	z-index: 1;
+}
+
+.widget-basevacuum-{{id}} .robo_fan_0{
+	position: absolute;
+	width: 20px;
+	right: 70px;
+	bottom: 100px;
+	opacity: 1;
 	z-index: 1;
 }
 .widget-basevacuum-{{id}} .robo_fan_1{

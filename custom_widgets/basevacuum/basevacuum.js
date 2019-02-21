@@ -9,8 +9,10 @@ function basevacuum(widget_id, url, skin, parameters)
     self.FanFourClick = FanFourClick
     self.DockClick = DockClick
     self.ButtonClick = ButtonClick
+    self.MopClick = MopClick
     var callbacks =
     [
+        {"selector": '#' + widget_id + ' #robo_fan_0', "action": "click", "callback": self.MopClick},
         {"selector": '#' + widget_id + ' #robo_fan_1', "action": "click", "callback": self.FanOneClick},
         {"selector": '#' + widget_id + ' #robo_fan_2', "action": "click", "callback": self.FanTwoClick},
         {"selector": '#' + widget_id + ' #robo_fan_3', "action": "click", "callback": self.FanThreeClick},
@@ -28,6 +30,7 @@ function basevacuum(widget_id, url, skin, parameters)
 
     WidgetBase.call(self, widget_id, url, skin, parameters, monitored_entities, callbacks)
     self.fan_speeds = [0,"Quiet", "Balanced", "Turbo", "Max"]
+    self.fan_speeds = [105,101, 102, 103, 104]
     self.img = element(self, "robo_img")
     self.angle = 0
     self.status = ""
@@ -53,6 +56,12 @@ function basevacuum(widget_id, url, skin, parameters)
         else{
             element(self,"robo_dock").style.filter =""
         }
+    }
+
+    function MopClick(self){
+        set_fan_speed(self,0)
+        reset_fans(self)
+        element(self,"robo_fan_0").style.filter =""
     }
     function FanOneClick(self){
         set_fan_speed(self,1)
@@ -88,12 +97,14 @@ function basevacuum(widget_id, url, skin, parameters)
         args["service"] = "vacuum/start"
         args["entity_id"] = self.parameters.entity
         self.call_service(self, args)
+        console.log(args)
     }
     function pause_cleaning(self){
         var args = {}
         args["service"] = "vacuum/pause"
         args["entity_id"] = self.parameters.entity
         self.call_service(self, args)
+        console.log(args)
     }
 
     function stop_cleaning(self){
@@ -109,7 +120,7 @@ function basevacuum(widget_id, url, skin, parameters)
         self.call_service(self, args)
     }
     function reset_fans(self){
-        var i = 1
+        var i = 0
         while ( i < 5){
             element(self,"robo_fan_" + i).style.filter = ""
              i =i + 1
@@ -147,7 +158,7 @@ function basevacuum(widget_id, url, skin, parameters)
 
     function set_view(self, state){
         status = state.attributes.status
-        var i = 1
+        var i = 0
         while (i < 5){
             if (state.attributes.fan_speed === self.fan_speeds[i]){
                 var fan_speed = i
@@ -155,6 +166,7 @@ function basevacuum(widget_id, url, skin, parameters)
 
             i = i +1
         }
+        console.log("Fans speed", state.attributes.fan_speed,fan_speed)
         reset_fans(self)
         element(self,"robo_fan_" + fan_speed).style.filter ="invert(100%)"
         element(self, "battery").style.color = self.status_color
