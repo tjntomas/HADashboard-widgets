@@ -427,6 +427,6 @@ function basehagraph(widget_id, url, skin, parameters)
 			time = m[1]
 			today.setTime(today.getTime() - sec * m[0])
 		}
-		return today.toLocaleDateString() + "T" + today.toLocaleTimeString()
+		return today.toLocaleDateString("sv-SE") + "T" + today.toLocaleTimeString()
 	}
 }
