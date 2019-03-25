@@ -1,0 +1,17 @@
+
+.widget-basemyframe-{{id}} .outer-frame {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    z-index: 1;
+    border: none;
+}
+
+.widget-basemyframe-{{id}} .scaled-frame {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
