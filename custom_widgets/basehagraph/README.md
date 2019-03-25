@@ -15,7 +15,7 @@ Features:
 * Hide/show the value for each trace next to the legend
 
 To use it, you need to:
-1. MAke sure you have configured the history component in Home Assistant https://www.home-assistant.io/components/history/
+1. Make sure you have configured the history component in Home Assistant https://www.home-assistant.io/components/history/
 2. Copy the basehagraph folder to your custom_widgets folder
 3. Copy the hagraph.yaml file to your custom_widgets folder
 4. Copy plotly-latest.min.js (from the custom_css folder)  to your custom_css folder
