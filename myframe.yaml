@@ -1,0 +1,9 @@
+widget_type: basemyframe
+fields:
+  frame_src: ""
+  frame_style: '{{frame_style}}'
+icons: []
+static_css:
+  widget_style: $iframe_widget_style
+css: []
+static_icons: []
