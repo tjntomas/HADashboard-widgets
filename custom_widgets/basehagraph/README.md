@@ -15,10 +15,11 @@ Features:
 * Hide/show the value for each trace next to the legend
 
 To use it, you need to:
-1. Copy the basehagraph folder to your custom_widgets folder
-2. Copy the hagraph.yaml file to your custom_widgets folder
-3. Copy plotly-latest.min.js (from the custom_css folder)  to your custom_css folder
-4. Add the following to your variables.yaml file in your custom_css folder for the skin you are using:
+1. MAke sure you have configured the history component in Home Assistant https://www.home-assistant.io/components/history/
+2. Copy the basehagraph folder to your custom_widgets folder
+3. Copy the hagraph.yaml file to your custom_widgets folder
+4. Copy plotly-latest.min.js (from the custom_css folder)  to your custom_css folder
+5. Add the following to your variables.yaml file in your custom_css folder for the skin you are using:
 ````yaml
 graph_style: "border-radius: 0px; background-color: rgba(30,30,30,0.45 );"  # Change to whichever css you like.
 graph_legend_text_color: "#888888"
