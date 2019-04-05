@@ -16,6 +16,8 @@ To use this widget you need to:
 - Create an folder named img in your /conf/custom_css folder
 - Copy the content of the custom_css/img to your /conf/custom_css/img folder
 
+The conf/custom_css and conf/custom_widgets folders might be in a different folder if you are using hassio. These should be subfolders of where the appdaemon.yaml file is located.
+
 Make sure you are logged in as the user running appdaemon while copying files and creating the folders or you might have to adjust the file and folder permissions later.
 
 In your dashboard file add:
