@@ -44,6 +44,12 @@ function basehagraph(widget_id, url, skin, parameters)
 	self.BAR_COLORS = css(self,"bar_colors", self.BAR_COLORS)
 	
 	self.HA_Data = HA_Data
+
+	self.TIME_ZONE = Settings(self, 'time_zone','Europe/Stockholm')
+	self.LOCALE = Settings(self, 'locale','sv')
+	console.log("time zone:", self.TIME_ZONE)
+	var now = new Date()
+	console.log("Local time is", now)
 	
 	self.PLOT_BG_COLOR = 'rgba(40,40,40,0)'
 	self.TRACE_NAME_COLOR = '#888888'
@@ -429,6 +435,7 @@ function basehagraph(widget_id, url, skin, parameters)
 			time = m[1]
 			today.setTime(today.getTime() - sec * m[0])
 		}
-		return today.toLocaleDateString("sv-SE") + "T" + today.toLocaleTimeString()
+		console.log(today.toLocaleDateString(self.LOCALE), today.toLocaleTimeString(self.LOCALE))
+		return today.toLocaleDateString(self.LOCALE) + "T" + today.toLocaleTimeString(self.LOCALE)
 	}
 }
