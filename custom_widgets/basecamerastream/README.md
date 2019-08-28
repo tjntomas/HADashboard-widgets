@@ -17,6 +17,6 @@ layout:
   
   The widget just sets the ````src```` of an ````img```` element to:
   ````javascript
-  base_url + "/api/camera_proxy_stream/" + name_of_entity + "?token=" + curent_camera_token
+  base_url + "/api/camera_proxy_stream/" + name_of_entity + "?token=" + current_camera_token
   ````
   and updates the token when it changes which happens roughly every 5 minutes.
