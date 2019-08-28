@@ -1,5 +1,10 @@
 ## Custom widgets for HADashboard
 
+### [A Camera Stream HADashboard](https://github.com/tjntomas/HADashboard-widgets/tree/master/custom_widgets/basecamerastream)
+
+A simple widget to display camera streams in HADashboard. It uses the access token to access the camera stream from the Home Assistant.
+
+
 
 ### [A Google Maps widget for HADashboard](https://github.com/tjntomas/HADashboard-widgets/tree/master/custom_widgets/basegooglemaps)
 
