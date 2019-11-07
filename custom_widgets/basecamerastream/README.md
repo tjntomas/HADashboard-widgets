@@ -24,7 +24,7 @@ my_camera:
   entity: camera.my_camera
   title: My Camera
   base_url: "http://my_home_assistant_ip:my_ha_port"  
-  # i.e. "https://my_duck_dns_domain.duckdns.org:8123" or "http://192.168.1.20:8123"
+  # e.g. "https://my_duck_dns_domain.duckdns.org:8123" or "http://192.168.1.20:8123"
   log: 1  # optional. Will print some logging info in the console for debugging purposes if set to 1.
   
 layout:
