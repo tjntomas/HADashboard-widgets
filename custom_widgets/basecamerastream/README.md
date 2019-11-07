@@ -36,3 +36,4 @@ layout:
   base_url + "/api/camera_proxy_stream/" + name_of_entity + "?token=" + current_camera_token
   ````
   and updates the token when it changes which happens roughly every 5 minutes.
+  The token is an attribute of the camera entity, i.e. it is not a long lived access token.
