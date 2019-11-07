@@ -10,9 +10,9 @@ To use this widget, you need to:
      basecamerastream
        basecamerastream.html
        basecamerastream.js
-       basecamerastream.css
-     
+       basecamerastream.css  
 ````
+Make sure the folders and files are readable by the user account under which Appdaemon is running.
    
 3. Configure a widget:
 
