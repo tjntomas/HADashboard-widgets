@@ -12,11 +12,11 @@ To use this widget, you need to:
        basecamerastream.js
        basecamerastream.css  
 ````
-Make sure the folders and files are readable by the user account under which Appdaemon is running.
+   Make sure the folders and files are readable by the user account under which Appdaemon is running.
    
 3. Configure a widget:
 
-Example widget configuration in a .dash file:
+   Example widget configuration in a .dash file:
 
 ````yaml
 my_camera:
