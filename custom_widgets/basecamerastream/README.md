@@ -3,7 +3,7 @@
 To use this widget, you need to:
 1. Copy the basecamerastream folder to your custom_widgets folder. Your custom_widgets folder should be in your Appdaemon conf directory      and need to be created if it does not exist.
 2. copy the camerastream.yaml file from the custom_widgets folder to your custom_widgets folder
-   After copying the above, your custom_widgets folder shoudl have the following structure:
+   After copying the above, your custom_widgets folder should have the following structure:
 ````yaml
  conf
    custom_widgets
