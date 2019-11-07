@@ -1,5 +1,10 @@
 # A Camera Stream widget for HADashboard.
 
+To use this widget, you need to:
+1. Copy the basecamstream folder to your custom_widgets folder
+2. copy the camstream.yaml file from the custom_widgets folder to your custom_widgets folder
+3. Configure a widget:
+
 Example widget configuration in a .dash file:
 
 ````yaml
