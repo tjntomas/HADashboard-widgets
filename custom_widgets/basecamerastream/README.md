@@ -6,8 +6,12 @@ To use this widget, you need to:
    After copying the above, your custom_widgets folder should have the following structure:
 ````yaml
    custom_widgets
-     basecamerastream    # Folder
-     camerastream.yaml   # File
+     camerastream.yaml 
+     basecamerastream
+       basecamerastream.html
+       basecamerastream.js
+       basecamerastream.css
+     
 ````
    
 3. Configure a widget:
