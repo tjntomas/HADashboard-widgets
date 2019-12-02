@@ -382,8 +382,13 @@ function initialize() {
             long = self.entity_state[tracker].attributes.longitude
            
             if ("entity_picture" in self.entity_state[tracker].attributes){
+                if (self.entity_state[tracker].attributes.entity_picture.includes("/local")){
+                    var img_url =  self.parameters.base_url + self.entity_state[tracker].attributes.entity_picture
+                } else {
+                    var img_url = self.entity_state[tracker].attributes.entity_picture
+                }
                 var markerIcon = {
-                    url: self.parameters.base_url + self.entity_state[tracker].attributes.entity_picture,
+                    url: img_url,
                     scaledSize: new google.maps.Size(40, 40)
                 }
 
