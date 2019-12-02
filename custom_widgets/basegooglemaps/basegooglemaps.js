@@ -396,7 +396,7 @@ function initialize() {
                     position: new google.maps.LatLng(lat,long), map: map,
                     icon: markerIcon})
 
-                AddTracker(self.parameters.base_url + self.entity_state[tracker].attributes.entity_picture)  
+                AddTracker(img_url)  
             }
             else{
                 markerIcon = {
