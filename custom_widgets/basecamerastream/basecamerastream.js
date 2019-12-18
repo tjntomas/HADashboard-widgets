@@ -26,7 +26,7 @@ function basecamerastream(widget_id, url, skin, parameters)
     function OnStateUpdate(self, state)
     {
         console.log("New access token: ", state.attributes['access_token'])
-        self.set_view(self, state)
+        set_view(self, state)
     }
  
     function set_view(self, state)
