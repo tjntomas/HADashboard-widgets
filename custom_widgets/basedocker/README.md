@@ -42,7 +42,7 @@ docker:
   # PLEASE NOTE THAT THE ABOVE HOSTS KEY IS NOT A YAML LIST, I.E. NO INITIAL DASH.
 ````
 
-Now, you should see entities created in Home Asssistant with the domain "docker", for instance docker.home_assistant with the following attributes:
+Now, you should see entities created in Home Asssistant with the domain "docker", for instance ````docker.appdaemon```` with the following attributes:
 ````yaml
   uptime: About an hour
   image: acockburn/appdaemon:4.0.1
