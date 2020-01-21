@@ -13,7 +13,7 @@
 * Trigger automations when a container starts or stops or reaches a certain uptime duration etc.
 
 ## How it works
-An Appdaemon app is grabbing all containers on a host through the docker API and creates docker entities in Home Assistant
+An Appdaemon app is grabbing all containers on a host through the docker API and creates docker entities in Home Assistant.
 The app adds three  internal Appdaemon services which is called by the widget when one of the control icons is pressed:
 * docker/start
 * docker/stop
