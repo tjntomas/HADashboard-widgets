@@ -1,7 +1,5 @@
 widget_type: basedocker
 entity: "{{entity}}"
-state_active: "on"
-state_inactive: "off"
 enable: 1
 post_service_start:
     service: docker/start
@@ -14,23 +12,18 @@ post_service_restart:
     entity_id: "{{entity}}"
 fields:
   title: "{{title}}"
-  icon: ""
-  icon_style: ""
-  state_text: ""
+  stop_style: ""
+  play_style: ""
+  restart_style: ""
+  uptime: Uptime
+  state: State
+  host: Host
 
-icons:
-  icon_start: mdi-play-circle-outline
-  icon_stop:  mdi-play-circle-outline
-  icon_restart: mdi-play-circle-outline
+icons: []
 static_icons: []
-css:
-  icon_style_active: $switch_icon_style_active 
-  icon_style_inactive: $switch_icon_style_inactive 
-  stop_style: "display: inline-block; font-size: 40px; margin-left: 10px; margin-right: 10px; color: gray;"
-  play_style: "display: inline-block; font-size: 40px; margin-left: 10px; margin-right: 10px; color: gray;"
-  restart_style: "display: inline-block; font-size: 40px; margin-left: 10px; margin-right: 10px; color: gray;"
+css: []
+
 static_css:
-  title_style: $switch_title_style
-  state_text_style: $switch_state_text_style
-  widget_style: $switch_widget_style
+  title_style: $docker_title_style
+  widget_style: $docker_widget_style
 

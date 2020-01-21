@@ -1,4 +1,4 @@
-[lcol] {
+[docker_lcol] {
 	color: rgb(167, 167, 167);
 	text-align: left;
 	width: 43%;
@@ -7,7 +7,7 @@
 	height: 30px;
 }
 
-[rcol] {
+[docker_rcol] {
 	color: rgb(167, 167, 167);
 	width:43%;
 	display: inline-block;

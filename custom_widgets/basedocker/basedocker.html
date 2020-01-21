@@ -1,13 +1,12 @@
 
 <h1 class="title" data-bind="text: title, attr:{style: title_style}"></h1>
 <div class="attr_cont">
-    <h1 class="left" lcol="">&#x25FC;&nbsp;Uptime</h1><h1 class="uptime" rcol=""></h1>
-    <h1 class="left" lcol="">&#x25FC;&nbsp;State</h1><h1 class="state" rcol=""></h1>
-    <h1 class="left" lcol="">&#x25FC;&nbsp;Host</h1><h1 class="host" rcol=""></h1>
+    <h1 class="left" docker_lcol="" data-bind="text: uptime"></h1><h1 class="uptime" docker_rcol=""></h1>
+    <h1 class="left" docker_lcol="" data-bind="text: state"></h1><h1 class="state" docker_rcol=""></h1>
+    <h1 class="left" docker_lcol="" data-bind="text: host"></h1><h1 class="host" docker_rcol=""></h1>
 </div>
 <div class="container"> 
     <div class="mdi mdi-stop-circle-outline" docker_icon="" data-bind="attr: {style: stop_style}"></div>
     <div class="mdi mdi-play-circle-outline" docker_icon="" data-bind="attr: {style: play_style}"></div>
     <div class="mdi mdi-restart" docker_icon="" data-bind="attr: {style: restart_style}"></div>
 </div>
-<h1 class="state_text" data-bind="text: state_text, attr: {style: state_text_style}"></h1>
