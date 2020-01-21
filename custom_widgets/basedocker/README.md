@@ -14,7 +14,7 @@
 
 ## How it works
 An Appdaemon app is grabbing all containers on a host through the docker API and creates docker entities in Home Assistant
-The app adds 3 Appdaemon internal service calls which is called by the wwidget when one of the control icons is pressed:
+The app adds 3 Appdaemon internal service calls which is called by the widget when one of the control icons is pressed:
 * docker/start
 * docker/stop
 * docker/restart
