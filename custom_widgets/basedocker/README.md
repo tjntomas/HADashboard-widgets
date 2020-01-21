@@ -22,7 +22,7 @@ The app adds 3 Appdaemon internal service calls which is called by the widget wh
 ### Prerequisites
 
 * You need to have Appdaemon 4 installed and working
-* You need to enable the remote API for dockerd. See instructions here: https://success.docker.com/article/how-do-i-enable-the-remote-api-for-dockerd
+* You need to enable the remote API for dockerd. See instructions here: https://success.docker.com/article/how-do-i-enable-the-remote-api-for-dockerd. (Activating the dockerd API is also useful if you are using portainer since you can then control multiple machines running docker through portainer)
 
 ## How to set it up
 
