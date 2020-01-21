@@ -44,7 +44,7 @@ docker:
 
 Now, you should see entities created in Home Asssistant with the domain "docker", for instance docker.home_assistant with the following attributes:
 ````yaml
-	uptime: About an hour
+  uptime: About an hour
   image: acockburn/appdaemon:4.0.1
   host: ub2
   id: b8f60c5846cc4166c421742aca6d5c520d04cb8bea892720fe42b89fefe33e37
