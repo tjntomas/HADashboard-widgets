@@ -34,7 +34,42 @@ docker:
   class: Docker
   hosts:
     ip_or_host_name_of_machine_running_docker:2376  # For example 192.168.1.20:2376. 2376 is the defaul api port used by docker.
-    ip_or_host_name_of_another_machine_running_docker:2376:
+    ip_or_host_name_of_another_machine_running_docker:2376
+    
   # PLEASE NOTE THAT THE ABOVE HOST KEY IS NOT A YAML LIST, I.E. NO INITIAL DASH.
 ````
 
+Now, you should see entities created in Home Asssistant with the domain "docker", for instance docker.home_assistant with the following attributes:
+````yaml
+	uptime: About an hour
+  image: acockburn/appdaemon:4.0.1
+  host: ub2
+  id: b8f60c5846cc4166c421742aca6d5c520d04cb8bea892720fe42b89fefe33e37
+  state: Running
+  container: appdaemon
+  ````
+  
+  ### Install the docker widget
+  * Copy the docker.yaml file and the basedocker folder from here https://github.com/tjntomas/HADashboard-widgets/tree/master/custom_widgets to your custom_widget folder inside your Appdaemon config folder.
+  * add the following to your custom_css variables.yaml file:
+  ````yaml:
+  docker_title_style: $style_title
+  docker_widget_style: $background_style
+  ````
+  
+  ### Add a widget
+  
+  Add the following to your .dash file:
+  
+  ````yaml
+  ha:
+    widget_type: docker
+    entity: docker.home_assistant
+    title: Home Assistant
+  ````
+  and add ha(2x2) to the display sections in the .dash file:
+  ````yaml
+  layout:
+  - ha(2x2)
+
+### Done!
