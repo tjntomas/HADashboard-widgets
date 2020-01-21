@@ -8,6 +8,7 @@
 * Shows the uptime and current status of the containers
 * Creates docker entities in Home Assistant for each discovered container
 * Can handle multiple docker hosts, i.e. docker container running on more than one server
+* The controls blinks when status is changing, i.e. during restart, start or stop of a container
 
 ## How it works
 An Appdaemon app is grabbing all containers on a host through the docker API and creates docker entities in Home Assistant
