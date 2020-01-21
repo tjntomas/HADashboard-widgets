@@ -12,7 +12,7 @@
 
 ## How it works
 An Appdaemon app is grabbing all containers on a host through the docker API and creates docker entities in Home Assistant
-The app adds 3 Appdaemon service calls:
+The app adds 3 Appdaemon internal service calls which is called by the wwidget when one of the control icons is pressed:
 * docker/start
 * docker/stop
 * docker/restart
@@ -74,3 +74,15 @@ Now, you should see entities created in Home Asssistant with the domain "docker"
   - ha(2x2)
 
 ### Done!
+
+If you want, you can change the Uptime, Host and State text to your own language by adding the corresponding keys to the widget definition:
+  ````yaml
+  ha:
+    widget_type: docker
+    entity: docker.home_assistant
+    title: Home Assistant
+    uptime: Gångtid
+    state: Status
+    host: Värd
+  ````
+
