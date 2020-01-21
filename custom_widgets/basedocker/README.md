@@ -74,6 +74,8 @@ Now, you should see entities created in Home Asssistant with the domain "docker"
   ````yaml
   layout:
   - ha(2x2)
+  
+  ````
 
 ### Done!
 
