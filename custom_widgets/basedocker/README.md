@@ -39,7 +39,7 @@ docker:
     ip_or_host_name_of_machine_running_docker:2376  # For example 192.168.1.20:2376. 2376 is the defaul api port used by docker.
     ip_or_host_name_of_another_machine_running_docker:2376
     
-  # PLEASE NOTE THAT THE ABOVE HOST KEY IS NOT A YAML LIST, I.E. NO INITIAL DASH.
+  # PLEASE NOTE THAT THE ABOVE HOSTS KEY IS NOT A YAML LIST, I.E. NO INITIAL DASH.
 ````
 
 Now, you should see entities created in Home Asssistant with the domain "docker", for instance docker.home_assistant with the following attributes:
