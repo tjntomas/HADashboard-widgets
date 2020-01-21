@@ -83,7 +83,7 @@ If you want, you can change the Uptime, Host and State text to your own language
   ````yaml
   ha:
     widget_type: docker
-    entity: docker.home_assistant
+    entity: docker.home_assistant  # Check the name of the created docker entities in the state explorer in Home Assistant.
     title: Home Assistant
     uptime: Gångtid
     state: Status
