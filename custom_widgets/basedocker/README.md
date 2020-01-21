@@ -79,13 +79,13 @@ Now, you should see entities created in Home Asssistant with the domain "docker"
 
 ### Done!
 
-If you want, you can change the Uptime, Host and State text to your own language by adding the corresponding keys to the widget definition:
+If you want, you can change the ````Uptime````, ````Host```` and ````State```` text to your own language by adding the corresponding keys to the widget definition:
   ````yaml
   ha:
     widget_type: docker
     entity: docker.home_assistant  # Check the name of the created docker entities in the state explorer in Home Assistant.
     title: Home Assistant
-    uptime: Gångtid
+    uptime: Gångtid  # Swedish
     state: Status
     host: Värd
   ````
