@@ -28,7 +28,7 @@ The app adds 3 Appdaemon internal service calls which is called by the widget wh
 
 ### Install the Appdaemon app
 
-Copy the dock.py file from https://github.com/tjntomas/HADashboard-widgets/tree/master/apps to your apps folder in your Appdaemon config folder.
+Copy the ````dock.py```` file from https://github.com/tjntomas/HADashboard-widgets/tree/master/apps to your ````apps```` folder in your Appdaemon config folder.
 
 Add the following to your apps.yaml file:
 ````yaml
@@ -53,7 +53,7 @@ Now, you should see entities created in Home Asssistant with the domain "docker"
   ````
   
   ### Install the docker widget
-  * Copy the docker.yaml file and the basedocker folder from here https://github.com/tjntomas/HADashboard-widgets/tree/master/custom_widgets to your custom_widget folder inside your Appdaemon config folder.
+  * Copy the ````docker.yaml```` file and the ````basedocker```` folder from here https://github.com/tjntomas/HADashboard-widgets/tree/master/custom_widgets to your ````custom_widgets```` folder inside your Appdaemon config folder.
   * add the following to your custom_css variables.yaml file:
   ````yaml:
   docker_title_style: $style_title
@@ -62,7 +62,7 @@ Now, you should see entities created in Home Asssistant with the domain "docker"
   
   ### Add a widget
   
-  Add the following to your .dash file:
+  Add the following to your ````.dash```` file:
   
   ````yaml
   ha:
