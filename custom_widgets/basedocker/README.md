@@ -67,7 +67,7 @@ Now, you should see entities created in Home Asssistant with the domain "docker"
   ````yaml
   ha:
     widget_type: docker
-    entity: docker.home_assistant
+    entity: docker.home_assistant # Check the name of the created docker entities in the state explorer in Home Assistant.
     title: Home Assistant
   ````
   and add ha(2x2) to the display sections in the .dash file:
