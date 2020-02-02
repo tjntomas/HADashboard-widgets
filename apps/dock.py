@@ -1,7 +1,6 @@
 import appdaemon.plugins.hass.hassapi as hass
 from requests import get
 from requests import post
-import sensor as ha
 import json
 import datetime
 # App to perform action based on events
@@ -45,6 +44,7 @@ class Docker(hass.Hass):
         ATTR_HOST       = 'host'
         ATTR_STATE      = 'state'
         ATTR_CONTAINER  = 'container'
+        ATTR_TIMESTAMP  = 'last_updated'
         DOMAIN_DOCKER   = 'docker.'
         ERR_RESPONSE    = "response error"
         ERR_JSON        = "json error"
@@ -86,7 +86,8 @@ class Docker(hass.Hass):
                         args['id'] = entry['Id']
                         args[ATTR_STATE] = str(entry[STATE]).replace("exited", "Stopped").replace("running","Running")
                         args[ATTR_CONTAINER] = org_name
-                        r =ha.set_state(DOMAIN_DOCKER + name, state, args)
+                        args[ATTR_TIMESTAMP] = str(datetime.datetime.now())
+                        self.set_state(DOMAIN_DOCKER + name, state=state, attributes=args)
 
 
 
