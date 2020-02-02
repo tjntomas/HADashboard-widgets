@@ -3,7 +3,7 @@ from requests import get
 from requests import post
 import json
 import datetime
-# App to perform action based on events
+# App to control docker containers.
 
 class Docker(hass.Hass):
 # listen for state change 
