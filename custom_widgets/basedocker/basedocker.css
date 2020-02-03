@@ -3,8 +3,19 @@
 	text-align: left;
 	width: 43%;
 	display: inline-block;
-	left: 5px;
+	left: 0px;
 	height: 30px;
+}
+
+[docker_lcol]:before {
+	position: relative;
+	content: "\220E";
+	left: -5px;
+	width: 10px;
+	height: 10px;
+	padding-right: 2px;
+	font-size: 20px;
+	color: rgb(121, 92, 13);
 }
 
 [docker_rcol] {
@@ -19,7 +30,7 @@
 	position: absolute;
 	top: 5px;
 	width: 100%;
-	font-size: 18px!important;
+	font-size: 16px!important;
 }
 
 .widget-basedocker-{{id}} .state_text {
@@ -31,21 +42,20 @@
 .widget-basedocker-{{id}} .container {
 	position: absolute;
 	left: 0px;
-	bottom: 5px;
+	bottom: 0px;
 	width: 100%;
 	display: inline-block;
+	background: rgba(100,100,100,0.1);
+	padding-top: 7px;
+	padding-bottom: 7px;
+
 }
 
 [docker_icon] {
 	display: inline-block;
-	font-size: 40px;
-	margin-left: 10px;
-	margin-right: 10px;
+	font-size: 35px;
+	margin-left: 15px;
+	margin-right: 15px;
 	color: gray;
-}
-
-[docker_icon]:hover {
-	color: white;
-	transition: 0.2s;
 }
 
