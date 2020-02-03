@@ -2,7 +2,7 @@
 
 ### [A Docker control widget for HADashboard](https://github.com/tjntomas/HADashboard-widgets/tree/master/custom_widgets/basedocker)
 
-![HADashboard-widgets](https://github.com/tjntomas/HADashboard-widgets/blob/master/img/docker_widget.jpg?raw=true)
+![HADashboard-widgets](https://github.com/tjntomas/HADashboard-widgets/blob/master/img/docker_app.jpg?raw=true)
 
 ### [A Camera Stream widget for HADashboard](https://github.com/tjntomas/HADashboard-widgets/tree/master/custom_widgets/basecamerastream)
 
