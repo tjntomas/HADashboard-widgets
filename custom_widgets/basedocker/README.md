@@ -90,7 +90,7 @@ If you want, you can change the ````Uptime````, ````Host```` and ````State```` t
     host: Värd
   ````
   
-  ### Controlling docker from Home Assistant
+  ### Controlling a docker container from Home Assistant
   You can control a docker container by firing one of the following events with entity_id of the docker entity as data:
   * docker_start
   * docker_stop
