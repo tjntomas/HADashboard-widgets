@@ -96,9 +96,3 @@ If you want, you can change the ````Uptime````, ````Host```` and ````State```` t
   * docker_stop
   * docker_restart
   
- 
- 
-  
-  ````
-  
-
