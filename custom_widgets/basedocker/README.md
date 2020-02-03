@@ -1,7 +1,7 @@
 
 # A Docker control widget for HADashboard and Appdaemon Version 4
 
-![HADashboard-widgets](https://github.com/tjntomas/HADashboard-widgets/blob/master/img/docker_widget.jpg?raw=true)
+![HADashboard-widgets](https://github.com/tjntomas/HADashboard-widgets/blob/master/img/docker_app.jpg?raw=true)
 
 ## Features
 * Start, stop or restart docker containers
