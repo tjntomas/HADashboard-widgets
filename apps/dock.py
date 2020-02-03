@@ -3,16 +3,37 @@ from requests import get
 from requests import post
 import json
 import datetime
-# App to control docker containers.
+# App to manage docker containers.
 
 class Docker(hass.Hass):
-# listen for state change 
     def initialize(self):
         self.register_service("docker/start", self.docker_manage)
         self.register_service("docker/stop", self.docker_manage)
         self.register_service("docker/restart", self.docker_manage)
+        self.listen_event(self.docker_events,"docker_start")
+        self.listen_event(self.docker_events,"docker_stop")
+        self.listen_event(self.docker_events,"docker_restart")
         runtime = datetime.time(0, 0, 0)
         self.run_minutely(self.get_containers, runtime)
+
+    async def docker_events(self, event_name, data, kwargs):
+        self.log(data)
+        if 'entity_id' in data:
+            c_id = await self.get_state(data['entity_id'], attribute='id')
+            host = await self.get_state(data['entity_id'], attribute='host')
+            if event_name == 'docker_restart':
+                service = 'restart'
+            if event_name == 'docker_start':
+                service = 'start'
+            if event_name == 'docker_stop':
+                service = 'stop'
+            url = "http://" + host + ":2376"  + "/containers/" + c_id + "/" + service
+            p = post(url=url)
+            self.log("Action done")
+            await self.sleep(1)
+            self.get_containers("")
+
+
 
     async def docker_manage(self, plugin, domain, service, data):
         self.log(domain)
