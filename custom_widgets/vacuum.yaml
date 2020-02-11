@@ -1,7 +1,7 @@
 widget_type: basevacuum
-entity: {{entity}}
+entity: "{{entity}}"
 fields:
-  title: {{title}}
+  title: "{{title}}"
 css: []
 static_icons: []
 static_css: 
