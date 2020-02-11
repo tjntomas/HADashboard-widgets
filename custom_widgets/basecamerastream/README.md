@@ -1,5 +1,7 @@
 # A Camera Stream widget for HADashboard.
 
+!!! This widget has been updated to work with Appdaemon version 4.
+
 To use this widget, you need to:
 1. Copy the basecamerastream folder to your custom_widgets folder. Your custom_widgets folder should be in your Appdaemon conf directory      and need to be created if it does not exist.
 2. copy the camerastream.yaml file from the custom_widgets folder to your custom_widgets folder.
