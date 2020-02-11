@@ -1,5 +1,5 @@
 widget_type: basehagraph
-entity: {{entity}}
+entity: "{{entity}}"
 fields: []
 enable: 0
 static_css:
