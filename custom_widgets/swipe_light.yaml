@@ -1,21 +1,21 @@
 widget_type: baseswipe_light
-entity: {{entity}}
+entity: "{{entity}}"
 post_service:
     service: input_number/set_value
-    entity_id: {{entity}}
+    entity_id: "{{entity}}"
 post_service_active:
     service: light/turn_on
-    entity_id: {{entity}}
+    entity_id: "{{entity}}"
 post_service_inactive:
     service: light/turn_off
-    entity_id: {{entity}}
+    entity_id: "{{entity}}"
 toggle:
     service: light/toggle
-    entity_id: {{entity}}
+    entity_id: "{{entity}}"
 fields:
-  title: {{title}}
-  title2: {{title2}}
-  unit: {{unit}}
+  title: "{{title}}"
+  title2: "{{title2}}"
+  unit: "{{unit}}"
   level: ""
   icon_style: ""
   icon: ""
