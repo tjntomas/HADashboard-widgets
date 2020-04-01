@@ -58,7 +58,7 @@ graph_password: INFLUXDB_PASSWORD # ONLY INCLUDE THIS LINE IF AUTHENTICATION IS 
 graph_degrees_celsius_text: "Degrees Celsius"  # Adjust to your own language
 graph_degrees_fahrenheit_text: "Degrees Fahrenheit"  # Adjust to your own language
 graph_percent_text: "Percent"  # Adjust to your own language
-value_in_legend: 1 # If this parameter is present, the current value for each trace is displayed in the legend section.
+
 ````
 6. Define a widget:
 ````yaml
@@ -76,6 +76,7 @@ mvp:
     fill: "tozeroy" # options are  "none" | "tozeroy" | "tozerox" | "tonexty" | "tonextx" | "toself" 
     colorIndex: 0   # A number between 0 and 11. 12 colors for the traces are predefined and the colorIndex defines 
     # which is used for the first trace. If more than 12 traces/entities are specified, the colors are rotated. 
+    value_in_legend: 1 # If this parameter is present, the current value for each trace is displayed in the legend section.
 ````
 
 ### A more complex graph showing 4 CPU temperatures
