@@ -7,6 +7,7 @@ function basegraph(widget_id, url, skin, parameters)
 	self.OnStateUpdate = OnStateUpdate
 	self.states = {}
 	var l = Object.keys(self.parameters.entities).length
+	self.l = l
 	var callbacks = []
 	var monitored_entities =  []
 
@@ -14,6 +15,7 @@ function basegraph(widget_id, url, skin, parameters)
 	{
 		monitored_entities.push({"entity": entity, "initial": self.OnStateAvailable, "update": self.OnStateUpdate})
 	}
+
 	
 		// Some default values
 	self.NUMBER_OF_DECIMALS = 2
@@ -43,8 +45,7 @@ function basegraph(widget_id, url, skin, parameters)
 	self.TRACE_COLORS = css(self,"trace_colors", self.TRACE_COLORS)
 	self.FILL_COLORS = css(self,"fill_colors", self.FILL_COLORS)
 	self.BAR_COLORS = css(self,"bar_colors", self.BAR_COLORS)
-	
-	
+
 	self.PLOT_BG_COLOR = 'rgba(40,40,40,0)'
 	self.TRACE_NAME_COLOR = '#888888'
 	self.CANVAS_HTML_BODY_START = '<div id="GRAPH_CANVAS" class="canvasclass" data-bind="attr:{style: graph_style}" width="100%" height="100%" style="'
@@ -61,17 +62,26 @@ function basegraph(widget_id, url, skin, parameters)
 	self.INFLUX_SELECT_PATTERN_DS = "SELECT%20first(value)%20FROM%20%22"
 	self.INFLUX_WHERE_PATTERN = "%22%20WHERE%20entity_id%20=%20%27"
 	self.INFLUX_TIME_PATTERN = "%27%20AND%20time%20%3E%20now()%20-"
+	self.count = 1
 								
 	WidgetBase.call(self, widget_id, url, skin, parameters, monitored_entities, callbacks) 
 
 	function OnStateUpdate(self, state){
 		// Log that new data has been received.
 		Logger(self,"New value for " + self.parameters.entities[0] + ": " + state.state)
-		draw(self, state)
+		//draw(self, state)
 	}
 
 	function OnStateAvailable(self, state){
-		draw(self, state)
+		//draw(self, state)
+		//console.log("ID", state.entity_id, "count", self.count , "total",self.l)
+		
+		if (self.count == (self.l)){
+			//console.log("Initiate draw for ", state.entity_id)
+			draw(self, state)
+		}
+		++self.count
+
 	}
 	
 	function MultiPlot(self,DataSeries, measurement)
@@ -261,7 +271,8 @@ function basegraph(widget_id, url, skin, parameters)
 		catch(err) {}
 	}
 
-	function InfluxDB_Data(self,time_filter, entity_id,units){
+	function InfluxDB_Data(self,time_filter, entity_id,units, sql_query){
+		var t0 = performance.now();
 		var TIME_DATA = '0'
 		var VALUE_DATA = '1'
 		var http = document.referrer.slice(7,10)
@@ -273,9 +284,9 @@ function basegraph(widget_id, url, skin, parameters)
 			self.css.influxdb_url = self.css.influxdb_url_local 
 		}
 		// If an SQL query is present in the parameters, we query the datebase directly with the supplied SQL query.
-		if ("sql" in self.parameters)
+		if (sql_query != "")
 		{
-			var url = self.css.influxdb_url + self.INFLUX_QUERY_PATTERN + self.parameters.sql
+			var url = self.css.influxdb_url + self.INFLUX_QUERY_PATTERN + sql_query
 
 			// THIS SHOULD BE CHANGED TO AN ASYNCHRONOUS REQUEST WITH A CALLBACK TO PROCESS THE DATA.
 			var r = new XMLHttpRequest()
@@ -299,6 +310,7 @@ function basegraph(widget_id, url, skin, parameters)
 			// Remove "domain." from entity name since in the InfluxDB home_assistant database the
 			// field names are without the "domain." part of the entity_id.
 			var entity = entity_id.substring(entity_id.indexOf(".") + 1)
+			Logger(self,entity)
 			
 			// if "ds" is present in parameters, we should downsample the data in the query to speed things up.
 			if ("ds" in self.parameters)
@@ -315,18 +327,19 @@ function basegraph(widget_id, url, skin, parameters)
 				var url = base_url + sql_query 
 			}
 			// THIS SHOULD BE CHANGED TO AN ASYNCHRONOUS REQUEST WITH A CALLBACK TO PROCESS THE DATA.
-			Logger(self,"URL: " + url)
+			//Logger(self,"URL: " + url)
 			var xhr = new XMLHttpRequest()
 			if ("user" in self.css)
 			{
 				url =  url + `&u=${self.css.user}&p=${self.css.password}`
 			}
+			//console.log(url)
 			xhr.open("GET",url , false)
 			xhr.send()
 			
 			// We only want the "values" part of the response.
 			var array = JSON.parse(xhr.response)
-			Logger(self,array)
+			//Logger(self,array)
 			var values = array['results'][0]['series'][0]['values']
 		}
 		// Now we have the samples in values as [timestamp, value].
@@ -361,19 +374,24 @@ function basegraph(widget_id, url, skin, parameters)
 			current_sample = current_sample + 1
 		}
 		// Return the x and y data series arrays
+		var t1 = performance.now();
+		console.log("Read data took ", (t1 - t0), "seconds", entity_id)
 		return {vX: vX, vY: vY}
 	}
 
 	function draw(self, state)
 	{
+	//	console.log("Starting to draw", state.entity_id)
 		// Get number of entities to process
 	 	var number_of_entities = Object.keys(self.parameters.entities).length
 	 	var current_entity_index = 0
 		var time_filter = self.parameters.time
 		var DataSeriesArray = new Array ()
+
 		
 		while(current_entity_index < number_of_entities)
 		{
+			state = self.entity_state[self.parameters.entities[current_entity_index]]
 			if(number_of_entities == 1){
 			// If we only have one entity to process, get the 'unit_of_measurement' attribute from HA. 
 			// If entity has no units attribute
@@ -396,7 +414,12 @@ function basegraph(widget_id, url, skin, parameters)
 
 			units = encodeURI(units)
 			// Read data from influxdb.
-			var x_y_data =  InfluxDB_Data(self,time_filter, self.parameters.entities[current_entity_index], units)
+			if ("sql_queries" in self.parameters){
+				var x_y_data =  InfluxDB_Data(self,time_filter, self.parameters.entities[current_entity_index], units, self.parameters.sql_queries[current_entity_index])
+			}
+			else {
+				var x_y_data =  InfluxDB_Data(self,time_filter, self.parameters.entities[current_entity_index], units, "")
+			}
 			DataSeriesArray[current_entity_index * 2] = x_y_data.vX
 			DataSeriesArray[current_entity_index * 2 + 1] = x_y_data.vY
 			current_entity_index = current_entity_index + 1
