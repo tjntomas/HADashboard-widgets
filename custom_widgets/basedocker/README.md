@@ -19,6 +19,12 @@ The app adds three  internal Appdaemon services which is called by the widget wh
 * docker/stop
 * docker/restart
 
+  ### Controlling a docker container from Home Assistant
+  You can control a docker container by firing one of the following events with entity_id of the docker entity as data:
+  * docker_start
+  * docker_stop
+  * docker_restart
+
 ### Prerequisites
 
 * You need to have Appdaemon 4 installed and working
@@ -90,9 +96,5 @@ If you want, you can change the ````Uptime````, ````Host```` and ````State```` t
     host: Värd
   ````
   
-  ### Controlling a docker container from Home Assistant
-  You can control a docker container by firing one of the following events with entity_id of the docker entity as data:
-  * docker_start
-  * docker_stop
-  * docker_restart
+
   
