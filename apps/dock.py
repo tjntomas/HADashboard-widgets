@@ -23,7 +23,7 @@ class Docker(hass.Hass):
 
     def initialize(self):  
         self.register_service(self.SVC_DOCKER_START, self.docker_manage)
-        self.register_service(self.SVC_DOCKER_RESTART, self.docker_manage)
+        self.register_service(self.SVC_DOCKER_STOP, self.docker_manage)
         self.register_service(self.SVC_DOCKER_RESTART, self.docker_manage)
         self.listen_event(self.docker_events, self.EVNT_DOCKER_START)
         self.listen_event(self.docker_events, self.EVNT_DOCKER_STOP)
