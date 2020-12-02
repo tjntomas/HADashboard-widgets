@@ -10,6 +10,7 @@ function baseswipe_light(widget_id, url, skin, parameters)
 
     self.OnButtonClick = OnButtonClick
     self.OnClick = OnClick
+    self.effects_modal = effects_modal
 
     var callbacks =
         [
@@ -35,8 +36,15 @@ function baseswipe_light(widget_id, url, skin, parameters)
 
     WidgetBase.call(self, widget_id, url, skin, parameters, monitored_entities, callbacks)
     wd = document.getElementById(widget_id)
+    self.modal_cover = document.createElement("div")
+    document.body.appendChild(self.modal_cover)
+    self.modal_cover.setAttribute("class", "modal_cover")
+    self.effects_modal_dialogue = document.createElement("div")
+    self.modal_cover.appendChild(self.effects_modal_dialogue)
+    self.effects_modal_dialogue.setAttribute("class", "effects_modal")
     rect = wd.getBoundingClientRect()
     self.widget_height = Math.min(parseInt(rect.height), parseInt(rect.width))
+
     element(self, "frame").style.height = self.widget_height-2 + "px"
     element(self, "frame").style.width = self.widget_height-2 + "px"
     element(self, "w3-modal").style.left = (rect.width -self.widget_height) / 2 + "px"
@@ -56,8 +64,36 @@ function baseswipe_light(widget_id, url, skin, parameters)
      for ( event of ["mousemove", "mouseup", "mousedown"] ){ 
         element(self, "swipezone").addEventListener(event, slider_click.bind(self), false)
      }
+
+        element(self, "effects").addEventListener("click", effects_modal.bind(self), false )
+        self.modal_cover.addEventListener("click", modal_cover_click.bind(self), false )
+
      
-    
+    function effects_modal(e){
+        self = this
+        self.effects_modal_dialogue.innerHTML = ""
+        self.modal_cover.style.display = "block"
+        self.effects_modal_dialogue.style.left = e.clientX + "px"
+        self.effects_modal_dialogue.style.top = e.clientY + "px"
+
+       if ("effect_list" in self.state_entity.attributes ){
+           for (var effect in self.state_entity.attributes.effect_list ){
+                var item = document.createElement("div")
+                item.setAttribute("class", "effect_item")
+                item.style.position = "relative"
+                item.innerHTML = self.state_entity.attributes.effect_list[effect]
+                self.effects_modal_dialogue.appendChild(item)
+           }
+       }
+    }
+
+    function modal_cover_click(e){
+        self.modal_cover.style.display = "none"
+        args = self.parameters.post_service_active
+        args["effect"] = e.target.innerHTML
+        self.call_service(self, args)
+    }
+
     function OnClick(self){
        if (self.state == "on"){
         var args = self.parameters.post_service_inactive
@@ -65,7 +101,6 @@ function baseswipe_light(widget_id, url, skin, parameters)
        {
         var args = self.parameters.post_service_active
        }
-      
         self.call_service(self, args)
     }
 
@@ -97,6 +132,7 @@ function baseswipe_light(widget_id, url, skin, parameters)
         self.state = state.state
         set_view(self)
         self.state_entity = state
+        
         if ( !("brightness" in state.attributes))
         {
             state.attributes.brightness = 0
@@ -127,7 +163,6 @@ function baseswipe_light(widget_id, url, skin, parameters)
         self.center = center
         self.picker = picker
         self.circle.style.position = "absolute"
-        //self.circle.style.background = self.parameters.static_css.button_color
         self.modal.style.display ="none"
         self.fine_adj = 1
         var rv =self.rgb[0]
@@ -146,14 +181,6 @@ function baseswipe_light(widget_id, url, skin, parameters)
         var c = picker
         var a = c.getContext('2d')
        
-/*
-        window.onclick = function(event)
-        {
-            if (event.target == document.getElementById(self.widget_id)) {
-                self.modal.style.display = "none"
-                
-            }
-        }*/
         document.body.clientWidth;
 
         (function() {
@@ -165,11 +192,10 @@ function baseswipe_light(widget_id, url, skin, parameters)
             var width = c.width = c.height = self.widget_height,
                         imageData = a.createImageData(width, width),
                         pixels = imageData.data,
-                        oneHundred = 100,
                         circleOffset = 0,
                         diameter = width-circleOffset*2,
                         radius = diameter / 2,
-                        radiusPlusOffset = radius + circleOffset
+                        radiusPlusOffset = radius + circleOffset,
                         radiusSquared = radius * radius,
                         two55 = 255,
                         currentY = -0,
@@ -281,7 +307,6 @@ function baseswipe_light(widget_id, url, skin, parameters)
 
         set_view(self)
 
-        //swipedetect(el, function(swipedir){}, self, state)
     }
 
     async function color_wheel_touch(event){
@@ -296,7 +321,7 @@ function baseswipe_light(widget_id, url, skin, parameters)
             self.el.style.display = "block"
            
             var args = self.parameters.post_service_active
-            args["rgb_color"] = "255,255,255"
+            args["rgb_color"] = [255,255,255]
             self.rgb[0] = 255
             self.rgb[1] = 255
             self.rgb[2] = 255
@@ -308,7 +333,7 @@ function baseswipe_light(widget_id, url, skin, parameters)
         else {
             if (event.type == "touchend"){
                 var args = self.parameters.post_service_active
-                args["rgb_color"] = parseInt(self.rgb[0]) + "," + parseInt(self.rgb[1]) + "," + parseInt(self.rgb[2])
+                args["rgb_color"] = [parseInt(self.rgb[0]) , parseInt(self.rgb[1]) , parseInt(self.rgb[2])]
                 self.last_rgb_color = self.rgb
                 self.call_service(self, args)
                 restart_timer(self)
@@ -328,7 +353,7 @@ function baseswipe_light(widget_id, url, skin, parameters)
         event.preventDefault()
         if (event.type == "mouseup"){
             var args = self.parameters.post_service_active
-            args["rgb_color"] = parseInt(self.rgb[0]) + "," + parseInt(self.rgb[1]) + "," + parseInt(self.rgb[2])
+            args["rgb_color"] = [parseInt(self.rgb[0]) , parseInt(self.rgb[1]) , parseInt(self.rgb[2])]
             self.last_rgb_color = self.rgb
             self.call_service(self, args)
             restart_timer(self)
@@ -339,15 +364,14 @@ function baseswipe_light(widget_id, url, skin, parameters)
         }
 
         if (event.type == "dblclick"){
-            console.log("Dubbelnisse")
-           
             var args = self.parameters.post_service_active
-            args["rgb_color"] = "255,255,255"
+            args["rgb_color"] = [255,255,255]
             self.rgb[0] = 255
             self.rgb[1] = 255
             self.rgb[2] = 255
             
             self.last_rgb_color = self.rgb
+            delete args.__stream
             self.call_service(self, args)
             restart_timer(self)
         }

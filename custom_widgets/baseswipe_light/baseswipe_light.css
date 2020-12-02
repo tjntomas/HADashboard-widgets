@@ -1,6 +1,10 @@
-.widget-baseswipe_light {{id}} {
+.widget-baseswipe_light-{{id}} {
 	position: relative;
+
+	
 }
+
+
 
 .widget-baseswipe_light-{{id}} .state_text {
 	font-size: 85%;
@@ -161,8 +165,22 @@
 	color: rgba(100,100,100,1);
 	width: 35px;
 	height: 30px;
-
-  }
+	}
+	
+	.widget-baseswipe_light-{{id}} .effects {
+		position: relative;
+		width: 24px;
+		height: 24px;
+		top: -25px;
+		left: 10px;
+		-webkit-border-radius: 12px;
+		-moz-border-radius: 12px;
+		border-radius: 12px;
+		box-shadow: 1px 1px rgba(0,0,0,0.3);
+		z-index: 0;
+		background: linear-gradient(rgb(97, 97, 97), rgb(82, 82, 82),rgb(67, 67, 67),rgb(52, 52, 52),rgb(37, 37, 37));
+		}
+	
 
   .widget-baseswipe_light-{{id}} .w3-modal {
 	  z-index: 100;
@@ -174,6 +192,65 @@
 
 	pointer-events: all;
 	}
+
+.effects_modal {
+		z-index: 100;
+		display: block;
+	  position: absolute;
+		top: 0px;
+		left: 0px;
+		width: 220px;
+	  align-content: center;
+		background: red;
+	pointer-events: all;
+	}
+
+	.modal_cover {
+		display: none;
+		position: fixed;
+		left: 0px;
+		top: 0px;
+		width: 100%;
+		height: 100%;
+		background: rgba(100,100,100,0.5);
+		z-index: 99;
+	}
+
+	.effect_item {
+		position: relative;
+		background: rgba(40,40,40,1);
+		color: rgba(200,200,200,1);
+		cursor: pointer;
+		height: 30px;
+		line-height: 30px;
+		text-align: center;
+	}
+
+	.effect_top_item {
+		position: relative;
+		background: rgba(40,40,40,1);
+		color: rgba(200,200,200,1);
+		cursor: pointer;
+		height: 30px;
+		line-height: 30px;
+		text-align: center;
+	}
+	
+	.effect_bottom_item {
+		position: relative;
+		background: rgba(40,40,40,1);
+		color: rgba(200,200,200,1);
+		cursor: pointer;
+		height: 30px;
+		line-height: 30px;
+		text-align: center;
+	}
+
+	.effect_item:hover {
+		background: rgba(200,200,200,1);
+		color: black;
+	}
+	
 	
 
 
