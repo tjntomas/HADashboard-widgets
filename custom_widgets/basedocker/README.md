@@ -8,7 +8,7 @@
 * Shows the uptime and current status of the containers
 * Creates docker entities in Home Assistant for each discovered container
 * Can handle multiple docker hosts, i.e. docker containers running on multiple machines on your local network.
-* The controls blinks when status is changing, i.e. during restart, start or stop of a container
+* The controls flashes when status is changing, i.e. during restart, start or stop of a container
 * Use the docker entities in your Home Assistant Lovelace UI if you like
 * Trigger automations when a container starts or stops or reaches a certain uptime duration etc.
 
