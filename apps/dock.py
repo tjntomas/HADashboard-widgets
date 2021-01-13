@@ -24,6 +24,7 @@ class Docker(hass.Hass):
     SERVICE_MAP             = {EVNT_DOCKER_START: "start", EVNT_DOCKER_STOP: "stop", EVNT_DOCKER_RESTART: "restart"}
 
     async def initialize(self):  
+        self.session = aiohttp.ClientSession()
         self.register_service(self.SVC_DOCKER_START, self.docker_manage)
         self.register_service(self.SVC_DOCKER_STOP, self.docker_manage)
         self.register_service(self.SVC_DOCKER_RESTART, self.docker_manage)
@@ -39,17 +40,20 @@ class Docker(hass.Hass):
     async def docker_signal(self, entity, attribute, old, new, kwargs):
         entity_id = await self.get_state(self.DOCKER_SIGNAL_SENSOR, attribute="entity_id")
         service = await self.get_state(self.DOCKER_SIGNAL_SENSOR, attribute="service")
-        self.log(entity_id) 
-        self.log(service)
-        if service != "":
+
+        if type(service) is str:
+            self.log("Received event " + service)
             await self.docker_events("docker_" + service,{"entity_id": entity_id}, "")
 
     async def docker_events(self, event_name, data, kwargs):
         if 'entity_id' in data:
             c_id = await self.get_state(data['entity_id'], attribute='id')
             host = await self.get_state(data['entity_id'], attribute='ip')
-            url = self.URL_TEMPLATE.format(host, c_id, self.SERVICE_MAP[event_name])           
-            post(url=url)
+            url = self.URL_TEMPLATE.format(host, c_id, self.SERVICE_MAP[event_name]) 
+            try:          
+                await self.session.post(url)
+            except Exception as e:
+                self.log(e)
             await self.sleep(1)
             await self.get_containers("")
 
@@ -60,7 +64,11 @@ class Docker(hass.Hass):
 
         self.log(service + ": " + container)
         self.URL_TEMPLATE.format(host, c_id, service)
-        p = post(url=url)
+        try:
+            await self.session.post(url)
+        except Exception as e:
+            self.log(e)
+
         await self.sleep(1)
         self.get_containers("") 
 
@@ -84,7 +92,6 @@ class Docker(hass.Hass):
         ATTR_ICON       = 'icon'
         ATTR_ID         = 'id'
         DOCKER_DOMAIN   = 'docker.'
-        ERR_RESPONSE    = "response error"
         ERR_JSON        = "json error"
         DOCKER_ICON     = 'mdi:docker'
         URL_TEMPLATE    = "http://{}:{}/{}"
@@ -98,14 +105,13 @@ class Docker(hass.Hass):
             self.log("Fetching container data from " +url)
 
             try:
-                async with aiohttp.ClientSession() as session:
-                    async with session.get(url) as response:
-                        r=await response.text()
-            except:
-                self.log(ERR_RESPONSE)
+                r = await self.session.get(url)
+            except Exception as e:
+                self.log(e)
+                return
             else:
                 try:
-                    js = json.loads(r)
+                    js = json.loads(await r.text())
                 except:
                     self.log(ERR_JSON)
                 else:
