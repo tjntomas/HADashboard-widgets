@@ -1,6 +1,4 @@
 import appdaemon.plugins.hass.hassapi as hass
-from requests import get
-from requests import post
 import json
 import datetime
 import asyncio
