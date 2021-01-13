@@ -96,5 +96,6 @@ If you want, you can change the ````Uptime````, ````Host```` and ````State```` t
     host: Värd
   ````
   
-
+Change log:
+2020-01-13  Change to async fetch of container data.
   
