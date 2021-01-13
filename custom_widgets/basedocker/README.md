@@ -97,5 +97,5 @@ If you want, you can change the ````Uptime````, ````Host```` and ````State```` t
   ````
   
 Changelog:
-* 2020-01-13 - Change to async fetch of container data.
+* 2020-01-13 - Implement async get/post.
   
